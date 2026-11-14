@@ -109,3 +109,40 @@ test('bad input returns an error rather than a reading', () => {
   const bad = buildProfile({ name: 'X', date: 'not-a-date', gender: 'unspecified', masterNumbers: false });
   assert.ok('error' in bad);
 });
+
+test('Lo Shu placement follows the standard method, not the name', () => {
+  // 29-08-1995: digits 2,9,0,8,1,9,9,5 → drop the zero; add bhāgyāṅka 7 and
+  // mūlāṅka 2 (the day is 29, so ≥ 10). The name number is never placed.
+  const p = buildProfile({ name: 'John Smith', date: '1995-08-29', gender: 'male', masterNumbers: false });
+  const c = (n) => p.grid.find((x) => x.digit === n).count;
+  assert.equal(c(9), 3);          // three 9s in the date
+  assert.equal(c(2), 2);          // one from 29, one from the mūlāṅka
+  assert.equal(c(7), 1);          // the bhāgyāṅka
+  assert.equal(c(3), 0);          // and the name number 8 is not added
+  assert.deepEqual(p.missing, [3, 4, 6]);
+});
+
+test('a single-digit birth day is not double-counted', () => {
+  const p = buildProfile({ name: 'A B', date: '1990-01-05', gender: 'unspecified', masterNumbers: false });
+  assert.equal(p.grid.find((x) => x.digit === 5).count, 1);
+});
+
+test('the reading layer covers all three core numbers', () => {
+  const p = buildProfile({ name: 'John Smith', date: '1995-08-29', gender: 'male', masterNumbers: false });
+  for (const k of ['mulank', 'bhagyank', 'namank']) {
+    assert.ok(p.reading[k].nature.length > 40, k + ' has a reading');
+    assert.ok(p.reading[k].strengths.length >= 3);
+    assert.ok(p.reading[k].gemstone.length > 3);
+  }
+  assert.equal(p.reading.harmony.length, 3);
+  assert.ok(p.lucky.numbers.length >= 2);
+  assert.ok(p.lucky.mantra.startsWith('Om'));
+});
+
+test('Kua carries its eight-mansions directions', () => {
+  const p = buildProfile({ name: 'John Smith', date: '1995-08-29', gender: 'male', masterNumbers: false });
+  assert.equal(p.kua.value, 2);
+  assert.equal(p.kua.directions.good.length, 4);
+  assert.equal(p.kua.directions.bad.length, 4);
+  assert.deepEqual(p.kua.directions.good, ['NE', 'W', 'NW', 'SW']);
+});

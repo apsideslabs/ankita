@@ -7,7 +7,27 @@ import type { Gender } from './types';
  * different constants. A single formula applied to both misdirects every
  * user born after 1999, which is the most common error in this calculation.
  */
-export function kua(year: number, gender: Gender): { value: number; group: 'east' | 'west'; note: string } | null {
+/**
+ * The four favourable and four unfavourable compass directions of the eight
+ * mansions. Compass-school Feng Shui; not Indian, and labelled as such.
+ */
+export const KUA_DIRECTIONS: Record<number, { good: string[]; bad: string[] }> = {
+  1: { good: ['SE', 'E', 'S', 'N'], bad: ['W', 'NW', 'NE', 'SW'] },
+  2: { good: ['NE', 'W', 'NW', 'SW'], bad: ['E', 'SE', 'S', 'N'] },
+  3: { good: ['S', 'N', 'SE', 'E'], bad: ['W', 'NW', 'NE', 'SW'] },
+  4: { good: ['N', 'S', 'E', 'SE'], bad: ['SW', 'NE', 'NW', 'W'] },
+  6: { good: ['W', 'NE', 'NW', 'SW'], bad: ['E', 'SE', 'S', 'N'] },
+  7: { good: ['NW', 'SW', 'NE', 'W'], bad: ['SE', 'E', 'N', 'S'] },
+  8: { good: ['SW', 'NW', 'W', 'NE'], bad: ['N', 'S', 'SE', 'E'] },
+  9: { good: ['E', 'SE', 'N', 'S'], bad: ['NE', 'NW', 'SW', 'W'] },
+};
+
+export function kua(year: number, gender: Gender): {
+  value: number;
+  group: 'east' | 'west';
+  note: string;
+  directions: { good: string[]; bad: string[] };
+} | null {
   if (gender === 'unspecified') return null;
   if (year < 1900 || year > 2099) return null;
   const yy = reduceDigits(String(year).slice(-2));
@@ -24,5 +44,6 @@ export function kua(year: number, gender: Gender): { value: number; group: 'east
     value,
     group: east ? 'east' : 'west',
     note: east ? 'East group: N, S, E, SE are favourable.' : 'West group: W, NW, SW, NE are favourable.',
+    directions: KUA_DIRECTIONS[value] ?? { good: [], bad: [] },
   };
 }

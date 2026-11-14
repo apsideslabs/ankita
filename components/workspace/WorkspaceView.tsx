@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import {
-  ArrowRight, User, CalendarDays, Grid3x3, Clock, Type, ShieldCheck, Info, AlertCircle, ListOrdered,
+  ArrowRight, User, CalendarDays, Grid3x3, Clock, Type, ShieldCheck, Info, AlertCircle, ListOrdered, BookOpen, Gem, Sparkles,
 } from 'lucide-react';
 import { buildProfile } from '@/lib/engine/profile';
 import { GRID, PLANES } from '@/lib/engine/loshu';
@@ -16,6 +16,7 @@ const TABS = [
   { id: 'grid', label: 'Grid', icon: Grid3x3 },
   { id: 'timing', label: 'Timing', icon: Clock },
   { id: 'name', label: 'Name', icon: Type },
+  { id: 'reading', label: 'Reading', icon: BookOpen },
   { id: 'everything', label: 'Everything', icon: ListOrdered },
   { id: 'sources', label: 'Sources', icon: ShieldCheck },
 ] as const;
@@ -218,6 +219,10 @@ export function WorkspaceView() {
                 <p className="mt-4 text-xs text-ink-soft">
                   Every row, column and diagonal sums to 15. The grid is the Lo Shu square — Chinese in origin.
                 </p>
+                <p className="mt-2 text-[11px] text-ink-muted">
+                  Placement: every non-zero digit of the date, plus the bhāgyāṅka, plus the mūlāṅka when the birth
+                  day is 10 or more. The name number and the Kua number are not placed.
+                </p>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -301,6 +306,108 @@ export function WorkspaceView() {
                     <span className="w-5 text-right font-mono text-ink-muted">9</span>
                     <span className="text-xs text-ink-soft">unassigned — Cheiro reserves it for the nine-lettered name of God</span>
                   </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {tab === 'reading' && (
+            <div className="mt-6 space-y-5">
+              {(['mulank', 'bhagyank', 'namank'] as const).map((k) => {
+                const r = profile.reading[k];
+                const labels = { mulank: 'Mūlāṅka', bhagyank: 'Bhāgyāṅka', namank: 'Nāmāṅka' };
+                return (
+                  <article key={k} className="rounded-xl border border-line bg-surface p-6 shadow-3d-card">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <div className="flex items-baseline gap-3">
+                        <span className="font-serif text-4xl font-bold text-copper tabular-nums">{r.n}</span>
+                        <div>
+                          <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-muted">{labels[k]}</p>
+                          <h3 className="font-serif text-lg font-bold text-ink">{r.title}</h3>
+                        </div>
+                      </div>
+                      <Chip tone="copper">{r.day}</Chip>
+                    </div>
+                    <p className="mt-4 text-sm text-ink-soft leading-relaxed">{r.nature}</p>
+                    <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                      <div>
+                        <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-emerald-800">Strengths</p>
+                        <ul className="mt-1.5 space-y-1 text-xs text-ink-soft">{r.strengths.map((x) => <li key={x}>· {x}</li>)}</ul>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-copper">To watch</p>
+                        <ul className="mt-1.5 space-y-1 text-xs text-ink-soft">{r.watch.map((x) => <li key={x}>· {x}</li>)}</ul>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-muted">Work</p>
+                        <ul className="mt-1.5 space-y-1 text-xs text-ink-soft">{r.careers.map((x) => <li key={x}>· {x}</li>)}</ul>
+                      </div>
+                    </div>
+                    <p className="mt-4 pt-3 border-t border-line text-xs text-ink-muted">{r.body}</p>
+                  </article>
+                );
+              })}
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl border border-line bg-surface p-6">
+                  <h3 className="font-serif text-lg font-bold text-ink">The harmony triangle</h3>
+                  <p className="mt-1 text-xs text-ink-soft">Mūlāṅka, bhāgyāṅka and nāmāṅka read against each other.</p>
+                  <ul className="mt-4 space-y-3">
+                    {profile.reading.harmony.map((h, i) => (
+                      <li key={i} className="border-l-2 border-line pl-3">
+                        <p className="text-sm font-mono text-ink">
+                          {h.pair[0]} · {h.pair[1]}
+                          <span className={`ml-2 text-[10px] uppercase tracking-wider ${
+                            h.relation === 'friend' ? 'text-emerald-700' : h.relation === 'enemy' ? 'text-copper' : 'text-ink-muted'
+                          }`}>{h.relation}</span>
+                        </p>
+                        <p className="mt-0.5 text-xs text-ink-soft">{h.line}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rounded-xl border border-line bg-surface p-6">
+                  <div className="flex items-center gap-2">
+                    <Gem className="w-4 h-4 text-copper" />
+                    <h3 className="font-serif text-lg font-bold text-ink">Lucky elements</h3>
+                  </div>
+                  <p className="mt-1 text-xs text-ink-soft">Taken from the ruling planet of the mūlāṅka.</p>
+                  <dl className="mt-4 space-y-2 text-sm">
+                    <div className="flex justify-between gap-4"><dt className="text-ink-muted text-xs uppercase tracking-wider font-mono">Numbers</dt><dd className="text-ink">{profile.lucky.numbers.join(', ')}</dd></div>
+                    <div className="flex justify-between gap-4"><dt className="text-ink-muted text-xs uppercase tracking-wider font-mono">Day</dt><dd className="text-ink">{profile.lucky.days.join(', ')}</dd></div>
+                    <div className="flex justify-between gap-4"><dt className="text-ink-muted text-xs uppercase tracking-wider font-mono">Colours</dt><dd className="text-ink">{profile.lucky.colours.join(', ')}</dd></div>
+                    <div className="flex justify-between gap-4"><dt className="text-ink-muted text-xs uppercase tracking-wider font-mono">Stone</dt><dd className="text-ink text-right">{profile.lucky.gemstone}</dd></div>
+                    <div className="flex justify-between gap-4"><dt className="text-ink-muted text-xs uppercase tracking-wider font-mono">Mantra</dt><dd className="text-ink text-right">{profile.lucky.mantra}</dd></div>
+                    <div className="flex justify-between gap-4"><dt className="text-ink-muted text-xs uppercase tracking-wider font-mono">Direction</dt><dd className="text-ink">{profile.lucky.direction}</dd></div>
+                  </dl>
+                  <p className="mt-4 pt-3 border-t border-line text-[11px] text-ink-muted">
+                    Correspondences are classical navagraha material. The character readings above are summaries of
+                    what the modern literature teaches, not verse.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl border border-line bg-surface p-6">
+                  <h3 className="font-serif text-lg font-bold text-ink">Missing digits</h3>
+                  {profile.reading.missing.length ? (
+                    <ul className="mt-3 space-y-2">
+                      {profile.reading.missing.map((x) => (
+                        <li key={x.n} className="text-sm text-ink-soft"><span className="font-serif font-bold text-copper">{x.n}</span> — {x.text}</li>
+                      ))}
+                    </ul>
+                  ) : <p className="mt-3 text-sm text-ink-soft">No missing digits.</p>}
+                </div>
+                <div className="rounded-xl border border-line bg-surface p-6">
+                  <h3 className="font-serif text-lg font-bold text-ink">Amplified digits</h3>
+                  {profile.reading.repeated.length ? (
+                    <ul className="mt-3 space-y-2">
+                      {profile.reading.repeated.map((x) => (
+                        <li key={x.n} className="text-sm text-ink-soft"><span className="font-serif font-bold text-copper">{x.n}</span> — {x.text}</li>
+                      ))}
+                    </ul>
+                  ) : <p className="mt-3 text-sm text-ink-soft">No digit appears three times or more.</p>}
                 </div>
               </div>
             </div>

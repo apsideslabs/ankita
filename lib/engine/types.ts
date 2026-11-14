@@ -62,6 +62,8 @@ export interface TimingPoint {
   detail: string;
 }
 
+import type { NumberReading } from './interpretation';
+
 export interface TraceStep {
   id: string;
   section: 'input' | 'core' | 'name' | 'grid' | 'kua' | 'timing' | 'sanskrit';
@@ -85,9 +87,27 @@ export interface Profile {
   lines: GridLine[];
   missing: number[];
   repeated: number[];
-  kua: { value: number; group: 'east' | 'west'; note: string } | null;
+  kua: { value: number; group: 'east' | 'west'; note: string; directions: { good: string[]; bad: string[] } } | null;
   timing: TimingPoint[];
   provenance: ProvenanceRef[];
   /** Every step, in order. The UI renders this verbatim. */
   trace: TraceStep[];
+  /** The reading layer: what each core number is said to mean. */
+  reading: {
+    mulank: NumberReading;
+    bhagyank: NumberReading;
+    namank: NumberReading;
+    harmony: { pair: [number, number]; relation: 'friend' | 'neutral' | 'enemy'; line: string }[];
+    missing: { n: number; text: string }[];
+    repeated: { n: number; text: string }[];
+  };
+  /** Lucky elements, taken from the ruling planet of the mūlāṅka. */
+  lucky: {
+    numbers: number[];
+    days: string[];
+    colours: string[];
+    gemstone: string;
+    mantra: string;
+    direction: string;
+  };
 }

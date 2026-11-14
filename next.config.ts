@@ -1,14 +1,21 @@
 import type { NextConfig } from 'next';
 
 /**
- * `STATIC_EXPORT=1 npm run build` emits a fully static site into `out/`,
- * which can be dropped onto Netlify, Cloudflare Pages, GitHub Pages or any
- * static host without a repository or a build service.
+ * Two build modes:
+ *   next build                     → normal server build
+ *   STATIC_EXPORT=1 next build     → static site in out/, for any host
+ *   PAGES=1 next build             → static site in out/ with the /ankita base
+ *                                    path, for a GitHub Pages project site
  */
+const isExport = Boolean(process.env.STATIC_EXPORT || process.env.PAGES);
+const basePath = process.env.PAGES ? '/ankita' : undefined;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  output: process.env.STATIC_EXPORT ? 'export' : undefined,
+  output: isExport ? 'export' : undefined,
+  basePath,
+  assetPrefix: basePath,
   images: { unoptimized: true },
   experimental: { cpus: 1, workerThreads: false },
 };
