@@ -1,0 +1,32 @@
+{
+  "name": "ankita",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A\u1e45kita \u2014 a numerology workspace where every figure carries its citation.",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "tsc -p tsconfig.test.json && node --test tests/",
+    "test:watch": "tsc -p tsconfig.test.json && node --test --watch tests/",
+    "build:static": "STATIC_EXPORT=1 next build"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.553.0",
+    "next": "^15.4.9",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.11",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "postcss": "^8.5.6",
+    "tailwindcss": "4.1.11",
+    "typescript": "5.9.3"
+  }
+}
