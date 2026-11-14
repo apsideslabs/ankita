@@ -11,6 +11,7 @@ export const SITE_CONFIG = {
     { label: 'Library', href: '/library' },
     { label: 'Method', href: '/method' },
     { label: 'Tools', href: '/tools' },
+    { label: 'AA System', href: '/aa' },
     { label: 'Engine', href: '/engine' },
     { label: 'About', href: '/about' },
   ],
