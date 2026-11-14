@@ -92,3 +92,181 @@
   .animate-rise { animation: none; }
   .shadow-3d-card { transition: none; }
 }
+
+/* ==========================================================================
+   Editorial layer — the house language, taken from Grapheme and Phalita:
+   fluid type, paper grain, ornament dividers, hairline rules, arrow bullets.
+   ========================================================================== */
+
+:root {
+  --fs-display: clamp(2.6rem, 5.4vw + 1rem, 4.4rem);
+  --fs-h2: clamp(1.6rem, 1.8vw + 1.05rem, 2.3rem);
+  --fs-h3: clamp(1.15rem, 0.6vw + 1rem, 1.4rem);
+  --fs-lede: clamp(1.02rem, 0.5vw + 0.92rem, 1.2rem);
+  --measure: 66ch;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --action: #8B2F0B;
+  --action-ink: #FCFAF6;
+  --gold: #B8862F;
+}
+
+/* Paper grain: a 3% noise field over everything, multiplied into the ground. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.032;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Display typography */
+.display {
+  font-family: var(--font-serif);
+  font-size: var(--fs-display);
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  font-weight: 700;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+.h2-ed {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h2);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+.lede {
+  font-size: var(--fs-lede);
+  line-height: 1.62;
+  color: var(--color-ink-soft);
+  max-width: var(--measure);
+}
+
+/* Kicker: mono, wide tracking, with a rule that runs to the margin */
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+.kicker::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, var(--color-line-strong), transparent 85%);
+}
+.kicker .n {
+  color: var(--color-ink-muted);
+  letter-spacing: 0.12em;
+}
+
+/* Ornament divider — the family's signature */
+.orn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 4rem auto;
+  max-width: 20rem;
+}
+.orn::before,
+.orn::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--color-line-strong) 45%);
+}
+.orn::after {
+  background: linear-gradient(270deg, transparent, var(--color-line-strong) 45%);
+}
+.orn span {
+  font-family: var(--font-serif);
+  font-size: 11px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  padding-left: 0.5em;
+}
+
+/* Editorial index: numbered rows with hairlines, instead of a card grid */
+.index-row {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 0 1.5rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--color-line);
+  transition: background 0.25s var(--ease);
+}
+.index-row:last-child { border-bottom: 1px solid var(--color-line); }
+.index-row:hover { background: rgba(255, 255, 255, 0.45); }
+.index-row .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--color-ink-muted);
+  padding-top: 0.35rem;
+}
+.index-row h3 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.index-row p { margin-top: 0.3rem; color: var(--color-ink-soft); font-size: 0.925rem; line-height: 1.6; }
+.index-row .tag {
+  display: inline-block;
+  margin-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+/* Arrow bullets */
+.arrow-list { list-style: none; padding: 0; }
+.arrow-list li { position: relative; padding-left: 1.35rem; margin: 0.45rem 0; }
+.arrow-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-copper);
+  font-size: 0.85em;
+  top: 0.15em;
+}
+
+/* The one loud element on a page */
+.action-slab {
+  background: var(--action);
+  color: var(--action-ink);
+  box-shadow: 0 1px 2px rgba(23,22,20,.18), 0 10px 24px -10px rgba(139,47,11,.45), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.action-slab:hover { background: #732609; }
+
+/* Plate caption, for the console and other framed objects */
+.plate-cap {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 2.6vw + 1rem, 3rem);
+  line-height: 1.06;
+  letter-spacing: -0.026em;
+  font-weight: 700;
+  color: var(--color-ink);
+  text-wrap: balance;
+}

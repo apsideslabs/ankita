@@ -51,8 +51,8 @@ export function WorkspaceView() {
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8">
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
         <div>
-          <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-copper">Workspace</p>
-          <h1 className="mt-1.5 text-3xl font-serif font-bold text-ink">Reading console</h1>
+          <div className="kicker"><span className="n">Workspace</span></div>
+          <h1 className="page-title mt-4">Reading console</h1>
           <p className="mt-1.5 text-sm text-ink-soft">
             Enter a name and a date. Everything below is computed in this browser.
           </p>

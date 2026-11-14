@@ -19,7 +19,7 @@ const REL_TONE: Record<string, string> = {
 function Section({ id, kicker, title, children }: { id: string; kicker: string; title: string; children: React.ReactNode }) {
   return (
     <section id={id} className="scroll-mt-24">
-      <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-copper">{kicker}</p>
+      <div className="kicker"><span className="n">{kicker}</span></div>
       <h2 className="mt-1.5 text-2xl font-serif font-bold text-ink">{title}</h2>
       <div className="mt-4">{children}</div>
     </section>
@@ -40,8 +40,8 @@ export default function EnginePage() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10">
       <div className="max-w-3xl">
-        <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-copper">Engine</p>
-        <h1 className="mt-2 text-4xl font-serif font-bold text-ink">Every table, printed in full</h1>
+        <div className="kicker"><span className="n">Engine</span></div>
+        <h1 className="page-title mt-4">Every table, printed in full</h1>
         <p className="mt-3 text-ink-soft leading-relaxed">
           The engine has no hidden state. These are the constants it uses, the formulas it applies, and
           the source behind each one. If a rule is not on this page, the platform does not use it.

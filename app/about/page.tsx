@@ -12,8 +12,8 @@ export default function AboutPage() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10">
       <div className="max-w-3xl">
-        <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-copper">About</p>
-        <h1 className="mt-2 text-4xl font-serif font-bold text-ink">Aṅkita</h1>
+        <div className="kicker"><span className="n">About</span></div>
+        <h1 className="page-title mt-4">Aṅkita</h1>
         <p className="mt-2 font-serif text-xl text-ink-soft">{SITE_CONFIG.devanagari} — {SITE_CONFIG.meaning}</p>
         <p className="mt-4 text-ink-soft leading-relaxed">
           Aṅkita is the numerology member of the Apsides Labs family: <strong className="text-ink">Gaṇaka</strong> computes

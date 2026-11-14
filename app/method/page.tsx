@@ -26,8 +26,8 @@ export default function MethodPage() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10">
       <div className="max-w-3xl">
-        <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-copper">Method</p>
-        <h1 className="mt-2 text-4xl font-serif font-bold text-ink">Three layers, six corrections</h1>
+        <div className="kicker"><span className="n">Method</span></div>
+        <h1 className="page-title mt-4">Three layers, six corrections</h1>
         <p className="mt-3 text-ink-soft leading-relaxed">
           A numerology engine is a stack of borrowed rules. This page states which rule came from where,
           and what had to be fixed before any of it could be coded honestly.
