@@ -40,76 +40,72 @@
 </header>
 
 <main>
-  <section class="hero grad-warm">
-<svg class="wheel" viewBox="0 0 400 400" aria-hidden="true">
-  <g fill="none" stroke="#8B2F0B" stroke-width="0.7">
-    <circle cx="200" cy="200" r="190"/><circle cx="200" cy="200" r="150"/><circle cx="200" cy="200" r="110"/>
-  </g>
-  <g fill="#8B2F0B" font-family="Georgia,serif" font-size="22" text-anchor="middle">
-    <text x="200.0" y="58.0">1</text><text x="296.4" y="93.1">2</text><text x="347.7" y="182.0">3</text><text x="329.9" y="283.0">4</text><text x="251.3" y="349.0">5</text><text x="148.7" y="349.0">6</text><text x="70.1" y="283.0">7</text><text x="52.3" y="182.0">8</text><text x="103.6" y="93.1">9</text>
-  </g>
-  <g stroke="#8B2F0B" stroke-width="0.4"><line x1="200" y1="200" x2="200.0" y2="50.0"/><line x1="200" y1="200" x2="296.4" y2="85.1"/><line x1="200" y1="200" x2="347.7" y2="174.0"/><line x1="200" y1="200" x2="329.9" y2="275.0"/><line x1="200" y1="200" x2="251.3" y2="341.0"/><line x1="200" y1="200" x2="148.7" y2="341.0"/><line x1="200" y1="200" x2="70.1" y2="275.0"/><line x1="200" y1="200" x2="52.3" y2="174.0"/><line x1="200" y1="200" x2="103.6" y2="85.1"/></g>
-</svg>
-<div class="band pad" style="padding-block:clamp(2rem,4vw,3.4rem)">
-    <div class="hero-grid">
-      <div class="col-a" style="position:relative">
-        <svg class="seal" viewBox="0 0 132 132" aria-hidden="true">
-  <defs><path id="sealPath" d="M66,66 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
-  <circle class="ring" cx="66" cy="66" r="60"/>
-  <circle class="ring" cx="66" cy="66" r="38" stroke-dasharray="2 4"/>
-  <text><textPath href="#sealPath" startOffset="0">Aṅkita · MMXXVI · sourced ·</textPath></text>
-  <text class="glyph" x="66" y="76" text-anchor="middle">अं</text>
-</svg>
-        <span class="badge">Sourced numerology</span>
-        <h1>Numerology with the receipts,<br><em>straight from the books.</em></h1>
-        <p class="sub">Three traditions kept apart — Chaldean arithmetic, Indian graha-numerology and the Lo Shu square — with every figure dated to the edition it came from.</p>
-        <div class="mt-6" style="display:flex;gap:.7rem;flex-wrap:wrap">
-          <a class="btn btn-copper" href="./workspace.html">Open the workspace →</a>
-          <a class="btn btn-ghost" href="./method.html">Read the method</a>
+  <section class="plate">
+    <div class="rule-x"></div>
+    <div class="tick top"></div>
+    <div class="tick bot"></div>
+    <span class="rail">Three traditions · kept apart · never blended</span>
+
+    <div class="band pad">
+      <div class="hero-grid" style="align-items:end">
+        <div class="col-a">
+          <p class="kicker"><span class="n">MMXXVI</span><span>Sourced numerology</span></p>
+          <h1 class="mast">Aṅkita<span class="dot">.</span></h1>
+          <p class="line2">The number, and the book it came from.</p>
+          <p class="body">Chaldean letter values from a London edition of 1926. The nine-planet reading from Delhi, 1990. A Chinese square, labelled as Chinese. Every figure on this platform is printed with the date and the source behind it.</p>
+          <div class="meta">
+            <div>Sources dated<b>11</b></div>
+            <div>Rules in the engine<b>38</b></div>
+            <div>Tables printed<b>9</b></div>
+            <div>Tests passing<b>56</b></div>
+          </div>
         </div>
-        <div class="topics mt-8">
+      </div>
+    </div>
+  </section>
+
+  <div class="breakout band pad">
+    <div class="hero-grid" style="align-items:start">
+      <div class="col-a" style="padding-top:0;padding-bottom:2rem">
+        <div class="topics" style="border-block:0;padding-top:0">
           <span class="topics-label">Filed under</span>
           <a class="chip" href="./method.html">Chaldean</a>
           <a class="chip" href="./method.html">Graha</a>
           <a class="chip" href="./method.html">Lo Shu</a>
           <a class="chip" href="./aa.html">AA System</a>
         </div>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem">
+          <a class="btn btn-copper" href="./workspace.html">Open the workspace →</a>
+          <a class="btn btn-ghost" href="./method.html">Read the method</a>
+        </div>
       </div>
-
-      <div class="col-b" style="position:relative">
+      <div class="col-b">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem">
           <span class="mono small">Fig. 1 — reading console</span>
           <span class="mono small">computes locally</span>
         </div>
-        <div class="card"><form id="home-form">
-          <div class="form-grid">
-            <label class="field"><span>Full name</span>
-              <input type="text" id="home-name" value="John Smith" autocomplete="off">
-            </label>
-            <label class="field"><span>Date of birth</span>
-              <input type="date" id="home-date" value="1995-08-29">
-            </label>
-            <div><button class="btn btn-lg" type="submit">Read →</button></div>
+        <div class="card">
+          <form id="home-form">
+            <div class="form-grid">
+              <label class="field"><span>Full name</span>
+                <input type="text" id="home-name" value="John Smith" autocomplete="off">
+              </label>
+              <label class="field"><span>Date of birth</span>
+                <input type="date" id="home-date" value="1995-08-29">
+              </label>
+              <div><button class="btn btn-lg" type="submit">Read →</button></div>
+            </div>
+          </form>
+          <div class="pill-row">
+            <a class="pill" href="./workspace.html">Today’s reading</a>
+            <a class="pill" href="./aa.html">The AA System</a>
+            <a class="pill" href="./method.html">How it works</a>
           </div>
-        </form>
-        <div class="pill-row">
-          <a class="pill" href="./workspace.html">Today’s reading</a>
-          <a class="pill" href="./aa.html">The AA System</a>
-          <a class="pill" href="./method.html">How it works</a>
-        </div>
         </div>
         <div id="home-out" class="mt-6" aria-live="polite"></div>
-        <ul class="small mt-6" style="list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.5rem">
-          <li style="border-top:1px solid var(--line);padding-top:.35rem">→ Mūlāṅka · bhāgyāṅka · nāmāṅka</li>
-          <li style="border-top:1px solid var(--line);padding-top:.35rem">→ Compound 10–52</li>
-          <li style="border-top:1px solid var(--line);padding-top:.35rem">→ Lo Shu grid and planes</li>
-          <li style="border-top:1px solid var(--line);padding-top:.35rem">→ Vimśottarī daśā</li>
-          <li style="border-top:1px solid var(--line);padding-top:.35rem">→ Grahas and gochara</li>
-          <li style="border-top:1px solid var(--line);padding-top:.35rem">→ The AA System, C1–C15</li>
-        </ul>
       </div>
     </div>
-  </div></section>
+  </div>
 
   <div class="strip"><div class="inner">
     <span class="chip">Chaldean</span><span class="chip">Graha</span><span class="chip">Lo Shu</span>
