@@ -363,3 +363,67 @@ body { overflow-x: hidden; }
 .opener { display: grid; grid-template-columns: 1fr; gap: 1rem; border-top: 3px double var(--rule-2); padding-top: 1rem; margin-top: 3rem; }
 @media (min-width: 860px) { .opener { grid-template-columns: 3.2rem 1fr; } }
 .opener .fig { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--ochre); line-height: 1; }
+
+/* ==========================================================================
+   Live strip, planet tiles, commerce card — after PanchangBodh's structure.
+   ========================================================================== */
+
+/* utility bar: live data, always visible */
+.livebar { background: var(--ink); color: #EFE7D8; border-bottom: 1px solid rgba(239,231,216,.15); }
+.livebar .inner { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap;
+  padding: .42rem clamp(1.1rem,4vw,4rem); max-width: 1500px; margin-inline: auto;
+  font-family: var(--mono); font-size: 8.5px; letter-spacing: .18em; text-transform: uppercase; }
+.livebar .item { display: inline-flex; align-items: baseline; gap: .4rem; color: rgba(239,231,216,.62); white-space: nowrap; }
+.livebar .item b { color: #F6EFE2; font-weight: 600; letter-spacing: .06em; text-transform: none;
+  font-family: var(--serif); font-size: 12.5px; }
+.livebar .sep { width: 1px; height: 11px; background: rgba(239,231,216,.22); }
+.livebar .end { margin-left: auto; color: rgba(239,231,216,.55); }
+@media (max-width: 760px) { .livebar .item:nth-child(n+4) { display: none; } .livebar .end { display: none; } }
+
+/* sublabel under a call to action */
+.btn .sub { display: block; font-family: var(--sans); font-size: 9px; letter-spacing: .04em;
+  text-transform: none; opacity: .68; margin-top: .18rem; font-weight: 400; }
+.btn-stack { display: inline-flex; flex-direction: column; align-items: flex-start; padding: .62rem 1.15rem; }
+.btn-stack .top { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; }
+.btn-light { background: #FFFDF8; color: var(--ink); border-color: var(--rule-2); }
+
+/* trust chips under the primary action */
+.trust { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .8rem; }
+.trust span { display: inline-flex; align-items: center; gap: .35rem; font-family: var(--mono); font-size: 8px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
+.trust span::before { content: '✓'; color: var(--ochre); font-size: 9px; }
+
+/* planet tile grid: nine tools, one per graha */
+.tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; }
+@media (min-width: 700px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
+.tile { position: relative; display: block; padding: 1rem .95rem 1.05rem; border: 1px solid rgba(0,0,0,.07);
+  text-decoration: none; transition: transform .18s var(--ease), box-shadow .18s var(--ease); }
+.tile:hover { transform: translateY(-2px); box-shadow: 0 10px 26px -14px rgba(60,44,24,.55); text-decoration: none; }
+.tile .num { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; line-height: 1; }
+.tile .name { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); margin-top: .45rem; }
+.tile .desc { font-size: .74rem; color: var(--ink-2); margin-top: .2rem; line-height: 1.45; }
+.tile .go { position: absolute; right: .8rem; top: .8rem; font-family: var(--mono); font-size: 9px; color: var(--ink-4); }
+
+/* commerce card */
+.offer { position: relative; overflow: hidden; background: #5A1A20; color: #F6EADA;
+  background-image: radial-gradient(600px 300px at 88% -20%, rgba(176,123,30,.5), transparent 62%);
+  padding: 1.5rem 1.6rem; display: grid; gap: 1.4rem; grid-template-columns: 1fr; }
+@media (min-width: 780px) { .offer { grid-template-columns: 1.35fr 1fr; align-items: center; } }
+.offer .eyebrow { color: #E3A15C; }
+.offer h2 { color: #FBF3E4; font-size: clamp(1.35rem,2.2vw,1.9rem); line-height: 1.14; margin-top: .5rem; }
+.offer p { color: rgba(246,234,218,.78); font-size: .9rem; line-height: 1.65; margin: .6rem 0 0; }
+.offer .price { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(246,234,218,.7); margin-top: .9rem; }
+.offer .cta { display: inline-flex; margin-top: 1rem; background: #FBF3E4; color: #3A1206;
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700;
+  padding: .7rem 1.1rem; }
+.books { position: relative; height: 150px; }
+.books .b { position: absolute; width: 92px; height: 128px; border: 1px solid rgba(0,0,0,.2);
+  box-shadow: 0 14px 30px -12px rgba(0,0,0,.55); background: #FBF3E4; }
+.books .b1 { left: 12%; top: 12px; transform: rotate(-6deg); }
+.books .b2 { left: 46%; top: 0; transform: rotate(4deg); background: #F3E7D2; }
+.books .b1 span, .books .b2 span { display: block; font-family: var(--serif); font-size: 9px; font-weight: 700;
+  color: #5A1A20; padding: .7rem .6rem; line-height: 1.25; }
+.books .b2 span { color: #3A1206; }
+.books .stamp { position: absolute; right: 2%; bottom: 6px; transform: rotate(-11deg); border: 1.5px solid #E3A15C;
+  color: #E3A15C; font-family: var(--mono); font-size: 7.5px; letter-spacing: .22em; padding: .3rem .45rem; }

@@ -8,16 +8,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css?v=5">
+<link rel="stylesheet" href="./assets/style.css?v=7">
 <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
 
-<div class="topbar"><div class="inner">
-  <p>Aṅkita · three traditions, kept apart — every figure dated</p>
-  <a href="./workspace.html">Read a chart →</a>
-</div></div>
-
+<div class="livebar"><div class="inner">Loading today…</div></div>
 <header class="site-header">
   <div class="inner">
     <a class="brand" href="./index.html">
@@ -136,6 +132,81 @@
       <span class="tag">Chinese · 4th c. BCE</span></div></div>
   </div>
 
+
+  <section class="opener">
+    <span class="fig">Ⅳ</span>
+    <div>
+      <p class="eyebrow">Nine tools, nine grahas</p>
+      <h2 class="big">Everything the platform computes.</h2>
+    </div>
+  </section>
+
+  <div class="tiles">
+    <a class="tile" href="./workspace.html" style="background:linear-gradient(160deg, #FBF0DA, #F6E3BE)">
+      <span class="go">→</span>
+      <span class="num" style="color:var(--n1)">1</span>
+      <div class="name">The workspace</div>
+      <div class="desc">Name and date; the whole reading</div>
+    </a><a class="tile" href="./workspace.html#timing" style="background:linear-gradient(160deg, #E8EDF3, #D7E0EC)">
+      <span class="go">→</span>
+      <span class="num" style="color:var(--n2)">2</span>
+      <div class="name">Daśā</div>
+      <div class="desc">Vimśottarī, computed from the Moon</div>
+    </a><a class="tile" href="./tools.html" style="background:linear-gradient(160deg, #FBF3D8, #F5E7B8)">
+      <span class="go">→</span>
+      <span class="num" style="color:var(--n3)">3</span>
+      <div class="name">Tools</div>
+      <div class="desc">Compatibility, lagna, names, year</div>
+    </a><a class="tile" href="./aa.html" style="background:linear-gradient(160deg, #E7E5F0, #D6D3E6)">
+      <span class="go">→</span>
+      <span class="num" style="color:var(--n4)">4</span>
+      <div class="name">The AA System</div>
+      <div class="desc">Reduce-to-13, 117 bindings, 15 charts</div>
+    </a><a class="tile" href="./workspace.html#grahas" style="background:linear-gradient(160deg, #E1EFE7, #CDE3D8)">
+      <span class="go">→</span>
+      <span class="num" style="color:var(--n5)">5</span>
+      <div class="name">Grahas</div>
+      <div class="desc">Nine planets, gochara, lagna</div>
+    </a><a class="tile" href="./transits.html" style="background:linear-gradient(160deg, #F6E7EC, #EFD6DF)">
+      <span class="go">→</span>
+      <span class="num" style="color:var(--n6)">6</span>
+      <div class="name">Transits</div>
+      <div class="desc">The sky today against your Moon</div>
+    </a><a class="tile" href="./engine.html" style="background:linear-gradient(160deg, #EDEBE6, #E0DDD5)">
+      <span class="go">→</span>
+      <span class="num" style="color:var(--n7)">7</span>
+      <div class="name">Every table</div>
+      <div class="desc">The constants, printed whole</div>
+    </a><a class="tile" href="./method.html" style="background:linear-gradient(160deg, #E3EAF2, #D2DEEC)">
+      <span class="go">→</span>
+      <span class="num" style="color:var(--n8)">8</span>
+      <div class="name">Method</div>
+      <div class="desc">Eight rules, each dated</div>
+    </a><a class="tile" href="./library.html" style="background:linear-gradient(160deg, #F7E6E2, #F0D5CE)">
+      <span class="go">→</span>
+      <span class="num" style="color:var(--n9)">9</span>
+      <div class="name">Library</div>
+      <div class="desc">The books behind the rules</div>
+    </a>
+  </div>
+
+  <section style="margin-top:2.4rem">
+    <div class="offer">
+      <div>
+        <p class="eyebrow">The printed reading</p>
+        <h2>A reading you can hand to someone.</h2>
+        <p>Twenty-four pages: the three numbers, the Lo Shu grid with its planes, the daśā with dates, the grahas and the yogas — each figure with the rule and the source behind it. Set in Newsreader, printed to PDF.</p>
+        <p class="price">24 pages · English · ₹0 · generated in your browser</p>
+        <a class="cta" href="./workspace.html">Build the reading →</a>
+      </div>
+      <div class="books">
+        <div class="b b1"><span>Aṅkita<br>Reading<br>No. 1</span></div>
+        <div class="b b2"><span>Tables<br>&amp; Sources</span></div>
+        <div class="stamp">PRINT</div>
+      </div>
+    </div>
+  </section>
+
   <div class="rule-diamond"><i></i></div>
 
   <section class="band-dark" style="display:none"></section>
@@ -158,5 +229,6 @@
 
 <script type="module" src="./assets/home.js"></script>
 <script src="./assets/nav.js" defer></script>
+<script type="module" src="./assets/live.js"></script>
 </body>
 </html>
