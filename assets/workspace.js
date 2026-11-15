@@ -12,6 +12,9 @@ const tabs = [...document.querySelectorAll('.tab')];
 let tab = 'chart';
 let profile = null;
 
+const NCOLOUR = {1:'var(--n1)',2:'var(--n2)',3:'var(--n3)',4:'var(--n4)',5:'var(--n5)',6:'var(--n6)',7:'var(--n7)',8:'var(--n8)',9:'var(--n9)'};
+const GRAHA_NAME = {1:'Sun',2:'Moon',3:'Jupiter',4:'Rāhu',5:'Mercury',6:'Venus',7:'Ketu',8:'Saturn',9:'Mars'};
+const NAK = ['Aśvinī','Bharaṇī','Kṛttikā','Rohiṇī','Mṛgaśīrṣa','Ārdrā','Punarvasu','Puṣya','Āśleṣā','Maghā','Pūrva Phālgunī','Uttara Phālgunī','Hasta','Citrā','Svātī','Viśākhā','Anurādhā','Jyeṣṭhā','Mūla','Pūrvāṣāḍhā','Uttarāṣāḍhā','Śravaṇa','Dhaniṣṭhā','Śatabhiṣā','Pūrva Bhādrapadā','Uttara Bhādrapadā','Revatī'];
 const HOUSE = {1:'body, self, health',2:'money, speech, family',3:'effort, siblings, courage',4:'home, mother, mind',5:'children, study, creativity',6:'work, debt, illness',7:'partnership, marriage',8:'crisis, inheritance, change',9:'fortune, teacher, travel',10:'career, status',11:'gain, network',12:'loss, foreign, release'};
 
 function esc(s) { return String(s).replace(/[&<>]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
@@ -29,31 +32,45 @@ function chartPanel(p) {
     ['Mūlāṅka', 'psychic · from the day', p.mulank],
     ['Bhāgyāṅka', 'destiny · whole date', p.bhagyank],
     ['Nāmāṅka', 'name · Chaldean', p.namank],
-  ].map(([label, sub, f]) => `
-    <div>
-      <div class="label"><span>${label}</span><b>${f.graha || ''}</b></div>
-      <div class="numeral big">${f.value}</div>
-      <p>${sub}</p>
-      ${f.compound && f.compound !== f.value ? `<p class="small mono">compound ${f.compound}</p>` : ''}
-    </div>`).join('');
+  ].map(([label, sub, f]) => {
+    const n = ((f.value - 1) % 9) + 1;
+    return `<div>
+      <div class="top"><span class="lbl">${label}</span><span class="graha" style="color:${NCOLOUR[n]}">${GRAHA_NAME[n]}</span></div>
+      <div class="huge" style="color:${NCOLOUR[n]}">${f.value}</div>
+      <div class="sub">${sub}</div>
+      ${f.compound && f.compound !== f.value ? `<div class="compound">compound ${f.compound}</div>` : ''}
+    </div>`;
+  }).join('');
 
-  return `<div class="triple">${cells}</div>
-    <div class="grid-2 mt-8">
-      <div>
-        <p class="panel-title">Friendships between the three</p>
-        <table class="mt-4"><tbody>
-          ${[[p.mulank.value,p.bhagyank.value],[p.bhagyank.value,p.namank.value],[p.mulank.value,p.namank.value]].map(([a,b]) => {
-            const rel = relation(a, b);
-            return `<tr><td class="mono">${a} · ${b}</td><td style="text-align:right;color:${rel==='friend'?'#15803d':rel==='enemy'?'var(--copper)':'var(--ink-soft)'}">${rel}</td></tr>`;
-          }).join('')}
-        </tbody></table>
+  const rel = (a, b) => relation(a, b);
+  const edge = (a, b) => { const r = rel(a, b); return r === 'friend' ? '#15803d' : r === 'enemy' ? '#8B2F0B' : '#B8862F'; };
+  const m = p.mulank.value, b = p.bhagyank.value, nm = p.namank.value;
+
+  return `<div class="dash">${cells}</div>
+
+    <div style="display:grid;gap:2rem;margin-top:2rem" class="grid-2">
+      <div class="card">
+        <p class="panel-title">Harmony triangle</p>
+        <svg viewBox="0 0 320 240" style="width:100%;max-width:340px;margin:1rem auto 0" role="img" aria-label="Harmony triangle">
+          <line x1="160" y1="40" x2="46" y2="200" stroke="${edge(m,b)}" stroke-width="3"/>
+          <line x1="46" y1="200" x2="274" y2="200" stroke="${edge(b,nm)}" stroke-width="3"/>
+          <line x1="274" y1="200" x2="160" y2="40" stroke="${edge(nm,m)}" stroke-width="3"/>
+          <circle cx="160" cy="40" r="30" fill="#fff" stroke="#E7DCC8" stroke-width="2"/>
+          <text x="160" y="50" text-anchor="middle" font-size="26" font-family="var(--serif)" font-weight="600" fill="${NCOLOUR[((m-1)%9)+1]}">${m}</text>
+          <circle cx="46" cy="200" r="30" fill="#fff" stroke="#E7DCC8" stroke-width="2"/>
+          <text x="46" y="210" text-anchor="middle" font-size="26" font-family="var(--serif)" font-weight="600" fill="${NCOLOUR[((b-1)%9)+1]}">${b}</text>
+          <circle cx="274" cy="200" r="30" fill="#fff" stroke="#E7DCC8" stroke-width="2"/>
+          <text x="274" y="210" text-anchor="middle" font-size="26" font-family="var(--serif)" font-weight="600" fill="${NCOLOUR[((nm-1)%9)+1]}">${nm}</text>
+        </svg>
+        <p class="small" style="text-align:center">${rel(m,b)} · ${rel(b,nm)} · ${rel(nm,m)}</p>
       </div>
-      <div>
+      <div class="card">
         <p class="panel-title">Kua &amp; direction</p>
-        ${p.kua ? `<div class="numeral" style="font-size:3.4rem;margin-top:.6rem">${p.kua.value}</div>
-          <p class="small">${esc(p.kua.note)}</p>
-          <p class="small mono mt-2">favourable ${p.kua.directions.good.join(' · ')}<br>avoid ${p.kua.directions.bad.join(' · ')}</p>`
-        : `<p class="lede" style="font-size:.95rem">Select a gender to compute the Kua number. It is a Chinese calculation and needs the birth century.</p>`}
+        ${p.kua ? `<div style="display:flex;align-items:baseline;gap:1rem;margin-top:.6rem">
+            <div class="huge" style="font-size:clamp(4rem,7vw,6rem);color:var(--n8)">${p.kua.value}</div>
+            <div class="small">${esc(p.kua.note)}</div></div>
+          <p class="small mono mt-4">favourable ${p.kua.directions.good.join(' · ')}<br>avoid ${p.kua.directions.bad.join(' · ')}</p>`
+        : `<p class="small" style="margin-top:.8rem">Select a gender to compute the Kua number — a Chinese calculation that needs the birth century.</p>`}
       </div>
     </div>`;
 }
@@ -61,21 +78,29 @@ function chartPanel(p) {
 function gridPanel(p) {
   const order = [4,9,2,3,5,7,8,1,6];
   const count = (d) => (p.grid.find((c) => c.digit === d) || {}).count || 0;
-  return `<p class="panel-title">Lo Shu square</p>
-    <div class="grid-13 mt-4" style="max-width:420px">
-      ${order.map((d) => `<div><div class="numeral" style="font-size:1.6rem;color:${count(d)?'var(--ink)':'var(--line-strong)'}">${count(d)?d:'·'}</div>
-        <div class="mono small">${count(d) ? '×'.repeat(count(d)) : '—'}</div></div>`).join('')}
+  return `<div class="grid-2" style="align-items:start">
+    <div>
+      <p class="panel-title">Lo Shu square</p>
+      <div class="loshu mt-4">
+        ${order.map((d) => { const c = count(d); return `<div class="cell ${c ? 'on' : 'off'}">
+          <span class="d" style="color:${c ? NCOLOUR[((d-1)%9)+1] : ''}">${c ? d : '·'}</span>
+          <span class="c">${c ? '×'.repeat(c) : 'missing'}</span></div>`; }).join('')}
+      </div>
+      <p class="small mt-4">Every non-zero digit of the date, plus the bhāgyāṅka, plus the mūlāṅka when the birth day is 10 or more. The name number is never placed.</p>
     </div>
-    <div class="grid-2 mt-8">
-      <div><p class="panel-title">Missing</p>
-        <ul style="list-style:none;padding:0;margin:.5rem 0 0">
-          ${p.reading.missing.map((m) => `<li class="small" style="border-bottom:1px solid var(--line);padding:.4rem 0"><b style="color:var(--copper)">${m.n}</b> — ${esc(m.text)}</li>`).join('') || '<li class="small">No missing digits.</li>'}
-        </ul></div>
-      <div><p class="panel-title">Amplified</p>
-        <ul style="list-style:none;padding:0;margin:.5rem 0 0">
-          ${p.reading.repeated.map((m) => `<li class="small" style="border-bottom:1px solid var(--line);padding:.4rem 0"><b style="color:var(--copper)">${m.n}</b> — ${esc(m.text)}</li>`).join('') || '<li class="small">No digit appears three times or more.</li>'}
-        </ul></div>
-    </div>`;
+    <div>
+      <p class="panel-title">Missing</p>
+      <ul style="list-style:none;padding:0;margin:.6rem 0 0">
+        ${p.reading.missing.map((m) => `<li class="small" style="border-bottom:1px solid var(--line);padding:.5rem 0">
+          <b style="color:${NCOLOUR[((m.n-1)%9)+1]};font-size:1.1rem">${m.n}</b> — ${esc(m.text)}</li>`).join('') || '<li class="small">No missing digits.</li>'}
+      </ul>
+      <p class="panel-title mt-6">Amplified</p>
+      <ul style="list-style:none;padding:0;margin:.6rem 0 0">
+        ${p.reading.repeated.map((m) => `<li class="small" style="border-bottom:1px solid var(--line);padding:.5rem 0">
+          <b style="color:${NCOLOUR[((m.n-1)%9)+1]};font-size:1.1rem">${m.n}</b> — ${esc(m.text)}</li>`).join('') || '<li class="small">No digit appears three times or more.</li>'}
+      </ul>
+    </div>
+  </div>`;
 }
 
 function timingPanel(p) {
@@ -83,9 +108,19 @@ function timingPanel(p) {
   const moon = moonSidereal(p.input.date, 12);
   const chart = vimshottari(moon.sidereal, new Date(Date.UTC(y, m-1, d, 12)));
   const now = new Date();
+  const colours = [1,2,3,4,5,6,7,8,9];
+  const total = chart.periods.reduce((a, p2) => a + p2.years, 0);
+  const bar = `<div class="tlbar">${chart.periods.map((per) => {
+      const live = chart.current && chart.current.lord === per.lord;
+      return `<div class="seg ${live ? 'now' : ''}" style="flex:${per.years};background:${NCOLOUR[((per.graha-1)%9)+1]};opacity:${live?1:.55}">
+        <span>${per.lord}</span></div>`;
+    }).join('')}</div>
+    <div class="tlscale"><span>${fmtDate(chart.periods[0].start)}</span><span>${fmtDate(chart.periods[8].end)}</span></div>`;
+
   return `<div class="grid-2" style="align-items:start">
     <div>
       <p class="panel-title">Vimśottarī daśā</p>
+      ${bar}
       <div class="mt-4" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
         ${[['Nakṣatra', chart.nakshatraIndex + ' · ' + chart.nakshatra], ['At birth', chart.lord + ' · ' + chart.balanceYears.toFixed(2) + ' yr'],
            ['Running now', chart.current ? chart.current.lord : '—'], ['Antardaśā', chart.currentAntar ? chart.currentAntar.lord : '—']]

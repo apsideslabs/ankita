@@ -294,3 +294,48 @@ h2.big { font-family: var(--sans); font-weight: 800; letter-spacing: -.035em; fo
 /* reading cards */
 .rcard { background: #fff; border: 1px solid #EFE3D2; border-radius: 16px; box-shadow: var(--shadow); padding: 1.2rem 1.3rem; }
 .rcard .k { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--copper); }
+
+/* ==========================================================================
+   Dashboard layer — big numerals, planet colour, real charts.
+   ========================================================================== */
+
+:root {
+  --n1:#B8862F; --n2:#7C8CA1; --n3:#C9A227; --n4:#4B3F72; --n5:#2F7A5B;
+  --n6:#B4697E; --n7:#6E6A63; --n8:#2C4A6E; --n9:#B03A2E;
+}
+
+.dash { display: grid; gap: 1px; background: #E7DCC8; border: 1px solid #E7DCC8; border-radius: 18px; overflow: hidden; }
+@media (min-width: 860px) { .dash { grid-template-columns: repeat(3, 1fr); } }
+.dash > div { background: #fff; padding: 1.4rem 1.5rem 1.6rem; }
+.dash .top { display: flex; align-items: baseline; justify-content: space-between; }
+.dash .lbl { font-family: var(--mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #8B8578; }
+.dash .graha { font-family: var(--mono); font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+.dash .huge { font-family: var(--serif); font-weight: 600; line-height: .78; letter-spacing: -.05em;
+  font-size: clamp(6rem, 11vw, 10rem); margin: .9rem 0 .4rem; }
+.dash .sub { font-size: .92rem; color: #6A6459; }
+.dash .compound { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #A39C8E; margin-top: .5rem; }
+
+/* lo shu */
+.loshu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 460px; }
+.loshu .cell { aspect-ratio: 1; border-radius: 14px; display: grid; place-items: center;
+  border: 1px solid #EFE3D2; background: #FBF7F0; position: relative; }
+.loshu .cell .d { font-family: var(--serif); font-size: clamp(2rem,4vw,3rem); font-weight: 600; line-height: 1; }
+.loshu .cell .c { position: absolute; bottom: 8px; font-family: var(--mono); font-size: 9px; letter-spacing: .12em; color: #A39C8E; }
+.loshu .cell.on { background: #fff; box-shadow: var(--shadow-sm); }
+.loshu .cell.off .d { color: #D8CFC0; }
+
+/* horizontal bars */
+.bars { display: grid; gap: .55rem; }
+.bar { display: grid; grid-template-columns: 8.5rem 1fr 3.2rem; align-items: center; gap: .8rem; }
+.bar .name { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #6A6459; }
+.bar .track { height: 14px; border-radius: 7px; background: #F1E9DC; overflow: hidden; }
+.bar .fill { height: 100%; border-radius: 7px; }
+.bar .val { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; text-align: right; color: #171614; }
+
+/* dasha timeline bar */
+.tlbar { display: flex; height: 46px; border-radius: 12px; overflow: hidden; border: 1px solid #E7DCC8; }
+.tlbar .seg { position: relative; display: grid; place-items: center; font-family: var(--mono); font-size: 9px;
+  letter-spacing: .1em; text-transform: uppercase; color: #fff; min-width: 0; }
+.tlbar .seg span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 .3rem; }
+.tlbar .seg.now { outline: 2px solid #171614; outline-offset: -2px; }
+.tlscale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 9px; color: #A39C8E; margin-top: .35rem; }
