@@ -12,6 +12,11 @@
 </head>
 <body>
 
+<div class="topbar"><div class="inner">
+  <p>Aṅkita · three traditions, kept apart — every figure dated</p>
+  <a href="./workspace.html">Read a chart →</a>
+</div></div>
+
 <header class="site-header">
   <div class="inner">
     <a class="brand" href="./index.html">
@@ -29,25 +34,27 @@
   </div>
 </header>
 
-<main class="band pad">
-  <div class="mt-8">
-    <p class="kicker"><span class="n">Workspace</span></p>
-    <h1 class="display" style="font-size:clamp(2.2rem,3.4vw,3.2rem);margin-top:1rem">Reading console</h1>
+<main>
+<section class="hero"><div class="band pad" style="padding-block:2.2rem">
+  <div>
+    <span class="badge">Workspace</span>
+    <h1 style="font-family:var(--sans);font-weight:800;letter-spacing:-.04em;font-size:clamp(2rem,3.4vw,2.9rem);line-height:1.05;margin:.9rem 0 0">Reading console</h1>
     <p class="lede">Enter a name and a date. Everything below is computed in this browser.</p>
   </div>
 
-  <form id="ws-form" class="rule-top mt-8" style="padding-top:1.2rem">
+  <div class="card mt-8"><form id="ws-form">
     <div class="form-grid" style="grid-template-columns:repeat(auto-fit,minmax(12rem,1fr))">
       <label class="field"><span>Full name</span><input type="text" id="ws-name" value="John Smith" autocomplete="off"></label>
       <label class="field"><span>Date of birth</span><input type="date" id="ws-date" value="1995-08-29"></label>
       <label class="field"><span>Kua (optional)</span>
         <select id="ws-gender"><option value="unspecified">Skip</option><option value="male">Male</option><option value="female">Female</option></select>
       </label>
-      <div><button class="btn btn-solid" type="submit" style="width:100%">Compute →</button></div>
+      <div><button class="btn btn-lg" type="submit">Compute →</button></div>
     </div>
-  </form>
+  </form></div>
+</div></section>
 
-  <nav id="ws-tabs" class="mt-6" style="display:flex;gap:1.5rem;border-bottom:1px solid var(--line);flex-wrap:wrap">
+  <nav id="ws-tabs" class="band pad" style="margin-top:1.5rem" style="display:flex;gap:1.5rem;border-bottom:1px solid var(--line);flex-wrap:wrap">
     <a href="#chart" class="tab" data-tab="chart" aria-current="page">Chart</a>
     <a href="#grid" class="tab" data-tab="grid">Grid</a>
     <a href="#timing" class="tab" data-tab="timing">Daśā</a>
@@ -56,7 +63,7 @@
     <a href="#everything" class="tab" data-tab="everything">Everything</a>
   </nav>
 
-  <section id="panel" class="mt-8" aria-live="polite"></section>
+  <section id="panel" class="band pad mt-8" aria-live="polite"></section>
 </main>
 
 <footer class="site-footer">

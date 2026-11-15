@@ -13,6 +13,11 @@
 </head>
 <body>
 
+<div class="topbar"><div class="inner">
+  <p>Aṅkita · three traditions, kept apart — every figure dated</p>
+  <a href="./workspace.html">Read a chart →</a>
+</div></div>
+
 <header class="site-header">
   <div class="inner">
     <a class="brand" href="./index.html">
@@ -34,11 +39,12 @@
 </header>
 
 <main>
-  <section class="band pad masthead">
+  <section class="hero"><div class="band pad" style="padding-block:clamp(2rem,4vw,3.4rem)">
     <div class="grid-2" style="align-items:start">
       <div>
-        <h1 class="masthead-name">Aṅkita<span class="dot">.</span></h1>
-        <p class="hero-claim">Numerology with the receipts — <span>three traditions kept apart, every figure dated to the book it came from.</span></p>
+        <span class="badge">Sourced numerology</span>
+        <h1>Numerology with the receipts,<br><em>straight from the books.</em></h1>
+        <p class="sub">Three traditions kept apart — Chaldean arithmetic, Indian graha-numerology and the Lo Shu square — with every figure dated to the edition it came from.</p>
         <div class="mt-6" style="display:flex;gap:.7rem;flex-wrap:wrap">
           <a class="btn btn-copper" href="./workspace.html">Open the workspace →</a>
           <a class="btn btn-ghost" href="./method.html">Read the method</a>
@@ -57,7 +63,7 @@
           <span class="mono small">Fig. 1 — reading console</span>
           <span class="mono small">computes locally</span>
         </div>
-        <form id="home-form" class="rule-top" style="padding-top:1.2rem">
+        <div class="card"><form id="home-form">
           <div class="form-grid">
             <label class="field"><span>Full name</span>
               <input type="text" id="home-name" value="John Smith" autocomplete="off">
@@ -65,9 +71,15 @@
             <label class="field"><span>Date of birth</span>
               <input type="date" id="home-date" value="1995-08-29">
             </label>
-            <div><button class="btn btn-solid" type="submit" style="width:100%">Read →</button></div>
+            <div><button class="btn btn-lg" type="submit">Read →</button></div>
           </div>
         </form>
+        <div class="pill-row">
+          <a class="pill" href="./workspace.html">Today’s reading</a>
+          <a class="pill" href="./aa.html">The AA System</a>
+          <a class="pill" href="./method.html">How it works</a>
+        </div>
+        </div>
         <div id="home-out" class="mt-6" aria-live="polite"></div>
         <ul class="small mt-6" style="list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.5rem">
           <li style="border-top:1px solid var(--line);padding-top:.35rem">→ Mūlāṅka · bhāgyāṅka · nāmāṅka</li>
@@ -79,7 +91,12 @@
         </ul>
       </div>
     </div>
-  </section>
+  </div></section>
+
+  <div class="strip"><div class="inner">
+    <span class="chip">Chaldean</span><span class="chip">Graha</span><span class="chip">Lo Shu</span>
+    <span class="chip">Sanskrit codes</span><span class="chip">Vimśottarī</span><span class="chip">AA System</span>
+  </div></div>
 
   <section class="band band-dark mt-12" style="padding-block:3rem">
     <div class="pad grid-2" style="align-items:center">
@@ -96,8 +113,8 @@
   <div class="orn"><span>अं</span></div>
 
   <section class="band pad">
-    <p class="kicker"><span class="n">I</span><span>What the numbers are made of</span></p>
-    <h2 class="sec">Three traditions, named separately, never blended.</h2>
+    <p class="eyebrow">What the numbers are made of</p>
+    <h2 class="big">Three traditions, named separately, never blended.</h2>
     <div class="mt-8">
       <div class="index-row">
         <span class="num">01</span>
@@ -129,8 +146,8 @@
   <div class="orn"><span>॥</span></div>
 
   <section class="band pad">
-    <p class="kicker"><span class="n">II</span><span>Where the platform stops</span></p>
-    <h2 class="sec">It will not print a figure whose rule it cannot name.</h2>
+    <p class="eyebrow">Where the platform stops</p>
+    <h2 class="big">It will not print a figure whose rule it cannot name.</h2>
     <p class="lede">The digit-to-planet pairing has no classical Sanskrit citation — none has been found in the texts examined. So the platform says so, on the page where the pairing is used, rather than dressing a 1926 London table in Vedic robes.</p>
   </section>
 </main>
