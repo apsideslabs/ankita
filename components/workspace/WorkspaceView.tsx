@@ -10,6 +10,7 @@ import { CHALDEAN_COLUMNS } from '@/lib/engine/chaldean';
 import { NUMERAL_GRAHA, friendshipMatrix, RELATION_GLOSS } from '@/lib/engine/planets';
 import { SOURCES, sourceById } from '@/lib/engine/provenance';
 import { HarmonyTriangle } from '@/components/workspace/HarmonyTriangle';
+import { DashaPanel } from '@/components/workspace/DashaPanel';
 import type { BirthInput, Profile } from '@/lib/engine/types';
 
 const TABS = [
@@ -49,7 +50,7 @@ export function WorkspaceView() {
   const today = new Date().toISOString().slice(0, 10);
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8">
+    <div className="w-full px-3 sm:px-6 lg:px-8 xl:px-10 py-6">
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-line pb-5">
         <div>
           <div className="kicker"><span className="n">Workspace</span></div>
@@ -124,7 +125,7 @@ export function WorkspaceView() {
       {profile && (
         <>
           {/* Tabs */}
-          <div className="mt-8 flex flex-wrap items-center gap-1 border-b border-line">
+          <div className="sticky top-0 z-30 -mx-3 sm:-mx-6 lg:-mx-8 xl:-mx-10 px-3 sm:px-6 lg:px-8 xl:px-10 mt-8 flex flex-wrap items-center gap-1 border-b border-line bg-canvas/95 backdrop-blur-sm">
             {TABS.map((t) => {
               const active = tab === t.id;
               return (
@@ -272,24 +273,34 @@ export function WorkspaceView() {
           )}
 
           {tab === 'timing' && (
-            <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {profile.timing.map((t) => (
-                <div key={t.label} className="rounded-xl border border-line bg-surface p-6 shadow-3d-card">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-muted">{t.label}</p>
-                  <p className="mt-3 font-serif text-5xl font-bold text-ink tabular-nums leading-none">{t.value}</p>
-                  <p className="mt-2 text-xs text-ink-soft leading-relaxed">{t.detail}</p>
-                </div>
-              ))}
-              <div className="md:col-span-2 lg:col-span-4 rounded-xl border border-line bg-surface p-6">
-                <div className="flex items-start gap-3">
-                  <Info className="w-4 h-4 text-copper mt-0.5 shrink-0" />
-                  <p className="text-sm text-ink-soft leading-relaxed">
-                    The 45-year cycle is arithmetic — one year for 1, two for 2, and so on to 9, summing to 45.
-                    It is <em>not</em> a classical daśā; the classical systems (Vimśottarī, Aṣṭottarī) are computed
-                    from the Moon&rsquo;s longitude, not from a digit. Aṅkita prints it as a modern cycle.
-                  </p>
+            <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-start">
+              <div>
+                <p className="kicker"><span className="n">i</span><span>Vimśottarī daśā</span></p>
+                <div className="mt-4">
+                  <DashaPanel date={profile.input.date} />
                 </div>
               </div>
+              <aside className="space-y-6">
+                <div>
+                  <p className="kicker"><span className="n">ii</span><span>Personal cycles</span></p>
+                  <div className="mt-3 divide-y divide-line border-y border-line">
+                    {profile.timing.map((t) => (
+                      <div key={t.label} className="flex items-start justify-between gap-4 py-3">
+                        <div>
+                          <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink-muted">{t.label}</p>
+                          <p className="mt-1 text-xs text-ink-soft leading-relaxed">{t.detail}</p>
+                        </div>
+                        <p className="font-serif text-3xl font-semibold text-ink tabular-nums leading-none">{t.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-[11px] leading-relaxed text-ink-muted">
+                  The 45-year cycle beside the daśā is arithmetic — one year for 1, two for 2, to nine, summing to
+                  45. It is not a classical daśā and is labelled as a modern cycle. Vimśottarī is computed from the
+                  Moon’s sidereal longitude.
+                </p>
+              </aside>
             </div>
           )}
 

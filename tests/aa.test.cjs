@@ -199,3 +199,47 @@ test('time parses, and local mean time corrects for longitude', () => {
   const lmt = inputsMod.localMeanMinutes(t, 91.7362);
   assert.ok(lmt > inputsMod.localMinutes(t), 'east of the zone meridian, mean time runs ahead');
 });
+
+const dasha = require('../.test-build/dasha.js');
+
+test('Vimsottari has nine lords totalling 120 years', () => {
+  const total = dasha.DASHA_LORDS.reduce((s, l) => s + l.years, 0);
+  assert.equal(total, 120);
+  assert.equal(dasha.DASHA_TOTAL, 120);
+});
+
+test('the period sequence covers 120 years from the birth balance', () => {
+  const birth = new Date(Date.UTC(1995, 7, 29, 12));
+  const d = dasha.vimshottari(120.5, birth); // Moon in Magha
+  assert.equal(d.periods.length, 9);
+  const first = d.periods[0];
+  const last = d.periods[8];
+  const span = (last.end - first.start) / (365.2425 * 86400000);
+  assert.ok(Math.abs(span - 120) < 0.01, `span ${span}`);
+  assert.equal(first.partial, true);
+  assert.ok(d.balanceYears > 0 && d.balanceYears <= first.years);
+});
+
+test('antardashas of a mahadasha sum to its own length', () => {
+  const d = dasha.vimshottari(200, new Date(Date.UTC(1990, 0, 1)));
+  for (const p of d.periods) {
+    const sum = p.antardashas.reduce((s, a) => s + a.years, 0);
+    assert.ok(Math.abs(sum - p.years) < 1e-9, `${p.lord}: ${sum} vs ${p.years}`);
+  }
+});
+
+test('the current period is the one containing today', () => {
+  const birth = new Date(Date.UTC(1995, 7, 29, 12));
+  const d = dasha.vimshottari(120.5, birth);
+  const now = new Date();
+  assert.ok(d.current);
+  assert.ok(now >= d.current.start && now < d.current.end);
+  if (d.currentAntar) assert.ok(now >= d.currentAntar.start && now < d.currentAntar.end);
+});
+
+test('the nakshatra and pada follow the longitude', () => {
+  assert.equal(dasha.vimshottari(0, new Date()).nakshatra, 'Aśvinī');
+  assert.equal(dasha.vimshottari(0, new Date()).pada, 1);
+  assert.equal(dasha.vimshottari(13.4, new Date()).nakshatra, 'Bharaṇī');
+  assert.equal(dasha.vimshottari(359, new Date()).nakshatra, 'Revatī');
+});
