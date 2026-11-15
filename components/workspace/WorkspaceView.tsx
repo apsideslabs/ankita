@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import {
-  ArrowRight, User, CalendarDays, Grid3x3, Clock, Type, ShieldCheck, Info, AlertCircle, ListOrdered, BookOpen, Gem, Sparkles,
+  ArrowRight, User, CalendarDays, Grid3x3, Clock, Type, ShieldCheck, Info, AlertCircle, ListOrdered, BookOpen, Gem, Sparkles, Compass,
 } from 'lucide-react';
 import { buildProfile } from '@/lib/engine/profile';
 import { GRID, PLANES } from '@/lib/engine/loshu';
@@ -11,12 +11,14 @@ import { NUMERAL_GRAHA, friendshipMatrix, RELATION_GLOSS } from '@/lib/engine/pl
 import { SOURCES, sourceById } from '@/lib/engine/provenance';
 import { HarmonyTriangle } from '@/components/workspace/HarmonyTriangle';
 import { DashaPanel } from '@/components/workspace/DashaPanel';
+import { GrahasPanel } from '@/components/workspace/GrahasPanel';
 import type { BirthInput, Profile } from '@/lib/engine/types';
 
 const TABS = [
   { id: 'chart', label: 'Chart', icon: User },
   { id: 'grid', label: 'Grid', icon: Grid3x3 },
   { id: 'timing', label: 'Timing', icon: Clock },
+  { id: 'grahas', label: 'Grahas', icon: Compass },
   { id: 'name', label: 'Name', icon: Type },
   { id: 'reading', label: 'Reading', icon: BookOpen },
   { id: 'everything', label: 'Everything', icon: ListOrdered },
@@ -301,6 +303,12 @@ export function WorkspaceView() {
                   Moon’s sidereal longitude.
                 </p>
               </aside>
+            </div>
+          )}
+
+          {tab === 'grahas' && (
+            <div className="mt-6">
+              <GrahasPanel date={profile.input.date} />
             </div>
           )}
 

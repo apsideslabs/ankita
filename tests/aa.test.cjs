@@ -243,3 +243,43 @@ test('the nakshatra and pada follow the longitude', () => {
   assert.equal(dasha.vimshottari(13.4, new Date()).nakshatra, 'Bharaṇī');
   assert.equal(dasha.vimshottari(359, new Date()).nakshatra, 'Revatī');
 });
+
+const eph = require('../.test-build/ephemeris.js');
+
+const J2000 = 2451545.0;
+
+test('the Sun is where it should be on 2000-01-01', () => {
+  assert.ok(Math.abs(eph.sunLongitude(J2000) - 280.46) < 0.2, eph.sunLongitude(J2000));
+});
+
+test('the planets match their known positions on 2000-01-01', () => {
+  const expect = { Jupiter: 25.2, Saturn: 40.4, Mars: 327.9, Venus: 241.5 };
+  for (const [k, v] of Object.entries(expect)) {
+    const got = eph.planetLongitude(k, J2000);
+    assert.ok(Math.abs(got - v) < 0.4, `${k}: ${got.toFixed(2)} vs ${v}`);
+  }
+});
+
+test('all nine grahas land in a sign and a nakshatra', () => {
+  const rows = eph.allPlacements(J2000);
+  assert.equal(rows.length, 9);
+  for (const r of rows) {
+    assert.ok(r.sign >= 1 && r.sign <= 12, `${r.key} sign ${r.sign}`);
+    assert.ok(r.nakshatra >= 1 && r.nakshatra <= 27, `${r.key} nak ${r.nakshatra}`);
+    assert.ok(r.pada >= 1 && r.pada <= 4);
+  }
+});
+
+test('Rahu and Ketu are exactly opposite', () => {
+  const rows = eph.allPlacements(J2000);
+  const rahu = rows.find((r) => r.key === 'Rahu');
+  const ketu = rows.find((r) => r.key === 'Ketu');
+  const diff = Math.abs(((rahu.longitude - ketu.longitude + 360) % 360) - 180);
+  assert.ok(diff < 0.01, `${diff}`);
+});
+
+test('houses count whole signs from the Moon', () => {
+  assert.equal(eph.houseFrom(3, 3), 1);
+  assert.equal(eph.houseFrom(3, 4), 2);
+  assert.equal(eph.houseFrom(11, 1), 3);
+});
