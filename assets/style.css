@@ -427,3 +427,12 @@ body { overflow-x: hidden; }
 .books .b2 span { color: #3A1206; }
 .books .stamp { position: absolute; right: 2%; bottom: 6px; transform: rotate(-11deg); border: 1.5px solid #E3A15C;
   color: #E3A15C; font-family: var(--mono); font-size: 7.5px; letter-spacing: .22em; padding: .3rem .45rem; }
+
+/* the sample reading: three figures side by side */
+.sample-grid { display: grid; gap: 1.2rem; grid-template-columns: 1fr; margin-top: 1.4rem;
+  border-top: 1px solid var(--rule); padding-top: 1.2rem; }
+@media (min-width: 780px) { .sample-grid { grid-template-columns: 1.15fr 0.95fr 1fr; align-items: start; } }
+.sample-grid figure { margin: 0; }
+.sample-grid figcaption { font-family: var(--mono); font-size: 7.5px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink-4); margin-top: .5rem; }
+.sample-grid svg { max-width: 100%; height: auto; }
