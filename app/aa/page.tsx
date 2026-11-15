@@ -29,10 +29,12 @@ export default function AAPage() {
           A second engine, with <em className="italic text-copper">its own</em> mathematics.
         </h1>
         <p className="lede mt-5">
-          Aṅkita’s first engine reads the classical and Chaldean tradition. This one is different in kind:
-          the Axiom Arcana is an authored system — reduce-to-13 instead of reduce-to-9, thirteen realms
+          Aṅkita’s first engine reads the classical and Chaldean tradition and needs two inputs — a name
+          and a date. This one is different in kind, and it needs <strong className="text-ink">four</strong>:
+          name, date, time and place, because twelve of its bindings read the time and place seeds.
+          The Axiom Arcana is an authored system — reduce-to-13 instead of reduce-to-9, thirteen realms
           instead of twelve signs, a symmetric letter code instead of Chaldean values, and a 91-year cycle
-          instead of a daśā. It is computed here from the author’s own Codex, and labelled as authored.
+          instead of a daśā.
         </p>
 
         <div className="mt-9"><AAConsole /></div>
@@ -157,8 +159,9 @@ export default function AAPage() {
           <div className="kicker"><span className="n">IV</span><span>The 117 bindings</span></div>
           <h3 className="h2-ed mt-4">The formula index, transcribed whole.</h3>
           <p className="lede mt-3">
-            Each binding names its inputs. Where the source supplies the arithmetic, the engine implements it;
-            where it names a seed without defining it, the seed is derived and labelled.
+            Each binding is computed above from your four inputs, and every row prints the arithmetic it used.
+            The document supplies the arithmetic for F1, F3 and F4; for the rest it names the binding and its
+            inputs only, so those are evaluated through a declared operator pattern and labelled <em>derived</em>.
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {Object.entries(

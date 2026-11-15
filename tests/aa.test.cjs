@@ -148,3 +148,54 @@ test('the 13 Sphiras are all transcribed', () => {
   assert.equal(SPHIRAS[0].name, 'Origin');
   assert.equal(SPHIRAS[12].name, 'Axion');
 });
+
+const bindings = require('../.test-build/aa/bindings.js');
+const inputsMod = require('../.test-build/aa/inputs.js');
+
+const SAMPLE = { name: 'Binay Das', date: '2009-03-03', hour: 23, minute: 51, lat: 26.1445, lon: 91.7362 };
+
+test('all 117 bindings are computed, each with a readable expression', () => {
+  const rows = bindings.computeBindings(SAMPLE);
+  assert.equal(rows.length, 117);
+  for (const r of rows) {
+    assert.ok(r.value >= 1 && r.value <= 13, `F${r.id} = ${r.value}`);
+    assert.ok(r.expression.includes('mod13'), `F${r.id} prints its arithmetic`);
+    assert.ok(r.reading.length > 20, `F${r.id} carries a reading`);
+    assert.ok(r.sphira.includes(String(r.value)));
+  }
+});
+
+test('every binding is grouped into a domain, and the domains cover all 117', () => {
+  const rows = bindings.computeBindings(SAMPLE);
+  const groups = bindings.byDomain(rows);
+  assert.equal(groups.reduce((n, g) => n + g.rows.length, 0), 117);
+  assert.equal(groups[0].domain, 'Identity & Destiny');
+  assert.equal(groups[groups.length - 1].rows[groups[groups.length - 1].rows.length - 1].id, 117);
+});
+
+test('bindings are deterministic for the same four inputs', () => {
+  const a = bindings.computeBindings(SAMPLE).map((r) => r.value);
+  const b = bindings.computeBindings(SAMPLE).map((r) => r.value);
+  assert.deepEqual(a, b);
+});
+
+test('the time and place inputs change the chart', () => {
+  const morning = bindings.computeBindings({ ...SAMPLE, hour: 6, minute: 0 });
+  const night = bindings.computeBindings({ ...SAMPLE, hour: 23, minute: 51 });
+  assert.notDeepEqual(morning.map((r) => r.value), night.map((r) => r.value));
+});
+
+test('cities resolve to coordinates', () => {
+  const ghy = inputsMod.findCity('Guwahati');
+  assert.ok(ghy && Math.abs(ghy.lat - 26.1445) < 0.001);
+  assert.equal(inputsMod.CITIES.length > 40, true);
+});
+
+test('time parses, and local mean time corrects for longitude', () => {
+  const t = inputsMod.parseTime('23:51', 330);
+  assert.equal(t.hh, 23);
+  assert.equal(t.mm, 51);
+  assert.equal(inputsMod.localMinutes(t), 1431);
+  const lmt = inputsMod.localMeanMinutes(t, 91.7362);
+  assert.ok(lmt > inputsMod.localMinutes(t), 'east of the zone meridian, mean time runs ahead');
+});
