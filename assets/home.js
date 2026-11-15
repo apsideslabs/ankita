@@ -31,21 +31,12 @@ function render() {
         </div>`;
       }).join('')}
     </div>
-    <div class="sample-grid">
-      <figure>
-        ${kundaliSVG(chart.asc.sign, chart.grahas, 300)}
-        <figcaption>Fig. 1 — the birth chart · lagna ${chart.asc.signName}</figcaption>
-      </figure>
-      <figure>
-        ${loshuSVG(counts, 260)}
-        <figcaption>Fig. 2 — the Lo Shu square</figcaption>
-      </figure>
-      <figure>
-        ${dashaBarSVG(chartDasha.periods, 300)}
-        <figcaption>Fig. 3 — Vimśottarī, ${chartDasha.current ? chartDasha.current.lord + ' running' : ''}</figcaption>
-      </figure>
-    </div>
-    <p class="small mt-4">${p.reading.mulank.title} · ${p.reading.mulank.strengths[0]}. <a href="./workspace.html">Open the full reading →</a></p>
+  `;
+  const figs = document.getElementById('home-figs');
+  if (figs) figs.innerHTML = `
+    <figure>${kundaliSVG(chart.asc.sign, chart.grahas, 320)}<figcaption>Fig. 2 — birth chart · lagna ${chart.asc.signName}</figcaption></figure>
+    <figure>${loshuSVG(counts, 300)}<figcaption>Fig. 3 — the Lo Shu square</figcaption></figure>
+    <figure>${dashaBarSVG(chartDasha.periods, 320)}<figcaption>Fig. 4 — Vimśottarī · ${chartDasha.current ? chartDasha.current.lord + ' running' : ''}</figcaption></figure>
   `;
 }
 

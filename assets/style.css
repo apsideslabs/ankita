@@ -521,3 +521,42 @@ body { overflow-x: hidden; }
 .masthead-row { position: relative; z-index: 2; max-width: 100%; }
 .masthead-row span:last-child { color: var(--ink-3); }
 @media (min-width: 1000px) { .masthead-row { max-width: 66%; } .sun-hero .sun { right: -4rem; top: 2rem; } }
+
+/* ==========================================================================
+   Composition fix: the console rises into the hero and overlaps the band.
+   ========================================================================== */
+
+.sun-hero .hero-cols {
+  display: grid; gap: 2rem; grid-template-columns: 1fr; align-items: start;
+}
+@media (min-width: 1000px) {
+  .sun-hero .hero-cols { grid-template-columns: 1.05fr 0.95fr; gap: 3rem; align-items: end; }
+}
+.sun-hero .hero-cols > .right { position: relative; z-index: 5; margin-bottom: clamp(-7rem, -9vw, -4rem); }
+@media (max-width: 999px) { .sun-hero .hero-cols > .right { margin-bottom: 0; } }
+
+/* masthead rule no longer collides with the sun */
+.masthead-row { max-width: 100% !important; }
+.sun-hero .sun { top: 3.5rem; }
+
+/* the band makes room for the overlapping console */
+.band-saffron { padding-top: clamp(3rem, 8vw, 7rem) !important; }
+
+/* tighter, denser reading block */
+.reading-block { display: grid; gap: 1.4rem; grid-template-columns: 1fr; margin-top: 2.4rem; }
+@media (min-width: 900px) { .reading-block { grid-template-columns: 15rem 1fr; gap: 2.4rem; align-items: start; } }
+.reading-rail h2 { font-size: clamp(1.5rem,2.4vw,2rem); line-height: 1.08; margin-top: .6rem; }
+.reading-rail p { font-size: .9rem; color: var(--ink-2); line-height: 1.66; margin: .8rem 0 0; }
+
+/* charts row: three equal figures */
+.figs3 { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1rem; }
+@media (min-width: 760px) { .figs3 { grid-template-columns: repeat(3, 1fr); } }
+.figs3 figure { margin: 0; }
+.figs3 svg { width: 100%; height: auto; }
+.figs3 figcaption { font-family: var(--mono); font-size: 7.5px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: .45rem; border-top: 1px solid var(--rule-2); padding-top: .35rem; }
+
+/* the sun clips inside its own layer; the hero lets the console overflow */
+.sun-hero { overflow: visible; }
+.sun-clip { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.sun-clip .sun { position: absolute; }

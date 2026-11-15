@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css?v=8">
+<link rel="stylesheet" href="./assets/style.css?v=9">
 <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -39,7 +39,7 @@
 
   <!-- masthead: the sun, the wordmark at display scale -->
   <section class="sun-hero">
-    <svg class="sun" viewBox="0 0 400 400" aria-hidden="true">
+    <div class="sun-clip"><svg class="sun" viewBox="0 0 400 400" aria-hidden="true">
   <defs>
     <radialGradient id="core" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#F2B45A"/><stop offset="70%" stop-color="#D9821F"/><stop offset="100%" stop-color="#B3391C"/>
@@ -51,15 +51,39 @@
   <circle cx="200" cy="200" r="118" fill="url(#core)"/>
   <circle cx="200" cy="200" r="118" fill="#000" filter="url(#grain)" opacity="0.35"/>
   <circle cx="200" cy="200" r="118" fill="none" stroke="#8B2F0B" stroke-width="1.5" opacity="0.5"/>
-</svg>
+</svg></div>
     <div class="band pad inner">
       <div class="masthead-row">
         <span>No. 1 · MMXXVI</span>
         <span>Apsides Labs · a numerology that names its sources</span>
         <span>Computed locally · nothing uploaded</span>
       </div>
-      <h1 class="wordmark">Aṅkita<span class="stop">.</span></h1>
-      <p class="strap">The number, and the book it came from — three traditions, kept apart.</p>
+      <div class="hero-cols">
+        <div>
+          <h1 class="wordmark">Aṅkita<span class="stop">.</span></h1>
+          <p class="strap">The number, and the book it came from — three traditions, kept apart.</p>
+          <div class="trust" style="margin-top:1.2rem">
+            <span>Two inputs only</span>
+            <span>Computed in your browser</span>
+            <span>Every rule sourced</span>
+          </div>
+        </div>
+        <div class="right">
+          <div class="console-heavy">
+            <div class="head"><span>Reading console</span><span>Fig. 1</span></div>
+            <div class="body">
+              <form id="home-form">
+                <div class="form-grid">
+                  <label class="field"><span>Full name</span><input type="text" id="home-name" value="John Smith" autocomplete="off"></label>
+                  <label class="field"><span>Date of birth</span><input type="date" id="home-date" value="1995-08-29"></label>
+                  <div><button class="btn btn-lg" type="submit">Read →</button></div>
+                </div>
+              </form>
+              <div id="home-out" class="mt-6" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -78,36 +102,15 @@
     </div>
   </section>
 
-  <!-- the console, heavy -->
-  <section class="band pad" style="padding-block:clamp(2.4rem,4vw,3.6rem)">
-    <div style="display:grid;gap:2rem;grid-template-columns:1fr" class="grid-2">
-      <div>
+  <!-- the reading: rail and three figures -->
+  <section class="band pad" style="padding-block:1rem 2.4rem">
+    <div class="reading-block">
+      <div class="reading-rail">
         <p class="eyebrow">§ 01 · the reading</p>
-        <h2 style="font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.06;margin-top:.8rem">
-          Put in a name<br>and a date.
-        </h2>
-        <p class="lede" style="max-width:34ch">Two inputs. The whole reading: three core numbers, the birth chart, the Lo Shu square, the daśā with dates, and the arithmetic behind every figure.</p>
-        <div class="trust" style="margin-top:1.2rem">
-          <span>Two inputs only</span>
-          <span>Computed in your browser</span>
-          <span>Every rule sourced</span>
-        </div>
+        <h2>What the two inputs produce.</h2>
+        <p>Three core numbers, the birth chart with its houses, the Lo Shu square with its missing digits, and the daśā with dates — each figure with the arithmetic behind it.</p>
       </div>
-      <div>
-        <div class="console-heavy">
-          <div class="head"><span>Reading console</span><span>Fig. 1</span></div>
-          <div class="body">
-            <form id="home-form">
-              <div class="form-grid">
-                <label class="field"><span>Full name</span><input type="text" id="home-name" value="John Smith" autocomplete="off"></label>
-                <label class="field"><span>Date of birth</span><input type="date" id="home-date" value="1995-08-29"></label>
-                <div><button class="btn btn-lg" type="submit">Read →</button></div>
-              </div>
-            </form>
-            <div id="home-out" class="mt-6" aria-live="polite"></div>
-          </div>
-        </div>
-      </div>
+      <div class="figs3" id="home-figs"></div>
     </div>
   </section>
 
