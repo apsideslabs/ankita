@@ -9,6 +9,7 @@ import { GRID, PLANES } from '@/lib/engine/loshu';
 import { CHALDEAN_COLUMNS } from '@/lib/engine/chaldean';
 import { NUMERAL_GRAHA, friendshipMatrix, RELATION_GLOSS } from '@/lib/engine/planets';
 import { SOURCES, sourceById } from '@/lib/engine/provenance';
+import { HarmonyTriangle } from '@/components/workspace/HarmonyTriangle';
 import type { BirthInput, Profile } from '@/lib/engine/types';
 
 const TABS = [
@@ -330,66 +331,74 @@ export function WorkspaceView() {
 
           {tab === 'reading' && (
             <div className="mt-6 space-y-5">
-              {(['mulank', 'bhagyank', 'namank'] as const).map((k) => {
+              {(['mulank', 'bhagyank', 'namank'] as const).map((k, idx) => {
                 const r = profile.reading[k];
                 const labels = { mulank: 'Mūlāṅka', bhagyank: 'Bhāgyāṅka', namank: 'Nāmāṅka' };
                 return (
-                  <article key={k} className="rounded-xl border border-line bg-surface p-6 shadow-3d-card">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <div className="flex items-baseline gap-3">
-                        <span className="font-serif text-4xl font-bold text-copper tabular-nums">{r.n}</span>
-                        <div>
-                          <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-muted">{labels[k]}</p>
-                          <h3 className="font-serif text-lg font-bold text-ink">{r.title}</h3>
+                  <article key={k} className="border-t border-line pt-6 first:border-t-0 first:pt-0">
+                    <div className="grid gap-x-8 gap-y-4 sm:grid-cols-[7rem_1fr]">
+                      <div>
+                        <p className="font-serif text-[5rem] leading-[0.8] font-semibold text-copper tabular-nums">{r.n}</p>
+                        <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">{labels[k]}</p>
+                      </div>
+                      <div>
+                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                          <h3 className="font-serif text-2xl font-semibold text-ink">{r.title}</h3>
+                          <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-copper">{r.day}</span>
                         </div>
+                        <p className="mt-3 text-sm text-ink-soft leading-relaxed max-w-[62ch]">{r.nature}</p>
+                        <div className="mt-5 grid gap-5 sm:grid-cols-3 border-t border-line pt-4">
+                          <div>
+                            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-emerald-800">Strengths</p>
+                            <ul className="mt-1.5 space-y-1 text-xs text-ink-soft">{r.strengths.map((x) => <li key={x}>· {x}</li>)}</ul>
+                          </div>
+                          <div>
+                            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-copper">To watch</p>
+                            <ul className="mt-1.5 space-y-1 text-xs text-ink-soft">{r.watch.map((x) => <li key={x}>· {x}</li>)}</ul>
+                          </div>
+                          <div>
+                            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink-muted">Work</p>
+                            <ul className="mt-1.5 space-y-1 text-xs text-ink-soft">{r.careers.map((x) => <li key={x}>· {x}</li>)}</ul>
+                          </div>
+                        </div>
+                        <p className="mt-3 text-[11px] text-ink-muted">{r.body}</p>
                       </div>
-                      <Chip tone="copper">{r.day}</Chip>
                     </div>
-                    <p className="mt-4 text-sm text-ink-soft leading-relaxed">{r.nature}</p>
-                    <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                      <div>
-                        <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-emerald-800">Strengths</p>
-                        <ul className="mt-1.5 space-y-1 text-xs text-ink-soft">{r.strengths.map((x) => <li key={x}>· {x}</li>)}</ul>
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-copper">To watch</p>
-                        <ul className="mt-1.5 space-y-1 text-xs text-ink-soft">{r.watch.map((x) => <li key={x}>· {x}</li>)}</ul>
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-muted">Work</p>
-                        <ul className="mt-1.5 space-y-1 text-xs text-ink-soft">{r.careers.map((x) => <li key={x}>· {x}</li>)}</ul>
-                      </div>
-                    </div>
-                    <p className="mt-4 pt-3 border-t border-line text-xs text-ink-muted">{r.body}</p>
                   </article>
                 );
               })}
 
               <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-xl border border-line bg-surface p-6">
-                  <h3 className="font-serif text-lg font-bold text-ink">The harmony triangle</h3>
-                  <p className="mt-1 text-xs text-ink-soft">Mūlāṅka, bhāgyāṅka and nāmāṅka read against each other.</p>
-                  <ul className="mt-4 space-y-3">
-                    {profile.reading.harmony.map((h, i) => (
-                      <li key={i} className="border-l-2 border-line pl-3">
-                        <p className="text-sm font-mono text-ink">
-                          {h.pair[0]} · {h.pair[1]}
-                          <span className={`ml-2 text-[10px] uppercase tracking-wider ${
-                            h.relation === 'friend' ? 'text-emerald-700' : h.relation === 'enemy' ? 'text-copper' : 'text-ink-muted'
-                          }`}>{h.relation}</span>
-                        </p>
-                        <p className="mt-0.5 text-xs text-ink-soft">{h.line}</p>
-                      </li>
-                    ))}
-                  </ul>
+                <div>
+                  <p className="kicker"><span className="n">i</span><span>The harmony triangle</span></p>
+                  <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-6">
+                    <HarmonyTriangle
+                      m={profile.reading.harmony[2].pair[0]}
+                      b={profile.reading.harmony[0].pair[1]}
+                      n={profile.reading.harmony[1].pair[1]}
+                      ab={profile.reading.harmony[0].relation}
+                      bn={profile.reading.harmony[1].relation}
+                      ma={profile.reading.harmony[2].relation}
+                    />
+                    <ul className="space-y-3 text-xs flex-1">
+                      {profile.reading.harmony.map((h, i) => (
+                        <li key={i} className="border-l-2 border-line pl-3">
+                          <p className="font-mono text-ink">
+                            {h.pair[0]} · {h.pair[1]}
+                            <span className={`ml-2 text-[9px] uppercase tracking-wider ${
+                              h.relation === 'friend' ? 'text-emerald-700' : h.relation === 'enemy' ? 'text-copper' : 'text-ink-muted'
+                            }`}>{h.relation}</span>
+                          </p>
+                          <p className="mt-0.5 text-ink-soft">{h.line}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
-                <div className="rounded-xl border border-line bg-surface p-6">
-                  <div className="flex items-center gap-2">
-                    <Gem className="w-4 h-4 text-copper" />
-                    <h3 className="font-serif text-lg font-bold text-ink">Lucky elements</h3>
-                  </div>
-                  <p className="mt-1 text-xs text-ink-soft">Taken from the ruling planet of the mūlāṅka.</p>
+                <div>
+                  <p className="kicker"><span className="n">ii</span><span>Lucky elements</span></p>
+                  <p className="mt-2 text-xs text-ink-soft">Taken from the ruling planet of the mūlāṅka.</p>
                   <dl className="mt-4 space-y-2 text-sm">
                     <div className="flex justify-between gap-4"><dt className="text-ink-muted text-xs uppercase tracking-wider font-mono">Numbers</dt><dd className="text-ink">{profile.lucky.numbers.join(', ')}</dd></div>
                     <div className="flex justify-between gap-4"><dt className="text-ink-muted text-xs uppercase tracking-wider font-mono">Day</dt><dd className="text-ink">{profile.lucky.days.join(', ')}</dd></div>

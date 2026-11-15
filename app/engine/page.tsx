@@ -63,7 +63,7 @@ export default function EnginePage() {
 
       <div className="mt-10 space-y-12">
         <Section id="reduction" kicker="Rule 0" title="Digital reduction">
-          <div className="rounded-xl border border-line bg-surface p-6">
+          <div className="border-t border-line pt-5">
             <p className="text-sm text-ink-soft">
               Digits are summed until one remains. <span className="font-mono text-ink">1995 → 1+9+9+5 = 24 → 2+4 = 6</span>.
               Zero is never a result: a sum of 0 becomes 9, because the system has nine numbers for nine grahas.
@@ -75,7 +75,7 @@ export default function EnginePage() {
         <Section id="chaldean" kicker="Cheiro, 1926" title="Chaldean letter values">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {CHALDEAN_COLUMNS.map((c) => (
-              <div key={c.value} className="rounded-lg border border-line bg-surface p-4">
+              <div key={c.value} className="border border-line bg-surface p-4">
                 <p className="font-serif text-2xl font-bold text-copper tabular-nums">{c.value}</p>
                 <p className="mt-1 font-mono text-sm tracking-[0.18em] text-ink">{c.letters.join(' ')}</p>
               </div>
@@ -88,13 +88,13 @@ export default function EnginePage() {
         </Section>
 
         <Section id="compounds" kicker="Cheiro, ch. XIII" title="Compound numbers, 10 to 52">
-          <div className="rounded-xl border border-line bg-surface overflow-hidden">
+          <div className="border-y border-line-strong bg-transparent">
             <table className="w-full text-sm">
               <tbody className="divide-y divide-line">
                 {Object.entries(COMPOUND_GLOSS).map(([n, gloss]) => (
                   <tr key={n}>
-                    <td className="px-4 py-2 w-14 font-serif text-lg font-bold text-copper tabular-nums">{n}</td>
-                    <td className="px-4 py-2 text-ink-soft">{gloss}</td>
+                    <td className="py-2 pr-4 w-12 font-serif text-lg font-semibold text-copper tabular-nums">{n}</td>
+                    <td className="py-2 pr-4 text-ink-soft">{gloss}</td>
                   </tr>
                 ))}
               </tbody>
@@ -106,22 +106,22 @@ export default function EnginePage() {
         </Section>
 
         <Section id="grahas" kicker="Johari, 1990" title="Digit → graha">
-          <div className="rounded-xl border border-line bg-surface overflow-hidden">
+          <div className="border-y border-line-strong bg-transparent">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-canvas border-b border-line text-left">
+                <tr className="border-b border-line-strong text-left">
                   {['Digit', 'Graha', 'Sanskrit', 'Quality'].map((h) => (
-                    <th key={h} className="px-4 py-3 text-[10px] font-mono uppercase tracking-[0.16em] text-ink-muted">{h}</th>
+                    <th key={h} className="py-2.5 pr-4 font-mono text-[9px] uppercase tracking-[0.18em] text-ink-muted">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-line">
                 {Object.entries(NUMERAL_GRAHA).map(([n, g]) => (
                   <tr key={n}>
-                    <td className="px-4 py-2 font-serif text-lg font-bold text-copper tabular-nums">{n}</td>
-                    <td className="px-4 py-2 text-ink">{g.graha}</td>
-                    <td className="px-4 py-2 text-ink-soft">{g.sanskrit}</td>
-                    <td className="px-4 py-2 text-ink-soft">{g.note}</td>
+                    <td className="py-2 pr-4 font-serif text-lg font-semibold text-copper tabular-nums">{n}</td>
+                    <td className="py-2 pr-4 text-ink">{g.graha}</td>
+                    <td className="py-2 pr-4 text-ink-soft">{g.sanskrit}</td>
+                    <td className="py-2 pr-4 text-ink-soft">{g.note}</td>
                   </tr>
                 ))}
               </tbody>
@@ -130,7 +130,7 @@ export default function EnginePage() {
         </Section>
 
         <Section id="matrix" kicker="Natural friendship" title="The 9 × 9 matrix">
-          <div className="overflow-x-auto rounded-xl border border-line bg-surface p-4">
+          <div className="overflow-x-auto border-y border-line-strong bg-transparent py-3">
             <table className="text-xs">
               <thead>
                 <tr>
@@ -215,7 +215,7 @@ export default function EnginePage() {
         </Section>
 
         <Section id="bhuta" kicker="Piṅgala, c. 2nd c. BCE" title="Bhūtasaṅkhyā vocabulary">
-          <div className="rounded-xl border border-line bg-surface overflow-hidden">
+          <div className="border-y border-line-strong bg-transparent">
             <table className="w-full text-sm">
               <tbody className="divide-y divide-line">
                 {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => {
@@ -223,8 +223,8 @@ export default function EnginePage() {
                   if (!words.length) return null;
                   return (
                     <tr key={n}>
-                      <td className="px-4 py-2 w-14 font-serif text-lg font-bold text-copper tabular-nums">{n}</td>
-                      <td className="px-4 py-2 font-mono text-xs text-ink-soft">{words.join(', ')}</td>
+                      <td className="py-2 pr-4 w-12 font-serif text-lg font-semibold text-copper tabular-nums">{n}</td>
+                      <td className="py-2 font-mono text-xs text-ink-soft">{words.join(', ')}</td>
                     </tr>
                   );
                 })}
@@ -249,7 +249,7 @@ export default function EnginePage() {
           <div className="overflow-hidden rounded-xl border border-line bg-surface">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-canvas border-b border-line text-left">
+                <tr className="border-b border-line-strong text-left">
                   {['#', 'Nakṣatra', 'Pada 1', 'Pada 2', 'Pada 3', 'Pada 4'].map((h) => (
                     <th key={h} className="px-3 py-2.5 text-[10px] font-mono uppercase tracking-[0.16em] text-ink-muted">{h}</th>
                   ))}
@@ -278,7 +278,7 @@ export default function EnginePage() {
                 {SOURCES.map((s) => (
                   <tr key={s.id} className="align-top">
                     <td className="px-4 py-3 w-[22%] font-medium text-ink">{s.label}</td>
-                    <td className="px-4 py-3 text-ink-soft">{s.source}</td>
+                    <td className="py-2.5 pr-4 text-ink-soft">{s.source}</td>
                     <td className="px-4 py-3 w-[10%] font-mono text-xs text-ink-soft">{s.year ?? '—'}</td>
                     <td className="px-4 py-3 w-[12%]">
                       <span className={`text-[10px] font-mono uppercase tracking-wider ${
