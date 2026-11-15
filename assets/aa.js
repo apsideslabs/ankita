@@ -1,9 +1,10 @@
-import { coreSelf, nameNumbers, station, apsTimeline, personalLunarYear, personalLunarMonth, personalLunarDay, moonSidereal, REALMS } from './engine/aa/index.js';
+import { coreSelf, nameNumbers, stationFromSeeds, apsTimeline, personalLunarYear, personalLunarMonth, personalLunarDay, REALMS } from './engine/aa/index.js';
 import { buildAChart } from './engine/aa/charts.js';
 import { buildMacro } from './engine/aa/macro.js';
 import { computeBindings, byDomain } from './engine/aa/bindings.js';
 import { SPHIRAS } from './engine/aa/sphiras.js';
 import { CITIES, findCity, parseTime } from './engine/aa/inputs.js';
+import { buildSeeds } from './engine/aa/charts.js';
 
 const place = document.getElementById('aa-place');
 place.innerHTML = CITIES.map((c) => `<option>${c.name}, ${c.state}</option>`).join('');
@@ -26,15 +27,17 @@ function render() {
 
   const cs = coreSelf(d, m, y);
   const nm = nameNumbers(name);
-  const moon = moonSidereal(date, t.hh - 5.5);
-  const st = station(moon.sidereal);
+  const input0 = { name, date, hour: t.hh, minute: t.mm, lat: city.lat, lon: city.lon };
+  const seeds = buildSeeds(input0);
+  const seedOf = (k) => (seeds.find((x) => x.key === k) || {}).value || 1;
+  const st = stationFromSeeds(seedOf('D1'), seedOf('T1'), seedOf('P1'), seedOf('N1'));
   const aps = apsTimeline(st);
   const now = new Date();
   const ply = personalLunarYear(d, m, y, now.getFullYear());
   const plm = personalLunarMonth(ply, now.getMonth() + 1);
   const pld = personalLunarDay(plm, now.getDate());
 
-  const input = { name, date, hour: t.hh, minute: t.mm, lat: city.lat, lon: city.lon };
+  const input = input0;
   const chart = buildAChart(input);
   const macro = buildMacro(input);
   const bindings = computeBindings(input);
@@ -51,7 +54,9 @@ function render() {
       </div>
       <div>
         <p class="panel-title">Station · 91-year cycle</p>
-        <p class="small">${st.number} · ${esc(st.name)} · pada ${st.pada} — Moon at ${moon.sidereal.toFixed(2)}° sidereal (${esc(city.name)})</p>
+        <p class="small">${st.number} · ${esc(st.name)} · pada ${st.pada}</p>
+        <p class="mono small" style="margin-top:.3rem">${esc(st.formula)}</p>
+        <p class="small" style="margin-top:.3rem">Computed from the seeds, not from an ephemeris — the station is the AA System's own division.</p>
         <p class="small mt-2">APS: ${aps.current.force} — ${aps.remaining.toFixed(1)} years remaining</p>
         <p class="panel-title mt-6">Personal lunar cycle</p>
         <p class="small">PLY ${ply} · PLM ${plm} · PLD ${pld}</p>

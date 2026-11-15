@@ -95,19 +95,41 @@ export const STATIONS = [
     'Jyeṣṭhā', 'Mūla', 'Pūrvāṣāḍhā', 'Uttarāṣāḍhā', 'Śravaṇa', 'Dhaniṣṭhā', 'Śatabhiṣā',
     'Pūrva Bhādrapadā', 'Uttara Bhādrapadā', 'Revatī',
 ];
-/** Sidereal Moon longitude → Axiomatic Station. */
+/**
+ * The Axiomatic Station, computed numerically from the four seeds.
+ *
+ * This is the AA System's own method: 27 stations taken from the arithmetic of
+ * the name, date, time and place — not from an ephemeris. The system borrows the
+ * *shape* of the lunar mansion (27 divisions) but reaches it with its own
+ * mod-arithmetic, which is what makes it a numerology rather than an astronomy.
+ *
+ *   Station = ((3·D1 + 2·T1 + P1 + N1 − 1) mod 27) + 1
+ */
+export function stationFromSeeds(D1, T1, P1, N1) {
+    const raw = 3 * D1 + 2 * T1 + P1 + N1;
+    const number = ((raw - 1) % 27 + 27) % 27 + 1;
+    const index = number - 1;
+    const fraction = index / 27;
+    return {
+        number,
+        name: STATIONS[index],
+        fraction,
+        pada: ((number - 1) % 4) + 1,
+        formula: `((3×${D1} + 2×${T1} + ${P1} + ${N1} − 1) mod 27) + 1 = ${number}`,
+    };
+}
+/** Kept for the aṅka side, which does use the sky; the AA System does not. */
 export function station(moonSidereal) {
     const lon = ((moonSidereal % 360) + 360) % 360;
     const index = Math.min(26, Math.floor(lon / STATION_SPAN));
     const within = lon - index * STATION_SPAN;
     const fraction = within / STATION_SPAN;
-    const toBoundary = Math.min(within, STATION_SPAN - within);
     return {
         number: index + 1,
         name: STATIONS[index],
         fraction,
         pada: Math.floor(fraction * 4) + 1,
-        degreesToBoundary: Number(toBoundary.toFixed(2)),
+        formula: `Moon ${lon.toFixed(2)}° / 13.333° → station ${index + 1}`,
     };
 }
 /* -------------------------------------------------------------------- APS */
