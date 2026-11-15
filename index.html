@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css?v=7">
+<link rel="stylesheet" href="./assets/style.css?v=8">
 <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -35,181 +35,103 @@
   </div>
 </header>
 
-<main class="band pad cover">
+<main>
 
-  <!-- masthead rule -->
-  <div class="cover-rule">
-    <span>No. 1 · MMXXVI</span>
-    <span class="mid">Apsides Labs · a numerology that names its sources</span>
-    <span>Rupees free · computed locally</span>
-  </div>
+  <!-- masthead: the sun, the wordmark at display scale -->
+  <section class="sun-hero">
+    <svg class="sun" viewBox="0 0 400 400" aria-hidden="true">
+  <defs>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F2B45A"/><stop offset="70%" stop-color="#D9821F"/><stop offset="100%" stop-color="#B3391C"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer></filter>
+  </defs>
+  <g opacity="0.9"><line x1="200" y1="200" x2="386.0" y2="200.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="385.0" y2="219.4" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="381.9" y2="238.7" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="376.9" y2="257.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="369.9" y2="275.7" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="361.1" y2="293.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="350.5" y2="309.3" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="338.2" y2="324.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="324.5" y2="338.2" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="309.3" y2="350.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="293.0" y2="361.1" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="275.7" y2="369.9" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="257.5" y2="376.9" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="238.7" y2="381.9" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="219.4" y2="385.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="200.0" y2="386.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="180.6" y2="385.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="161.3" y2="381.9" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="142.5" y2="376.9" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="124.3" y2="369.9" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="107.0" y2="361.1" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="90.7" y2="350.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="75.5" y2="338.2" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="61.8" y2="324.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="49.5" y2="309.3" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="38.9" y2="293.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="30.1" y2="275.7" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="23.1" y2="257.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="18.1" y2="238.7" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="15.0" y2="219.4" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="14.0" y2="200.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="15.0" y2="180.6" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="18.1" y2="161.3" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="23.1" y2="142.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="30.1" y2="124.3" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="38.9" y2="107.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="49.5" y2="90.7" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="61.8" y2="75.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="75.5" y2="61.8" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="90.7" y2="49.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="107.0" y2="38.9" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="124.3" y2="30.1" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="142.5" y2="23.1" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="161.3" y2="18.1" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="180.6" y2="15.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="200.0" y2="14.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="219.4" y2="15.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="238.7" y2="18.1" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="257.5" y2="23.1" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="275.7" y2="30.1" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="293.0" y2="38.9" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="309.3" y2="49.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="324.5" y2="61.8" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="338.2" y2="75.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="350.5" y2="90.7" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="361.1" y2="107.0" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="369.9" y2="124.3" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="376.9" y2="142.5" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="381.9" y2="161.3" stroke="#D9821F" stroke-width="2" opacity="0.55"/><line x1="200" y1="200" x2="385.0" y2="180.6" stroke="#D9821F" stroke-width="2" opacity="0.55"/></g>
+  <g><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(0 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(15 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(30 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(45 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(60 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(75 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(90 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(105 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(120 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(135 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(150 200 200)"/><ellipse cx="200" cy="200" rx="26" ry="120" fill="none" stroke="#D9821F" stroke-width="1.4" opacity="0.5" transform="rotate(165 200 200)"/></g>
+  <circle cx="200" cy="200" r="118" fill="url(#core)"/>
+  <circle cx="200" cy="200" r="118" fill="#000" filter="url(#grain)" opacity="0.35"/>
+  <circle cx="200" cy="200" r="118" fill="none" stroke="#8B2F0B" stroke-width="1.5" opacity="0.5"/>
+</svg>
+    <div class="band pad inner">
+      <div class="masthead-row">
+        <span>No. 1 · MMXXVI</span>
+        <span>Apsides Labs · a numerology that names its sources</span>
+        <span>Computed locally · nothing uploaded</span>
+      </div>
+      <h1 class="wordmark">Aṅkita<span class="stop">.</span></h1>
+      <p class="strap">The number, and the book it came from — three traditions, kept apart.</p>
+    </div>
+  </section>
 
-  <h1 class="cover-word">Aṅkita<span class="dot">.</span></h1>
+  <!-- saturated band: the claim, at scale -->
+  <section class="band-saffron" style="padding-block:clamp(1.8rem,3.4vw,3rem)">
+    <div class="band pad" style="display:grid;gap:2rem;grid-template-columns:1fr">
+      <div style="display:grid;gap:2rem" class="grid-2">
+        <p class="big-statement">Every claim sourced.<br><em>Every number checked.</em></p>
+        <dl class="counts">
+          <div><dt>Sources dated</dt><dd>11</dd></div>
+          <div><dt>Rules</dt><dd>38</dd></div>
+          <div><dt>Tables</dt><dd>9</dd></div>
+          <div><dt>Tests</dt><dd>56</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
 
-  <div class="cover-deck">
-    <p class="deck-italic">Three traditions, kept apart: the Chaldean letter table of 1926, the Indian graha scheme of 1990, and a Chinese square that says so on its face.</p>
-    <p><span class="label">Inside</span>Eleven dated sources. Thirty-eight rules. Nine tables printed in full. Fifty-six tests against the worked examples in the books themselves.</p>
-    <p><span class="label">Method</span>Every figure carries the arithmetic that produced it. Where the tradition runs out, the page says so rather than dressing a London table in Vedic robes.</p>
-  </div>
+  <!-- the console, heavy -->
+  <section class="band pad" style="padding-block:clamp(2.4rem,4vw,3.6rem)">
+    <div style="display:grid;gap:2rem;grid-template-columns:1fr" class="grid-2">
+      <div>
+        <p class="eyebrow">§ 01 · the reading</p>
+        <h2 style="font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.06;margin-top:.8rem">
+          Put in a name<br>and a date.
+        </h2>
+        <p class="lede" style="max-width:34ch">Two inputs. The whole reading: three core numbers, the birth chart, the Lo Shu square, the daśā with dates, and the arithmetic behind every figure.</p>
+        <div class="trust" style="margin-top:1.2rem">
+          <span>Two inputs only</span>
+          <span>Computed in your browser</span>
+          <span>Every rule sourced</span>
+        </div>
+      </div>
+      <div>
+        <div class="console-heavy">
+          <div class="head"><span>Reading console</span><span>Fig. 1</span></div>
+          <div class="body">
+            <form id="home-form">
+              <div class="form-grid">
+                <label class="field"><span>Full name</span><input type="text" id="home-name" value="John Smith" autocomplete="off"></label>
+                <label class="field"><span>Date of birth</span><input type="date" id="home-date" value="1995-08-29"></label>
+                <div><button class="btn btn-lg" type="submit">Read →</button></div>
+              </div>
+            </form>
+            <div id="home-out" class="mt-6" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- contents -->
-  <section class="contents">
-    <div class="contents-head"><span>Contents</span><span>Seven sections</span></div>
-    <ol class="toc">
-      <li><span class="no">01</span><span><a class="t" href="./workspace.html">The workspace<span class="d">Two inputs — a name and a date — and the whole reading, computed in the browser.</span></a></span><span class="p">p. 1</span></li>
-      <li><span class="no">02</span><span><a class="t" href="./tools.html">Four tools<span class="d">Compatibility, the ascendant, name correction, and the twelve months ahead.</span></a></span><span class="p">p. 2</span></li>
-      <li><span class="no">03</span><span><a class="t" href="./transits.html">The sky today<span class="d">Nine grahas against your natal Moon, and the date the slow ones change sign.</span></a></span><span class="p">p. 3</span></li>
-      <li><span class="no">04</span><span><a class="t" href="./aa.html">The AA System<span class="d">A second engine with its own mathematics: reduce-to-13, the A-Chart, 117 bindings, 15 macro-charts.</span></a></span><span class="p">p. 4</span></li>
-      <li><span class="no">05</span><span><a class="t" href="./engine.html">Every table<span class="d">The constants the engine holds, printed whole, with the source behind each.</span></a></span><span class="p">p. 5</span></li>
-      <li><span class="no">06</span><span><a class="t" href="./method.html">The method<span class="d">Eight rules, each with its date and its status: documented, attributed, or inference.</span></a></span><span class="p">p. 6</span></li>
-      <li><span class="no">07</span><span><a class="t" href="./library.html">The library<span class="d">The books behind the rules, and which of them are still in copyright.</span></a></span><span class="p">p. 7</span></li>
+  <!-- nine discs -->
+  <section class="band pad" style="padding-block:1.2rem 2.6rem">
+    <p class="eyebrow">§ 02 · the nine</p>
+    <div class="discs" style="margin-top:1rem">
+      <div class="disc"><div class="circle" style="background:#B07B1E">1</div><div class="label">Sun</div></div><div class="disc"><div class="circle" style="background:#5F7391">2</div><div class="label">Moon</div></div><div class="disc"><div class="circle" style="background:#C0902A">3</div><div class="label">Jupiter</div></div><div class="disc"><div class="circle" style="background:#3A3A6B">4</div><div class="label">Rāhu</div></div><div class="disc"><div class="circle" style="background:#2C7154">5</div><div class="label">Mercury</div></div><div class="disc"><div class="circle" style="background:#A85F73">6</div><div class="label">Venus</div></div><div class="disc"><div class="circle" style="background:#6A6459">7</div><div class="label">Ketu</div></div><div class="disc"><div class="circle" style="background:#28425F">8</div><div class="label">Saturn</div></div><div class="disc"><div class="circle" style="background:#A63A2C">9</div><div class="label">Mars</div></div>
+    </div>
+  </section>
+
+  <!-- contents at scale -->
+  <section class="band pad" style="padding-block:1rem 3rem">
+    <p class="eyebrow">§ 03 · contents</p>
+    <ol class="toc-big" style="margin-top:1rem">
+      <li><span class="no">01</span><span><a class="t" href="./workspace.html">The workspace<span class="d">Two inputs, and the whole reading computed in the browser.</span></a></span><span class="folio">p. 1</span></li>
+      <li><span class="no">02</span><span><a class="t" href="./tools.html">Four tools<span class="d">Compatibility, the ascendant, name correction, the year ahead.</span></a></span><span class="folio">p. 2</span></li>
+      <li><span class="no">03</span><span><a class="t" href="./transits.html">The sky today<span class="d">Nine grahas against your natal Moon, and the next sign changes.</span></a></span><span class="folio">p. 3</span></li>
+      <li><span class="no">04</span><span><a class="t" href="./aa.html">The AA System<span class="d">A second engine: reduce-to-13, 117 bindings, 15 macro-charts.</span></a></span><span class="folio">p. 4</span></li>
+      <li><span class="no">05</span><span><a class="t" href="./engine.html">Every table<span class="d">The constants the engine holds, with the source behind each.</span></a></span><span class="folio">p. 5</span></li>
+      <li><span class="no">06</span><span><a class="t" href="./method.html">The method<span class="d">Eight rules, each dated and marked documented or inference.</span></a></span><span class="folio">p. 6</span></li>
+      <li><span class="no">07</span><span><a class="t" href="./library.html">The library<span class="d">The books behind the rules, and which are still in copyright.</span></a></span><span class="folio">p. 7</span></li>
     </ol>
   </section>
-
-  <!-- feature spread -->
-  <section class="opener">
-    <span class="fig">Ⅰ</span>
-    <div>
-      <p class="eyebrow">The reading</p>
-      <h2 class="big">A number is only worth what its source is worth.</h2>
-    </div>
-  </section>
-
-  <div class="spread">
-    <div>
-      <p class="dropcap">Chaldean numerology reached London in 1926 as a book of numbers with a worked example on the page — John Smith, nine and eight, compound seventeen, root eight. That example is the reason this platform can be checked: the arithmetic is printed, so the engine can be held against it, and it is, in the test suite, on every build.</p>
-      <p>The Indian form keeps seven of those assignments and replaces two: Uranus and Neptune give way to Rāhu and Ketu. The substitution is stated by the author in his own words, which is why the platform prints it as a substitution rather than a discovery.</p>
-    </div>
-    <div>
-      <p>The Lo Shu square is Chinese, and late to Indian practice. It is labelled as Chinese everywhere it appears here, because a square that sums to fifteen on every line is a fact about arithmetic, not a fact about the Vedas.</p>
-      <p>What the platform will not do is print a figure whose rule it cannot name. The digit-to-planet pairing has no classical Sanskrit citation that we could find, so the page where it is used says exactly that.</p>
-    </div>
-  </div>
-
-  <!-- the instrument -->
-  <section class="opener">
-    <span class="fig">Ⅱ</span>
-    <div>
-      <p class="eyebrow">Fig. 1 — the console</p>
-      <h2 class="big">Put in a name and a date.</h2>
-    </div>
-  </section>
-
-  <div class="instrument">
-    <div class="instrument-cap"><span>Reading console</span><span>computed in this browser · nothing uploaded</span></div>
-    <form id="home-form">
-      <div class="form-grid">
-        <label class="field"><span>Full name</span><input type="text" id="home-name" value="John Smith" autocomplete="off"></label>
-        <label class="field"><span>Date of birth</span><input type="date" id="home-date" value="1995-08-29"></label>
-        <div><button class="btn btn-lg" type="submit">Read →</button></div>
-      </div>
-    </form>
-    <div id="home-out" class="mt-6" aria-live="polite"></div>
-    <div class="pill-row">
-      <a class="pill" href="./workspace.html">The full reading</a>
-      <a class="pill" href="./tools.html">Compatibility</a>
-      <a class="pill" href="./aa.html">The AA System</a>
-    </div>
-  </div>
-
-  <!-- three traditions as a printed index -->
-  <section class="opener">
-    <span class="fig">Ⅲ</span>
-    <div>
-      <p class="eyebrow">The three layers</p>
-      <h2 class="big">Named separately, never blended.</h2>
-    </div>
-  </section>
-  <div>
-    <div class="index-row"><span class="num">01</span><div><h3>Chaldean arithmetic</h3>
-      <p>Letter values, the compound numbers 10–52, single-digit reduction — verified against the worked example in the book itself.</p>
-      <span class="tag">Cheiro · London 1926</span></div></div>
-    <div class="index-row"><span class="num">02</span><div><h3>Graha-numerology</h3>
-      <p>Nine digits for nine planets, with Rāhu and Ketu in place of Uranus and Neptune — a substitution the source states in its own words.</p>
-      <span class="tag">Johari · Delhi 1990</span></div></div>
-    <div class="index-row"><span class="num">03</span><div><h3>The Lo Shu square</h3>
-      <p>Placement, plane lines, missing and amplified digits — Chinese in origin, and labelled as Chinese everywhere here.</p>
-      <span class="tag">Chinese · 4th c. BCE</span></div></div>
-  </div>
-
-
-  <section class="opener">
-    <span class="fig">Ⅳ</span>
-    <div>
-      <p class="eyebrow">Nine tools, nine grahas</p>
-      <h2 class="big">Everything the platform computes.</h2>
-    </div>
-  </section>
-
-  <div class="tiles">
-    <a class="tile" href="./workspace.html" style="background:linear-gradient(160deg, #FBF0DA, #F6E3BE)">
-      <span class="go">→</span>
-      <span class="num" style="color:var(--n1)">1</span>
-      <div class="name">The workspace</div>
-      <div class="desc">Name and date; the whole reading</div>
-    </a><a class="tile" href="./workspace.html#timing" style="background:linear-gradient(160deg, #E8EDF3, #D7E0EC)">
-      <span class="go">→</span>
-      <span class="num" style="color:var(--n2)">2</span>
-      <div class="name">Daśā</div>
-      <div class="desc">Vimśottarī, computed from the Moon</div>
-    </a><a class="tile" href="./tools.html" style="background:linear-gradient(160deg, #FBF3D8, #F5E7B8)">
-      <span class="go">→</span>
-      <span class="num" style="color:var(--n3)">3</span>
-      <div class="name">Tools</div>
-      <div class="desc">Compatibility, lagna, names, year</div>
-    </a><a class="tile" href="./aa.html" style="background:linear-gradient(160deg, #E7E5F0, #D6D3E6)">
-      <span class="go">→</span>
-      <span class="num" style="color:var(--n4)">4</span>
-      <div class="name">The AA System</div>
-      <div class="desc">Reduce-to-13, 117 bindings, 15 charts</div>
-    </a><a class="tile" href="./workspace.html#grahas" style="background:linear-gradient(160deg, #E1EFE7, #CDE3D8)">
-      <span class="go">→</span>
-      <span class="num" style="color:var(--n5)">5</span>
-      <div class="name">Grahas</div>
-      <div class="desc">Nine planets, gochara, lagna</div>
-    </a><a class="tile" href="./transits.html" style="background:linear-gradient(160deg, #F6E7EC, #EFD6DF)">
-      <span class="go">→</span>
-      <span class="num" style="color:var(--n6)">6</span>
-      <div class="name">Transits</div>
-      <div class="desc">The sky today against your Moon</div>
-    </a><a class="tile" href="./engine.html" style="background:linear-gradient(160deg, #EDEBE6, #E0DDD5)">
-      <span class="go">→</span>
-      <span class="num" style="color:var(--n7)">7</span>
-      <div class="name">Every table</div>
-      <div class="desc">The constants, printed whole</div>
-    </a><a class="tile" href="./method.html" style="background:linear-gradient(160deg, #E3EAF2, #D2DEEC)">
-      <span class="go">→</span>
-      <span class="num" style="color:var(--n8)">8</span>
-      <div class="name">Method</div>
-      <div class="desc">Eight rules, each dated</div>
-    </a><a class="tile" href="./library.html" style="background:linear-gradient(160deg, #F7E6E2, #F0D5CE)">
-      <span class="go">→</span>
-      <span class="num" style="color:var(--n9)">9</span>
-      <div class="name">Library</div>
-      <div class="desc">The books behind the rules</div>
-    </a>
-  </div>
-
-  <section style="margin-top:2.4rem">
-    <div class="offer">
-      <div>
-        <p class="eyebrow">The printed reading</p>
-        <h2>A reading you can hand to someone.</h2>
-        <p>Twenty-four pages: the three numbers, the Lo Shu grid with its planes, the daśā with dates, the grahas and the yogas — each figure with the rule and the source behind it. Set in Newsreader, printed to PDF.</p>
-        <p class="price">24 pages · English · ₹0 · generated in your browser</p>
-        <a class="cta" href="./workspace.html">Build the reading →</a>
-      </div>
-      <div class="books">
-        <div class="b b1"><span>Aṅkita<br>Reading<br>No. 1</span></div>
-        <div class="b b2"><span>Tables<br>&amp; Sources</span></div>
-        <div class="stamp">PRINT</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="rule-diamond"><i></i></div>
-
-  <section class="band-dark" style="display:none"></section>
 </main>
 
 <footer class="site-footer">
