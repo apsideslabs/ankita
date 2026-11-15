@@ -6,6 +6,8 @@ import {
   apsTimeline, coreSelf, moonSidereal, nameNumbers, station,
   personalLunarYear, personalLunarMonth, personalLunarDay, REALMS,
 } from '@/lib/engine/aa';
+import { buildAChart } from '@/lib/engine/aa/charts';
+import { SPHIRAS } from '@/lib/engine/aa/sphiras';
 
 export function AARing({ core }: { core: number }) {
   const r = 62, cx = 80, cy = 80;
@@ -50,7 +52,8 @@ export function AAConsole() {
     const ply = personalLunarYear(d, m, y, now.getFullYear());
     const plm = personalLunarMonth(ply, now.getMonth() + 1);
     const pld = personalLunarDay(plm, now.getDate());
-    return { cs, nm, moon, st, aps, ply, plm, pld, date };
+    const chart = buildAChart({ name, date, hour: Number(hour) || 12 });
+    return { cs, nm, moon, st, aps, ply, plm, pld, date, chart };
   }, [go, name, date, hour]);
 
   const today = new Date().toISOString().slice(0, 10);
@@ -155,6 +158,53 @@ export function AAConsole() {
                 <p className="font-serif text-2xl font-bold text-ink tabular-nums">{v}</p>
               </div>
             ))}
+          </div>
+
+          {/* The A-Chart — thirteen Axiom Laws */}
+          <div className="px-5 sm:px-7 py-5 border-t border-line">
+            <div className="flex items-baseline justify-between">
+              <p className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-muted">The A-Chart · thirteen laws</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink-muted">mod13</p>
+            </div>
+            <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+              {out.chart.values.map((v) => (
+                <div key={v.law} className="rounded-lg border border-line bg-canvas/50 px-3 py-2.5">
+                  <div className="flex items-baseline justify-between">
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-ink-muted">{v.law}</span>
+                    <span className="font-serif text-2xl font-bold text-copper tabular-nums leading-none">{v.value}</span>
+                  </div>
+                  <p className="mt-1 text-[10px] text-ink truncate">{SPHIRAS[v.sphira - 1].name}</p>
+                  <p className="text-[9px] text-ink-muted truncate">{SPHIRAS[v.sphira - 1].planet}</p>
+                </div>
+              ))}
+            </div>
+
+            <details className="mt-4">
+              <summary className="cursor-pointer font-mono text-[10px] uppercase tracking-[0.16em] text-copper">
+                Seeds and derivations
+              </summary>
+              <table className="mt-3 w-full text-xs">
+                <tbody className="divide-y divide-line">
+                  {out.chart.seeds.map((sd) => (
+                    <tr key={sd.key}>
+                      <td className="py-1.5 pr-3 font-mono text-[10px] text-ink-muted w-24">{sd.key}</td>
+                      <td className="py-1.5 pr-3 text-ink">{sd.label}</td>
+                      <td className="py-1.5 pr-3 text-ink-soft font-mono text-[10px]">{sd.derivation}</td>
+                      <td className="py-1.5 pr-3 text-right font-serif font-bold text-ink tabular-nums w-10">{sd.value}</td>
+                      <td className="py-1.5 text-right w-20">
+                        <span className={`text-[9px] font-mono uppercase tracking-wider ${
+                          sd.status === 'documented' ? 'text-emerald-700' : 'text-amber-700'
+                        }`}>{sd.status}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="mt-2 text-[11px] leading-relaxed text-ink-muted">
+                The source document defines D1 and N1 explicitly. The remaining seeds are named in the
+                laws but never defined; this engine derives each from the four canonical inputs and says so.
+              </p>
+            </details>
           </div>
         </div>
       )}

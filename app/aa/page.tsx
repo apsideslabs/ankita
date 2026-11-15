@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { AAConsole } from '@/components/aa/AAConsole';
 import { Ornament } from '@/components/ui/ornament';
 import { APS_LORDS, DIGNITY, REALMS, STATIONS } from '@/lib/engine/aa';
+import { SPHIRAS } from '@/lib/engine/aa/sphiras';
+import { FORMULAS } from '@/lib/engine/aa/formulas';
 
 export const metadata: Metadata = {
   title: 'The AA System',
@@ -122,6 +124,56 @@ export default function AAPage() {
                 <div key={s} className="flex gap-2 py-0.5"><span className="font-mono text-copper w-5 text-right">{i + 1}</span><span className="text-ink-soft truncate">{s}</span></div>
               ))}
             </div>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <div className="kicker"><span className="n">III</span><span>The thirteen Sphiras</span></div>
+          <h3 className="h2-ed mt-4">Every field, as the master table gives it.</h3>
+          <div className="mt-5 overflow-hidden rounded-xl border border-line bg-surface">
+            <table className="w-full text-sm">
+              <thead><tr className="bg-canvas border-b border-line text-left">
+                {['#', 'Sphira', 'Core', 'Vector', 'Traits', 'Shadow'].map((h) => (
+                  <th key={h} className="px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-ink-muted">{h}</th>
+                ))}
+              </tr></thead>
+              <tbody className="divide-y divide-line">
+                {SPHIRAS.map((sp) => (
+                  <tr key={sp.n} className="align-top">
+                    <td className="px-3 py-2 font-serif font-bold text-copper tabular-nums">{sp.n}</td>
+                    <td className="px-3 py-2 text-ink whitespace-nowrap">{sp.name}</td>
+                    <td className="px-3 py-2 text-ink-soft text-xs">{sp.core}</td>
+                    <td className="px-3 py-2 text-ink-soft text-xs">{sp.planet}</td>
+                    <td className="px-3 py-2 text-ink-soft text-xs">{sp.traits}</td>
+                    <td className="px-3 py-2 text-ink-muted text-xs">{sp.shadow}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <div className="kicker"><span className="n">IV</span><span>The 117 bindings</span></div>
+          <h3 className="h2-ed mt-4">The formula index, transcribed whole.</h3>
+          <p className="lede mt-3">
+            Each binding names its inputs. Where the source supplies the arithmetic, the engine implements it;
+            where it names a seed without defining it, the seed is derived and labelled.
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {Object.entries(
+              FORMULAS.reduce((acc, f) => { (acc[f.domain] ||= []).push(f); return acc; }, {} as Record<string, typeof FORMULAS>)
+            ).map(([domain, list]) => (
+              <div key={domain} className="rounded-xl border border-line bg-surface p-4">
+                <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-copper">{domain}</p>
+                <p className="mt-0.5 text-[10px] text-ink-muted">F{list[0].id}–F{list[list.length - 1].id}</p>
+                <ul className="mt-2 space-y-1 text-[11px] text-ink-soft">
+                  {list.map((f) => (
+                    <li key={f.id} className="flex gap-2"><span className="font-mono text-ink-muted w-8 shrink-0">{f.id}</span><span className="truncate">{f.name}</span></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 

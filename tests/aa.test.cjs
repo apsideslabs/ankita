@@ -99,3 +99,52 @@ test('dignity scores follow the Codex table', () => {
   assert.equal(aa.dignityScore('Sol', 7), 10);    // debilitated
   assert.equal(aa.dignityScore('Luna', 8), 10);
 });
+
+const charts = require('../.test-build/aa/charts.js');
+
+test('mod13 is the document’s canonical reduction', () => {
+  assert.equal(charts.mod13(40), 1);
+  assert.equal(charts.mod13(13), 13);
+  assert.equal(charts.mod13(14), 1);
+  assert.equal(charts.mod13(26), 13);
+  assert.equal(charts.mod13(0), 13);
+});
+
+test('the A-Chart produces thirteen values, all inside 1-13', () => {
+  const c = charts.buildAChart({ name: 'Binay Das', date: '2009-03-03', hour: 23, minute: 51 });
+  assert.equal(c.values.length, 13);
+  for (const v of c.values) assert.ok(v.value >= 1 && v.value <= 13, v.law + ' = ' + v.value);
+});
+
+test('A13 is the sum of A1-A12 reduced mod13', () => {
+  const c = charts.buildAChart({ name: 'Binay Das', date: '2009-03-03' });
+  const sum = c.values.slice(0, 12).reduce((s, v) => s + v.value, 0);
+  assert.equal(c.values[12].value, charts.mod13(sum));
+});
+
+test('seeds are marked documented or derived, never silently invented', () => {
+  const c = charts.buildAChart({ name: 'Binay Das', date: '2009-03-03' });
+  const documented = c.seeds.filter((s) => s.status === 'documented').map((s) => s.key);
+  assert.deepEqual(documented, ['D1', 'N1']);
+  assert.ok(c.seeds.every((s) => s.derivation.length > 3));
+});
+
+test('the same input always yields the same chart', () => {
+  const a = charts.buildAChart({ name: 'Binay Das', date: '2009-03-03', hour: 23, minute: 51 });
+  const b = charts.buildAChart({ name: 'Binay Das', date: '2009-03-03', hour: 23, minute: 51 });
+  assert.deepEqual(a.values.map((v) => v.value), b.values.map((v) => v.value));
+});
+
+test('the 117 formulas are all transcribed', () => {
+  const { FORMULAS } = require('../.test-build/aa/formulas.js');
+  assert.equal(FORMULAS.length, 117);
+  assert.equal(FORMULAS[0].name, 'Life Seed Constant');
+  assert.equal(FORMULAS[116].name, 'Ultimate Axion Confluence');
+});
+
+test('the 13 Sphiras are all transcribed', () => {
+  const { SPHIRAS } = require('../.test-build/aa/sphiras.js');
+  assert.equal(SPHIRAS.length, 13);
+  assert.equal(SPHIRAS[0].name, 'Origin');
+  assert.equal(SPHIRAS[12].name, 'Axion');
+});
