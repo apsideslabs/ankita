@@ -339,3 +339,83 @@ h2.big { font-family: var(--sans); font-weight: 800; letter-spacing: -.035em; fo
 .tlbar .seg span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 .3rem; }
 .tlbar .seg.now { outline: 2px solid #171614; outline-offset: -2px; }
 .tlscale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 9px; color: #A39C8E; margin-top: .35rem; }
+
+/* ==========================================================================
+   Mobile-first header and responsive guards.
+   ========================================================================== */
+
+body { overflow-x: hidden; }
+html, body { max-width: 100%; }
+
+/* header: brand + burger on small screens */
+.burger { display: none; margin-left: auto; width: 40px; height: 40px; border: 1px solid #EADFCC;
+  background: #fff; border-radius: 10px; cursor: pointer; padding: 10px 9px; }
+.burger span { display: block; height: 2px; background: #3F3A33; border-radius: 2px; margin: 4px 0; transition: transform .2s var(--ease), opacity .2s var(--ease); }
+.menu-open .burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-open .burger span:nth-child(2) { opacity: 0; }
+.menu-open .burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.mobile-menu { display: none; border-top: 1px solid #EADFCC; background: #fff; padding: .6rem clamp(1.25rem,4vw,4.5rem) 1rem; }
+.mobile-menu a { display: block; padding: .7rem 0; border-bottom: 1px solid #F1E7D8;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+.mobile-menu a[aria-current="page"] { color: var(--copper); }
+.mobile-menu .mm-cta { display: flex; gap: .6rem; padding-top: .8rem; flex-wrap: wrap; }
+
+@media (max-width: 899px) {
+  .site-header .inner { flex-wrap: nowrap; gap: .75rem; }
+  .site-header .nav { display: none; }
+  .site-header .header-cta { display: none; }
+  .burger { display: block; }
+  .menu-open .mobile-menu { display: block; }
+  .brand-sub { display: none; }
+  .brand-word { font-size: 1.05rem; }
+}
+
+/* top banner: compact on small screens */
+@media (max-width: 640px) {
+  .topbar .inner { flex-wrap: wrap; gap: .5rem; }
+  .topbar p { font-size: .8rem; flex: 1 1 100%; }
+  .topbar a { margin-left: auto; }
+}
+
+/* every two-column layout collapses */
+@media (max-width: 899px) {
+  .grid-2 { grid-template-columns: 1fr !important; gap: 1.5rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .triple { grid-template-columns: 1fr; }
+  .dash { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* tables never break the page: they scroll inside their own box */
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { min-width: 0; }
+
+@media (max-width: 700px) {
+  table { font-size: .82rem; }
+  thead th, tbody td { padding-right: .6rem; }
+  .bar { grid-template-columns: 6rem 1fr 2.6rem; gap: .5rem; }
+  .bar .name { font-size: 9px; letter-spacing: .06em; }
+  .dash .huge { font-size: clamp(4.5rem, 22vw, 7rem); }
+  .loshu { max-width: 100%; }
+  .tlbar { height: 38px; }
+  .tlbar .seg span { font-size: 7px; }
+  .form-grid { grid-template-columns: 1fr !important; }
+  .pad { padding-inline: 1rem; }
+  .card { padding: 1rem; border-radius: 14px; }
+  .hero h1 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+  .masthead-name { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+  .site-footer { padding-block: 1.6rem; }
+  .footer-grid { gap: 1.2rem; }
+}
+
+/* wide screens: let the reading breathe */
+@media (min-width: 1600px) {
+  .pad { padding-inline: clamp(2rem, 6vw, 7rem); }
+}
+
+/* ultrawide: cap the measure so text never runs the full 1920 */
+.pad { max-width: 1560px; margin-inline: auto; }
+@media (min-width: 1900px) { .pad { max-width: 1680px; } }
+table { max-width: 100%; }
+.table-narrow td:last-child, .table-narrow th:last-child { max-width: 46rem; }
