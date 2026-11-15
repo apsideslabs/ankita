@@ -9,6 +9,7 @@ import {
 import { buildAChart } from '@/lib/engine/aa/charts';
 import { SPHIRAS } from '@/lib/engine/aa/sphiras';
 import { computeBindings, byDomain } from '@/lib/engine/aa/bindings';
+import { buildMacro } from '@/lib/engine/aa/macro';
 import { CITIES, findCity, parseTime, localMinutes, localMeanMinutes } from '@/lib/engine/aa/inputs';
 
 export function AARing({ core }: { core: number }) {
@@ -67,8 +68,9 @@ export function AAConsole() {
     const input = { name, date, hour: t.hh, minute: t.mm, lat: place.lat, lon: place.lon };
     const chart = buildAChart(input);
     const bindings = computeBindings(input);
+    const macro = buildMacro(input);
 
-    return { cs, nm, moon, st, aps, ply, plm, pld, chart, bindings, place, t, minutes, lmt };
+    return { cs, nm, moon, st, aps, ply, plm, pld, chart, bindings, macro, place, t, minutes, lmt };
   }, [go, name, date, time, city, tz]);
 
   return (
@@ -195,6 +197,45 @@ export function AAConsole() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* The 15 macro-charts */}
+          <div className="px-5 sm:px-7 py-5 border-t border-line">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <p className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-muted">The 15 macro-charts · C1–C15</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink-muted">MY {out.macro.macroYear} · MM {out.macro.microMonth}</p>
+            </div>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {out.macro.charts.map((c) => (
+                <div key={c.id} className="border border-line bg-canvas/40 px-3 py-2.5">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-ink-muted">{c.id}</span>
+                    <span className="font-serif text-2xl font-semibold text-copper tabular-nums leading-none">{c.value}</span>
+                  </div>
+                  <p className="mt-1 font-serif text-sm font-semibold text-ink">{c.name}</p>
+                  <p className="font-mono text-[9px] text-ink-muted leading-tight mt-0.5 break-words">{c.formula}</p>
+                  <p className="mt-1 text-[10px] text-ink-soft leading-snug">{c.reading}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-4 border-t border-line pt-4">
+              {[
+                ['Vitality (CVS)', out.macro.health.cvs],
+                ['Acute risk flag', out.macro.health.arf ? 'yes' : 'no'],
+                ['Chronic residue (CRI)', out.macro.health.cri],
+                ['Remedy number (RN₁)', out.macro.health.rn[0]],
+              ].map(([l, v]) => (
+                <div key={String(l)}>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink-muted">{l}</p>
+                  <p className="font-serif text-2xl font-semibold text-ink tabular-nums">{v}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-[11px] leading-relaxed text-ink-muted">
+              Sub-terms follow the document: Pair(n) = 13 − n, SCLᵢ = mod13(Cycleᵢ + weekday + segment),
+              SSFᵢ = mod13(max(0, A11 − A12) + Pair(SHSᵢ)), LHIᵢ, OLWᵢ and PFSᵢ exactly as printed.
+              The macro-year is MY = mod13(D1 + T1 + P1 + N1).
+            </p>
           </div>
 
           {/* The 117 bindings, computed */}

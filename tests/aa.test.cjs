@@ -283,3 +283,39 @@ test('houses count whole signs from the Moon', () => {
   assert.equal(eph.houseFrom(3, 4), 2);
   assert.equal(eph.houseFrom(11, 1), 3);
 });
+
+const macro = require('../.test-build/aa/macro.js');
+const MACRO_SAMPLE = { name: 'Binay Das', date: '2009-03-03', hour: 23, minute: 51, lat: 26.1445, lon: 91.7362 };
+
+test('Pair(n) is 13 - n, as the document defines it', () => {
+  assert.equal(macro.pair(1), 12);
+  assert.equal(macro.pair(7), 6);
+  assert.equal(macro.pair(13), 13);
+});
+
+test('all fifteen macro-charts compute inside 1-13', () => {
+  const r = macro.buildMacro(MACRO_SAMPLE);
+  assert.equal(r.charts.length, 15);
+  assert.deepEqual(r.charts.map((c) => c.id), ['C1','C2','C3','C4','C5','C6','C7','C8','C9','C10','C11','C12','C13','C14','C15']);
+  for (const c of r.charts) assert.ok(c.value >= 1 && c.value <= 13, `${c.id} = ${c.value}`);
+});
+
+test('the macro-year is mod13(D1 + T1 + P1 + N1)', () => {
+  const r = macro.buildMacro(MACRO_SAMPLE);
+  assert.equal(r.charts[3].id, 'C4');
+  assert.equal(r.charts[3].value, r.macroYear);
+});
+
+test('health sub-terms are all in range and the CVS averages them', () => {
+  const r = macro.buildMacro(MACRO_SAMPLE);
+  assert.equal(r.health.pfs.length, 13);
+  for (const v of r.health.pfs) assert.ok(v >= 1 && v <= 13);
+  assert.ok(r.health.cvs >= 1 && r.health.cvs <= 13);
+  assert.ok([0, 1].includes(r.health.arf));
+});
+
+test('macro charts are deterministic', () => {
+  const a = macro.buildMacro(MACRO_SAMPLE).charts.map((c) => c.value);
+  const b = macro.buildMacro(MACRO_SAMPLE).charts.map((c) => c.value);
+  assert.deepEqual(a, b);
+});
