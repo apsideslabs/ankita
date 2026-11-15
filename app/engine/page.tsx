@@ -38,7 +38,7 @@ export default function EnginePage() {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10">
+    <div className="band band-pad">
       <div className="max-w-3xl">
         <div className="kicker"><span className="n">Engine</span></div>
         <h1 className="page-title mt-4">Every table, printed in full</h1>

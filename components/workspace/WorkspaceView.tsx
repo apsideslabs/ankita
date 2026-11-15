@@ -38,11 +38,11 @@ function Chip({ children, tone = 'default' }: { children: React.ReactNode; tone?
 }
 
 export function WorkspaceView() {
-  const [name, setName] = useState('');
-  const [date, setDate] = useState('');
+  const [name, setName] = useState('John Smith');
+  const [date, setDate] = useState('1995-08-29');
   const [gender, setGender] = useState<BirthInput['gender']>('unspecified');
   const [master, setMaster] = useState(false);
-  const [input, setInput] = useState<BirthInput | null>(null);
+  const [input, setInput] = useState<BirthInput | null>({ name: 'John Smith', date: '1995-08-29', gender: 'unspecified', masterNumbers: false });
   const [tab, setTab] = useState<TabId>('chart');
 
   const result = useMemo(() => (input ? buildProfile(input) : null), [input]);
@@ -69,7 +69,7 @@ export function WorkspaceView() {
 
       {/* Input */}
       <form
-        className="mt-6 rounded-2xl border border-line bg-surface shadow-3d-console p-5 sm:p-6"
+        className="mt-6 border-y border-line-strong py-5"
         onSubmit={(e) => {
           e.preventDefault();
           setInput({ name, date, gender, masterNumbers: master });

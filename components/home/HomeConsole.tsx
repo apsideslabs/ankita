@@ -25,7 +25,7 @@ export function HomeConsole() {
 
   return (
     <div id="console" className="w-full">
-      <div className="rounded-2xl border border-line bg-surface shadow-3d-console overflow-hidden">
+      <div className="border-y border-line-strong bg-transparent">
         <div className="px-5 sm:px-7 py-4 border-b border-line flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <span className="w-2 h-2 rounded-full bg-copper ring-4 ring-copper/15" />

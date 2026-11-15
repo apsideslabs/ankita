@@ -23,7 +23,7 @@ const LAYERS = [
 export default function AAPage() {
   return (
     <div className="w-full">
-      <section className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 pt-12">
+      <section className="band band-pad pt-10">
         <div className="kicker"><span className="n">System II</span><span>The AA System · Axiom Arcana</span></div>
         <h1 className="display mt-6 max-w-3xl">
           A second engine, with <em className="italic text-copper">its own</em> mathematics.
@@ -39,7 +39,7 @@ export default function AAPage() {
 
         <div className="mt-9"><AAConsole /></div>
 
-        <div className="mt-6 rounded-xl border border-line bg-surface p-5">
+        <div className="mt-6 border-y border-line py-4">
           <p className="text-[11px] leading-relaxed text-ink-soft">
             <strong className="text-ink">What is verified:</strong> every rule here is transcribed from the Codex and
             Research Document, and the test suite checks the engine against the worked examples printed in them —
@@ -52,7 +52,7 @@ export default function AAPage() {
 
       <Ornament glyph="१३" />
 
-      <section className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
+      <section className="band band-pad">
         <div className="kicker"><span className="n">I</span><span>Six calculations</span></div>
         <h2 className="h2-ed mt-5 max-w-2xl">What the AA engine actually computes.</h2>
         <div className="mt-8">
@@ -67,12 +67,12 @@ export default function AAPage() {
 
       <Ornament glyph="१३" />
 
-      <section className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 pb-20">
+      <section className="band band-pad pb-16">
         <div className="kicker"><span className="n">II</span><span>The tables</span></div>
         <h2 className="h2-ed mt-5">Everything the engine holds, printed.</h2>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-xl border border-line bg-surface overflow-hidden">
+        <div className="mt-8 grid gap-x-10 gap-y-8 lg:grid-cols-2">
+          <div className="border-y border-line-strong">
             <div className="px-5 py-3 border-b border-line bg-canvas"><h3 className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink">Thirteen realms</h3></div>
             <table className="w-full text-sm"><tbody className="divide-y divide-line">
               {REALMS.map((r, i) => (
@@ -82,7 +82,7 @@ export default function AAPage() {
             </tbody></table>
           </div>
 
-          <div className="rounded-xl border border-line bg-surface overflow-hidden">
+          <div className="border-y border-line-strong">
             <div className="px-5 py-3 border-b border-line bg-canvas"><h3 className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink">Nine forces · 91-year cycle</h3></div>
             <table className="w-full text-sm"><tbody className="divide-y divide-line">
               {APS_LORDS.map((l) => (
@@ -96,7 +96,7 @@ export default function AAPage() {
             </tbody></table>
           </div>
 
-          <div className="rounded-xl border border-line bg-surface overflow-hidden">
+          <div className="border-y border-line-strong">
             <div className="px-5 py-3 border-b border-line bg-canvas"><h3 className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink">Dignity · Axiomatic Shadbala</h3></div>
             <table className="w-full text-sm">
               <thead><tr className="border-b border-line text-left">
@@ -119,7 +119,7 @@ export default function AAPage() {
             <p className="px-5 py-3 border-t border-line text-[11px] text-ink-muted">Scores: exalted 100 · moolatrikona 85 · own 70 · friendly 55 · neutral 45 · enemy 25 · debilitated 10.</p>
           </div>
 
-          <div className="rounded-xl border border-line bg-surface overflow-hidden">
+          <div className="border-y border-line-strong">
             <div className="px-5 py-3 border-b border-line bg-canvas"><h3 className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink">The 27 stations</h3></div>
             <div className="grid grid-cols-3 gap-x-4 px-5 py-3 text-xs">
               {STATIONS.map((s, i) => (
@@ -132,7 +132,7 @@ export default function AAPage() {
         <div className="mt-10">
           <div className="kicker"><span className="n">III</span><span>The thirteen Sphiras</span></div>
           <h3 className="h2-ed mt-4">Every field, as the master table gives it.</h3>
-          <div className="mt-5 overflow-hidden rounded-xl border border-line bg-surface">
+          <div className="mt-5 border-y border-line-strong">
             <table className="w-full text-sm">
               <thead><tr className="bg-canvas border-b border-line text-left">
                 {['#', 'Sphira', 'Core', 'Vector', 'Traits', 'Shadow'].map((h) => (

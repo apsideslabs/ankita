@@ -74,7 +74,7 @@ export function AAConsole() {
   }, [go, name, date, time, city, tz]);
 
   return (
-    <div className="rounded-2xl border border-line bg-surface shadow-3d-console overflow-hidden">
+    <div className="border-y border-line-strong bg-transparent">
       <div className="px-5 sm:px-7 py-4 border-b border-line flex items-center justify-between">
         <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink font-semibold">AA console</h2>
         <span className="font-mono text-[10px] uppercase tracking-wider text-ink-muted">four inputs · N1 · D1 · T1 · P1</span>

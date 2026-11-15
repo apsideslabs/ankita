@@ -35,72 +35,76 @@ const SPECIMEN = [
 export default function HomePage() {
   return (
     <div className="w-full">
-      {/* ── Masthead ───────────────────────────────────────────── */}
-      <section className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 masthead">
-        <h1 className="masthead-name">Aṅkita<span className="dot">.</span></h1>
-        <p className="hero-claim">
-          Numerology with the receipts — <span>three traditions kept apart, every figure dated to the book it came from.</span>
-        </p>
+      {/* ── Masthead: headline left, console right, full width ─── */}
+      <section className="band band-pad pt-10 sm:pt-14">
+        <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14 xl:gap-20 items-start">
+          <div>
+            <h1 className="masthead-name">Aṅkita<span className="dot">.</span></h1>
+            <p className="hero-claim">
+              Numerology with the receipts — <span>three traditions kept apart, every figure dated to the book it came from.</span>
+            </p>
 
-        <div className="specgrid">
-          {[
-            ['Sources dated', '11'],
-            ['Rules in the engine', '38'],
-            ['Tables printed', '9'],
-            ['Engine tests', '35'],
-          ].map(([label, value]) => (
-            <div key={label} className="spec">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m.5 4.5a.5.5 0 0 0-1 0v4l2.8 1.7a.5.5 0 1 0 .5-.86L8.5 7.9z" />
-              </svg>
-              <span><small>{label}</small>{value}</span>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Link href="/workspace" className="action-slab inline-flex items-center gap-2 px-6 py-3 rounded-md text-[11px] font-mono font-semibold uppercase tracking-[0.16em] transition-colors btn-press">
+                Open the workspace <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link href="/method" className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-line-strong text-[11px] font-mono font-semibold uppercase tracking-[0.16em] text-ink hover:border-copper/50 transition-colors">
+                Read the method
+              </Link>
             </div>
-          ))}
-        </div>
 
-        <p className="statement">
-          Every claim sourced. <em>Every number checked.</em>
-        </p>
+            <div className="topics mt-8">
+              <span className="topics-label">Filed under</span>
+              {[['Chaldean', '/method'], ['Graha', '/method'], ['Lo Shu', '/method'], ['Sanskrit', '/tools'], ['AA System', '/aa']].map(([label, href]) => (
+                <Link key={label} href={href} className="chip">{label}</Link>
+              ))}
+            </div>
+          </div>
 
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <Link href="/workspace" className="action-slab inline-flex items-center gap-2 px-6 py-3 rounded-lg text-[11px] font-mono font-semibold uppercase tracking-[0.16em] transition-colors btn-press">
-            Open the workspace <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-          <Link href="/method" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-line-strong bg-surface/70 text-[11px] font-mono font-semibold uppercase tracking-[0.16em] text-ink hover:border-copper/50 transition-colors">
-            Read the method
-          </Link>
-          <Link href="/aa" className="ml-auto text-[11px] font-mono uppercase tracking-[0.16em] text-ink-soft hover:text-copper transition-colors">
-            The AA System →
-          </Link>
-        </div>
-      </section>
-
-      {/* Filed under */}
-      <section className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 mt-8">
-        <div className="topics">
-          <span className="topics-label">Filed under</span>
-          {[
-            ['Chaldean', '/method'], ['Graha-numerology', '/method'], ['Lo Shu', '/method'],
-            ['Sanskrit codes', '/tools'], ['The AA System', '/aa'], ['Provenance', '/library'],
-          ].map(([label, href]) => (
-            <Link key={label} href={href} className="chip">{label}</Link>
-          ))}
+          <div>
+            <div className="flex items-baseline justify-between mb-2">
+              <span className="plate-cap">Fig. 1 — reading console</span>
+              <span className="plate-cap">computes locally</span>
+            </div>
+            <HomeConsole />
+            <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] text-ink-soft">
+              {['Mūlāṅka · bhāgyāṅka · nāmāṅka', 'Compound 10–52', 'Lo Shu grid and planes',
+                'Vimśottarī daśā', 'Graha positions and gochara', 'The AA System, C1–C15'].map((x) => (
+                <li key={x} className="flex gap-2 border-t border-line pt-1.5">
+                  <span className="text-copper">→</span>{x}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* Console */}
-      <section className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 mt-10">
-        <div className="flex items-baseline justify-between mb-2">
-          <span className="plate-cap">Fig. 1 — reading console</span>
-          <span className="plate-cap">computes locally</span>
+      {/* ── Dark band: the statement and the counts ────────────── */}
+      <section className="band band-dark mt-14 py-12">
+        <div className="band-pad grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <p className="statement" style={{ color: '#F2EDE3', margin: 0 }}>
+            Every claim sourced. <em style={{ color: '#E08A5B' }}>Every number checked.</em>
+          </p>
+          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-y-5">
+            {[
+              ['Sources dated', '11'],
+              ['Rules', '38'],
+              ['Tables', '9'],
+              ['Tests', '56'],
+            ].map(([label, value]) => (
+              <div key={label}>
+                <dt className="font-mono text-[9px] uppercase tracking-[0.18em]" style={{ color: 'rgba(242,237,227,.55)' }}>{label}</dt>
+                <dd className="mt-1 font-serif text-3xl font-semibold" style={{ color: '#F2EDE3' }}>{value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-        <HomeConsole />
       </section>
 
       <Ornament glyph="अं" />
 
       {/* ── The three layers, as an index ──────────────────────── */}
-      <section className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
+      <section className="band band-pad">
         <div className="kicker">
           <span className="n">I</span>
           <span>What the numbers are made of</span>
@@ -126,7 +130,7 @@ export default function HomePage() {
       <Ornament glyph="॥" />
 
       {/* ── What it computes ───────────────────────────────────── */}
-      <section className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
+      <section className="band band-pad">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>
             <div className="kicker">

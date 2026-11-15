@@ -179,7 +179,7 @@ body::after {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin: 4rem auto;
+  margin: 2.5rem auto;
   max-width: 20rem;
 }
 .orn::before,
@@ -344,3 +344,20 @@ body::after {
   transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 .chip:hover { border-color: rgba(139,47,11,.45); color: var(--color-copper); }
+
+
+/* ── Bands: full-bleed sections, no floating white cards ───────────────── */
+.band { width: 100%; }
+.band-pad { padding-inline: clamp(1.25rem, 4vw, 4.5rem); }
+.band-dark {
+  background: #171614;
+  color: #F2EDE3;
+  background-image: radial-gradient(circle at 20% 10%, rgba(139,47,11,.35), transparent 55%);
+}
+.band-dark .kicker { color: #C8794F; }
+.band-dark .kicker::after { background: linear-gradient(90deg, rgba(242,237,227,.28), transparent 85%); }
+.band-rule { border-top: 1px solid var(--color-line); }
+
+/* Flatten the cards: hairlines on paper, not white boxes */
+.specgrid { background: transparent; border: 0; border-top: 1px solid var(--color-line-strong); border-bottom: 1px solid var(--color-line); border-radius: 0; }
+.spec { background: transparent; padding: 1rem 1.1rem 1rem 0; }

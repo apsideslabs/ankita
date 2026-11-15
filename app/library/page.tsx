@@ -67,7 +67,7 @@ const TONE = { verified: 'text-emerald-700', attributed: 'text-amber-700', unver
 
 export default function LibraryPage() {
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10">
+    <div className="band band-pad">
       <div className="max-w-3xl">
         <div className="kicker"><span className="n">Library</span></div>
         <h1 className="page-title mt-4">What the engine is made of</h1>
