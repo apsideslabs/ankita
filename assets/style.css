@@ -460,3 +460,22 @@ table { max-width: 100%; }
 .nine .n { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; line-height: 1; }
 .nine .g { font-family: var(--mono); font-size: 7.5px; letter-spacing: .1em; text-transform: uppercase; color: #8B8578; margin-top: .3rem; }
 @media (max-width: 700px) { .nine { grid-template-columns: repeat(3, 1fr); } }
+
+
+/* ==========================================================================
+   Print: a reading should leave the screen cleanly.
+   ========================================================================== */
+@media print {
+  .topbar, .site-header, .site-footer, .burger, .mobile-menu, .btn, .pill-row, .pill,
+  .strip, .hero .wheel, .no-print { display: none !important; }
+  body { background: #fff !important; color: #000; font-size: 11pt; }
+  body::after { display: none; }
+  .hero, .grad-warm, .band-dark, .card, .dash > div, .rcard { background: #fff !important; color: #000 !important; box-shadow: none !important; border-color: #999 !important; }
+  .band-dark .statement, .band-dark dd, .band-dark dt { color: #000 !important; }
+  a { color: #000; text-decoration: none; }
+  table { page-break-inside: avoid; }
+  h1, h2, h3 { page-break-after: avoid; }
+  .dash .huge { font-size: 54pt !important; color: #000 !important; }
+  .nine > div { border: 1px solid #999; }
+  @page { margin: 16mm; }
+}

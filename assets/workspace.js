@@ -225,7 +225,34 @@ function render() {
 }
 
 tabs.forEach((t) => t.addEventListener('click', (e) => { e.preventDefault(); tab = t.dataset.tab; render(); }));
-form.addEventListener('submit', (e) => { e.preventDefault(); profile = compute(); render(); });
+const KEY = 'ankita.readings';
+
+function loadSaved() {
+  try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; }
+}
+function saveReading() {
+  if (!profile) return;
+  const list = loadSaved();
+  const entry = { name: profile.input.name, date: profile.input.date, at: new Date().toISOString() };
+  if (!list.some((x) => x.name === entry.name && x.date === entry.date)) list.unshift(entry);
+  localStorage.setItem(KEY, JSON.stringify(list.slice(0, 12)));
+  renderSaved();
+}
+function renderSaved() {
+  const list = loadSaved();
+  const box = document.getElementById('ws-saved');
+  if (!box) return;
+  box.innerHTML = list.length ? list.map((x) => `<button class="pill saved" data-name="${x.name.replace(/"/g,'&quot;')}" data-date="${x.date}">${x.name} · ${x.date}</button>`).join('')
+    : '<span class="small">No saved readings yet.</span>';
+  box.querySelectorAll('.saved').forEach((b) => b.addEventListener('click', () => {
+    document.getElementById('ws-name').value = b.dataset.name;
+    document.getElementById('ws-date').value = b.dataset.date;
+    profile = compute(); render();
+  }));
+}
+
+form.addEventListener('submit', (e) => { e.preventDefault(); profile = compute(); render(); saveReading(); });
+renderSaved();
 
 profile = compute();
 render();

@@ -1,5 +1,6 @@
 import { compatibility, nameOptions, yearAhead, chartWithLagna } from './engine/extras.js';
 import { CITIES, findCity, parseTime } from './engine/aa/inputs.js';
+import { findYogas } from './engine/yogas.js';
 
 const NCOLOUR = {1:'var(--n1)',2:'var(--n2)',3:'var(--n3)',4:'var(--n4)',5:'var(--n5)',6:'var(--n6)',7:'var(--n7)',8:'var(--n8)',9:'var(--n9)'};
 const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -37,6 +38,7 @@ document.getElementById('l-go').addEventListener('click', () => {
   const city = findCity(place.value.split(',')[0]) || CITIES[0];
   const hourUTC = t.hh + t.mm / 60 - 5.5;
   const { asc, grahas } = chartWithLagna(date, hourUTC, city.lat, city.lon);
+  const yogas = findYogas(asc.sign, grahas);
   document.getElementById('l-out').innerHTML = `
     <div class="card">
       <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
@@ -48,6 +50,16 @@ document.getElementById('l-go').addEventListener('click', () => {
       <table class="mt-6"><thead><tr><th>Graha</th><th>Rāśi</th><th>House from lagna</th><th>Degree</th></tr></thead>
       <tbody>${grahas.map((g) => `<tr><td>${g.name}</td><td>${g.signName}</td>
         <td class="mono" style="color:${col(g.house)}">${g.house}</td><td class="mono">${g.degreeInSign.toFixed(2)}°</td></tr>`).join('')}</tbody></table>
+      ${yogas.length ? `<p class="panel-title mt-8" style="font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-muted)">Yogas found</p>
+      <div style="display:grid;gap:.6rem;margin-top:.6rem">
+        ${yogas.map((y) => `<div class="rcard">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:1rem">
+            <div style="font-family:var(--serif);font-size:1.2rem;font-weight:600">${esc(y.name)} <span style="font-family:var(--serif);color:var(--copper);font-size:1rem">${esc(y.sanskrit)}</span></div>
+            <span class="mono" style="font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#15803d">${y.strength}</span>
+          </div>
+          <p class="small" style="margin:.3rem 0 0"><b>Rule:</b> ${esc(y.rule)}</p>
+          <p class="small" style="margin:.2rem 0 0">${esc(y.result)}</p></div>`).join('')}
+      </div>` : `<p class="small mt-6">No named yoga fires in this chart. Most charts have none.</p>`}
       <p class="small mt-4">Whole-sign houses from the ascendant. The ascendant moves about one degree every four minutes, so the birth time matters here as it does not for the planets.</p>
     </div>`;
 });
@@ -89,3 +101,6 @@ document.getElementById('y-go').addEventListener('click', () => {
         <td class="small">${esc(mo.note)}</td></tr>`).join('')}</tbody></table>
     </div>`;
 });
+
+/* run the ascendant once on load so the page is never empty */
+document.getElementById('l-go').click();
