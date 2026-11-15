@@ -35,64 +35,66 @@ const SPECIMEN = [
 export default function HomePage() {
   return (
     <div className="w-full">
-      {/* ── Hero ───────────────────────────────────────────────── */}
-      <section className="relative w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 pt-12 sm:pt-16">
-        <div className="kicker">
-          <span className="n">Aṅkita</span>
-          <span>{SITE_CONFIG.devanagari} · numerology workstation</span>
+      {/* ── Masthead ───────────────────────────────────────────── */}
+      <section className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 masthead">
+        <h1 className="masthead-name">Aṅkita<span className="dot">.</span></h1>
+        <p className="hero-claim">
+          Numerology with the receipts — <span>three traditions kept apart, every figure dated to the book it came from.</span>
+        </p>
+
+        <div className="specgrid">
+          {[
+            ['Sources dated', '11'],
+            ['Rules in the engine', '38'],
+            ['Tables printed', '9'],
+            ['Engine tests', '35'],
+          ].map(([label, value]) => (
+            <div key={label} className="spec">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m.5 4.5a.5.5 0 0 0-1 0v4l2.8 1.7a.5.5 0 1 0 .5-.86L8.5 7.9z" />
+              </svg>
+              <span><small>{label}</small>{value}</span>
+            </div>
+          ))}
         </div>
 
-        <h1 className="display mt-7 max-w-4xl">
-          Every number,
-          <br />
-          with its <em className="italic text-copper">source</em> attached.
-        </h1>
-
-        <p className="lede mt-6">
-          Three traditions are usually sold as one. Aṅkita keeps them apart: the Chaldean letter
-          table of 1926, the Indian graha scheme of 1990, and a Chinese number square — each figure
-          printed with the date and the book it came from.
+        <p className="statement">
+          Every claim sourced. <em>Every number checked.</em>
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <Link
-            href="/workspace"
-            className="action-slab inline-flex items-center gap-2 px-6 py-3 rounded-lg text-[11px] font-mono font-semibold uppercase tracking-[0.16em] transition-colors btn-press"
-          >
+          <Link href="/workspace" className="action-slab inline-flex items-center gap-2 px-6 py-3 rounded-lg text-[11px] font-mono font-semibold uppercase tracking-[0.16em] transition-colors btn-press">
             Open the workspace <ArrowRight className="w-3.5 h-3.5" />
           </Link>
-          <Link
-            href="/method"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-line-strong bg-surface/70 text-[11px] font-mono font-semibold uppercase tracking-[0.16em] text-ink hover:border-copper/50 transition-colors"
-          >
+          <Link href="/method" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-line-strong bg-surface/70 text-[11px] font-mono font-semibold uppercase tracking-[0.16em] text-ink hover:border-copper/50 transition-colors">
             Read the method
           </Link>
-          <Link
-            href="/engine"
-            className="ml-auto text-[11px] font-mono uppercase tracking-[0.16em] text-ink-soft hover:text-copper transition-colors"
-          >
-            Every table →
+          <Link href="/aa" className="ml-auto text-[11px] font-mono uppercase tracking-[0.16em] text-ink-soft hover:text-copper transition-colors">
+            The AA System →
           </Link>
         </div>
+      </section>
 
-        {/* Specimen strip */}
-        <dl className="mt-12 grid grid-cols-2 sm:grid-cols-4 border-y border-line divide-x divide-line">
-          {SPECIMEN.map(([label, value]) => (
-            <div key={label} className="px-4 py-4 first:pl-0">
-              <dt className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-muted">{label}</dt>
-              <dd className="mt-1 font-serif text-2xl font-bold text-ink tabular-nums">{value}</dd>
-            </div>
+      {/* Filed under */}
+      <section className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 mt-8">
+        <div className="topics">
+          <span className="topics-label">Filed under</span>
+          {[
+            ['Chaldean', '/method'], ['Graha-numerology', '/method'], ['Lo Shu', '/method'],
+            ['Sanskrit codes', '/tools'], ['The AA System', '/aa'], ['Provenance', '/library'],
+          ].map(([label, href]) => (
+            <Link key={label} href={href} className="chip">{label}</Link>
           ))}
-        </dl>
-
-        {/* Console, framed as a plate */}
-        <div className="mt-12">
-          <div className="flex items-baseline justify-between mb-2">
-            <span className="plate-cap">Fig. 1 — reading console</span>
-            <span className="plate-cap">computes locally</span>
-          </div>
-          <HomeConsole />
         </div>
+      </section>
+
+      {/* Console */}
+      <section className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 mt-10">
+        <div className="flex items-baseline justify-between mb-2">
+          <span className="plate-cap">Fig. 1 — reading console</span>
+          <span className="plate-cap">computes locally</span>
+        </div>
+        <HomeConsole />
       </section>
 
       <Ornament glyph="अं" />

@@ -138,59 +138,76 @@ export function WorkspaceView() {
           </div>
 
           {tab === 'chart' && (
-            <div className="mt-6 grid gap-4 lg:grid-cols-3">
-              {[
-                { label: 'Mūlāṅka', sub: 'psychic · from the day', fact: profile.mulank },
-                { label: 'Bhāgyāṅka', sub: 'destiny · whole date', fact: profile.bhagyank },
-                { label: 'Nāmāṅka', sub: 'name · Chaldean', fact: profile.namank },
-              ].map((c) => {
-                const g = NUMERAL_GRAHA[((c.fact.value - 1) % 9) + 1];
-                return (
-                  <div key={c.label} className="rounded-xl border border-line bg-surface p-6 shadow-3d-card">
-                    <div className="flex items-center justify-between">
-                      <p className="text-[10px] font-mono uppercase tracking-[0.16em] text-ink-muted">{c.label}</p>
-                      <Chip tone="copper">{g?.graha}</Chip>
-                    </div>
-                    <p className="mt-3 font-serif text-6xl font-bold text-ink tabular-nums leading-none">{c.fact.value}</p>
-                    <p className="mt-2 text-xs text-ink-soft">{c.sub}</p>
-                    <p className="mt-3 text-sm text-ink-soft leading-relaxed">{g?.note}</p>
-                    {c.fact.compound !== null && c.fact.compound !== c.fact.value && (
-                      <p className="mt-3 pt-3 border-t border-line text-[11px] font-mono uppercase tracking-wider text-ink-muted">
-                        compound {c.fact.compound}
+            <div className="mt-8 space-y-8">
+              {/* Specimen sheet: the three core numbers, ruled rather than carded */}
+              <div className="border-y border-line divide-y divide-line sm:divide-y-0 sm:grid sm:grid-cols-3 sm:divide-x">
+                {[
+                  { label: 'Mūlāṅka', sub: 'psychic · from the day', fact: profile.mulank },
+                  { label: 'Bhāgyāṅka', sub: 'destiny · whole date', fact: profile.bhagyank },
+                  { label: 'Nāmāṅka', sub: 'name · Chaldean', fact: profile.namank },
+                ].map((c) => {
+                  const g = NUMERAL_GRAHA[((c.fact.value - 1) % 9) + 1];
+                  return (
+                    <div key={c.label} className="px-0 py-6 sm:px-6 sm:first:pl-0">
+                      <div className="flex items-baseline justify-between">
+                        <p className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-ink-muted">{c.label}</p>
+                        <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-copper">{g?.graha}</p>
+                      </div>
+                      <p className="mt-3 font-serif text-[5.2rem] leading-[0.85] font-semibold text-ink tabular-nums">
+                        {c.fact.value}
                       </p>
-                    )}
-                  </div>
-                );
-              })}
+                      <p className="mt-3 text-sm text-ink-soft">{c.sub}</p>
+                      <p className="mt-2 text-sm text-ink-soft leading-relaxed">{g?.note}</p>
+                      {c.fact.compound !== null && c.fact.compound !== c.fact.value && (
+                        <p className="mt-3 font-mono text-[9.5px] uppercase tracking-[0.16em] text-ink-muted">
+                          compound {c.fact.compound}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
 
-              <div className="lg:col-span-3 grid gap-4 md:grid-cols-2">
-                <div className="rounded-xl border border-line bg-surface p-6">
-                  <h3 className="font-serif text-lg font-bold text-ink">Friendships between the three</h3>
-                  <div className="mt-4 space-y-2.5">
+              <div className="grid gap-8 md:grid-cols-2">
+                <div>
+                  <p className="kicker"><span className="n">i</span><span>Friendships between the three</span></p>
+                  <ul className="mt-4">
                     {[[profile.mulank.value, profile.bhagyank.value], [profile.bhagyank.value, profile.namank.value], [profile.mulank.value, profile.namank.value]].map(([a, b], i) => {
                       const rel = friendshipMatrix().find((r) => r.a === a)?.row[(b - 1) % 9];
                       const tone = rel === 'friend' ? 'text-emerald-700' : rel === 'enemy' ? 'text-copper' : 'text-ink-soft';
                       return (
-                        <div key={i} className="flex items-center justify-between text-sm">
+                        <li key={i} className="flex items-baseline justify-between border-b border-line py-2.5 text-sm">
                           <span className="font-mono text-ink">{a} · {b}</span>
                           <span className={`font-medium capitalize ${tone}`}>{rel}</span>
-                        </div>
+                        </li>
                       );
                     })}
-                  </div>
-                  <p className="mt-4 text-xs text-ink-soft">{RELATION_GLOSS.neutral}</p>
+                  </ul>
+                  <p className="mt-3 text-xs text-ink-soft">{RELATION_GLOSS.neutral}</p>
                 </div>
 
-                <div className="rounded-xl border border-line bg-surface p-6">
-                  <h3 className="font-serif text-lg font-bold text-ink">Kua &amp; direction</h3>
+                <div>
+                  <p className="kicker"><span className="n">ii</span><span>Kua &amp; direction</span></p>
                   {profile.kua ? (
                     <>
-                      <p className="mt-3 font-serif text-5xl font-bold text-ink tabular-nums leading-none">{profile.kua.value}</p>
-                      <p className="mt-2 text-sm text-ink-soft">{profile.kua.note}</p>
-                      <Chip tone="muted">Chinese · compass school</Chip>
+                      <div className="mt-4 flex items-end gap-4">
+                        <p className="font-serif text-[4rem] leading-[0.85] font-semibold text-ink tabular-nums">{profile.kua.value}</p>
+                        <p className="pb-2 text-sm text-ink-soft max-w-[22ch]">{profile.kua.note}</p>
+                      </div>
+                      <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
+                        <div>
+                          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink-muted">Favourable</p>
+                          <p className="mt-1 text-ink">{profile.kua.directions.good.join(' · ')}</p>
+                        </div>
+                        <div>
+                          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink-muted">Avoid</p>
+                          <p className="mt-1 text-ink-soft">{profile.kua.directions.bad.join(' · ')}</p>
+                        </div>
+                      </div>
+                      <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-ink-muted">Chinese · compass school</p>
                     </>
                   ) : (
-                    <p className="mt-3 text-sm text-ink-soft">Select a gender in the form to compute the Kua number. It is a Chinese calculation and needs the branch for the birth century.</p>
+                    <p className="mt-4 text-sm text-ink-soft">Select a gender in the form to compute the Kua number. It is a Chinese calculation and needs the branch for the birth century.</p>
                   )}
                 </div>
               </div>
