@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css">
+<link rel="stylesheet" href="./assets/style.css?v=2">
 <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -59,27 +59,25 @@
             <div>Tables printed<b>9</b></div>
             <div>Tests passing<b>56</b></div>
           </div>
+          <div class="topics" style="margin-top:1.6rem;border-block:0">
+            <span class="topics-label">Filed under</span>
+            <a class="chip" href="./method.html">Chaldean</a>
+            <a class="chip" href="./method.html">Graha</a>
+            <a class="chip" href="./method.html">Lo Shu</a>
+            <a class="chip" href="./aa.html">AA System</a>
+          </div>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem">
+            <a class="btn btn-copper" href="./workspace.html">Open the workspace →</a>
+            <a class="btn btn-ghost" href="./method.html">Read the method</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <div class="breakout band pad">
-    <div class="hero-grid" style="align-items:start">
-      <div class="col-a" style="padding-top:0;padding-bottom:2rem">
-        <div class="topics" style="border-block:0;padding-top:0">
-          <span class="topics-label">Filed under</span>
-          <a class="chip" href="./method.html">Chaldean</a>
-          <a class="chip" href="./method.html">Graha</a>
-          <a class="chip" href="./method.html">Lo Shu</a>
-          <a class="chip" href="./aa.html">AA System</a>
-        </div>
-        <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem">
-          <a class="btn btn-copper" href="./workspace.html">Open the workspace →</a>
-          <a class="btn btn-ghost" href="./method.html">Read the method</a>
-        </div>
-      </div>
-      <div class="col-b">
+    <div style="display:grid;grid-template-columns:1fr">
+      <div class="col-b" style="width:min(600px,100%);margin-left:auto">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem">
           <span class="mono small">Fig. 1 — reading console</span>
           <span class="mono small">computes locally</span>
