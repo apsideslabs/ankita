@@ -298,3 +298,101 @@ input:focus, select:focus { outline: none; border-color: var(--accent); box-shad
 @media (min-width: 760px) { .figs { grid-template-columns: minmax(0,340px) minmax(0,1fr); align-items: start; } }
 .figs figure { margin: 0; min-width: 0; }
 .figs figure svg { width: 100%; height: auto; max-width: 100%; display: block; }
+
+/* ==========================================================================
+   Palette from research: CHANI's off-white ground with blush and lavender,
+   Sanctuary's warmth, Co-Star's editorial discipline. Gold for accent only.
+   ========================================================================== */
+
+:root {
+  --paper: #FAF7F2;          /* warm off-white, not cream */
+  --paper-2: #FFFFFF;
+  --ink: #1E1B1A;
+  --ink-2: #4A4442;
+  --ink-3: #7A716D;
+  --ink-4: #A69C97;
+  --rule: #EAE2DC;
+  --rule-2: #D8CCC6;
+
+  --accent: #7C5C8A;         /* plum — replaces vermilion */
+  --accent-2: #67497A;
+  --blush: #F2DCD8;
+  --blush-2: #E4BEB7;
+  --lav: #E7E2F5;
+  --lav-2: #C9BFE4;
+  --gold: #C9A962;
+
+  --n1:#C9A962; --n2:#9BA4C4; --n3:#8B7AAD; --n4:#6B5B8A; --n5:#7B9E87;
+  --n6:#D4A5A5; --n7:#8A8278; --n8:#5B6B8A; --n9:#C75B5B;
+}
+
+body { background: var(--paper); }
+
+/* soft washes instead of a flat ground */
+body {
+  background-image:
+    radial-gradient(900px 520px at 88% -6%, rgba(201,191,228,.28), transparent 62%),
+    radial-gradient(760px 480px at 4% 6%, rgba(242,220,216,.34), transparent 60%),
+    radial-gradient(700px 520px at 50% 108%, rgba(201,169,98,.12), transparent 62%);
+  background-attachment: fixed, fixed, fixed;
+}
+
+/* cards: soft, rounded, lifted — the CHANI manner */
+.console, .res, .digits, .tools a { border-color: var(--rule); }
+.console { background: var(--paper-2); border-radius: 16px; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(74,59,82,.05), 0 18px 40px -28px rgba(74,59,82,.5); }
+.console .bar { background: var(--ink); color: #F7F2EE; letter-spacing: .22em; }
+.res { border-radius: 14px; overflow: hidden; background: var(--rule); }
+.res > div { background: var(--paper-2); }
+.digits { border-block: 1px solid var(--rule-2); }
+.tools a { border-bottom-color: var(--rule); }
+
+/* buttons: pill, blush-tinted secondary */
+.btn { border-radius: 999px; padding: .7rem 1.25rem; }
+.btn-a { background: var(--accent); color: #FBF7FF; }
+.btn-a:hover { background: var(--accent-2); }
+.btn-b { background: var(--ink); color: var(--paper); }
+.btn-c { border-color: var(--rule-2); background: var(--blush); color: #4A2F35; }
+.btn-c:hover { border-color: var(--blush-2); color: #3A2026; text-decoration: none; }
+
+/* type: plum display, gold only for the small marks */
+.mega em { color: var(--accent); }
+.kick { color: var(--accent); }
+.kick::after { background: var(--rule-2); }
+.hero h1 em { color: var(--accent); }
+a { color: var(--accent); }
+.faq summary::after { color: var(--accent); }
+
+/* the colour field becomes lavender, not vermilion */
+.field { background: var(--lav); color: #2A2438; }
+.field h2 { color: #2A2438; }
+.field .lede { color: #4A4258; }
+.field .kick { color: var(--accent); }
+.field .kick::after { background: rgba(42,36,56,.18); }
+.faq { border-top-color: var(--accent); }
+.faq details { border-bottom-color: rgba(42,36,56,.14); }
+
+/* header + strip in the new key */
+.strip { background: #2A2438; color: #EFE9F7; }
+.strip .it b { color: #FBF7FF; }
+.head { background: rgba(250,247,242,.92); border-bottom-color: var(--rule); }
+.tag { border-color: var(--rule-2); border-radius: 999px; }
+.nav a[aria-current="page"] { border-bottom-color: var(--accent); }
+
+/* stars: a soft motif behind the hero */
+.hero { position: relative; }
+.hero::before {
+  content: ''; position: absolute; inset: -2rem -2rem auto auto; width: 22rem; height: 22rem; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(124,92,138,.22) 0 1px, transparent 1.6px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(circle at 70% 30%, #000, transparent 68%);
+          mask-image: radial-gradient(circle at 70% 30%, #000, transparent 68%);
+  opacity: .9;
+}
+@media (max-width: 900px) { .hero::before { display: none } }
+
+/* figures and numerals in the new key */
+.fig-num { color: var(--lav-2); }
+.dash .huge, .numeral { color: var(--ink); }
+.figs figcaption { border-top-color: var(--rule); color: var(--ink-4); }
+.foot { background: #F4EFEA; border-top-color: var(--rule-2); }

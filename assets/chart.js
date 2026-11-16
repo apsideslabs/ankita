@@ -41,10 +41,10 @@ export function loshuSVG(counts, size = 260) {
     const x = (i % 3) * (cell + gap), y = Math.floor(i / 3) * (cell + gap);
     const n = counts[d] || 0;
     return `<g>
-      <rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="${n ? '#FFFDF8' : '#F1EBDD'}"
-        stroke="${n ? '#B6A788' : '#D9CDB6'}" stroke-width="1" ${n ? '' : 'stroke-dasharray="3 4"'}/>
+      <rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="${n ? '#FFFFFF' : '#FAF7F2'}"
+        stroke="${n ? '#D8CCC6' : '#EAE2DC'}" stroke-width="1" ${n ? '' : 'stroke-dasharray="3 4"'}/>
       <text x="${x + cell / 2}" y="${y + cell / 2 + 16}" text-anchor="middle" font-size="${n ? 40 : 26}"
-        font-family="Georgia,serif" font-weight="600" fill="${n ? '#1B1712' : '#C3B69C'}">${n ? d : '·'}</text>
+        font-family="Georgia,serif" font-weight="600" fill="${n ? '#1E1B1A' : '#D8CCC6'}">${n ? d : '·'}</text>
       ${n > 1 ? `<text x="${x + cell / 2}" y="${y + cell - 12}" text-anchor="middle" font-size="9"
         font-family="ui-monospace,monospace" fill="#9A9184">×${n}</text>` : ''}
     </g>`;
@@ -56,7 +56,7 @@ export function loshuSVG(counts, size = 260) {
 export function dashaBarSVG(periods, size = 340) {
   const w = 340, h = 46;
   const total = periods.reduce((a, p) => a + p.years, 0);
-  const COLOUR = { Sun: '#B07B1E', Moon: '#5F7391', Mars: '#A63A2C', Mercury: '#2C7154', Jupiter: '#C0902A', Venus: '#A85F73', Saturn: '#28425F', Rahu: '#3A3A6B', Ketu: '#6A6459' };
+  const COLOUR = { Sun: '#C9A962', Moon: '#9BA4C4', Mars: '#C75B5B', Mercury: '#7B9E87', Jupiter: '#8B7AAD', Venus: '#D4A5A5', Saturn: '#5B6B8A', Rahu: '#6B5B8A', Ketu: '#8A8278' };
   let x = 0;
   const segs = periods.map((p) => {
     const pw = (p.years / total) * w;
