@@ -59,7 +59,7 @@ function build() {
     <span class="item">Daśā <b>${dasa}</b></span>
     ${t ? `<span class="end">Sunrise ${t.rise} · Sunset ${t.set} · Guwahati</span>` : ''}
   `;
-  const bar = document.querySelector('.livebar .inner');
+  const bar = document.getElementById('strip') || document.querySelector('.livebar .inner');
   if (bar) bar.innerHTML = html;
 
   // the today strip on the home page

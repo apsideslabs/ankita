@@ -1,52 +1,55 @@
 import { buildProfile } from './engine/profile.js';
-import { kundaliSVG, loshuSVG, dashaBarSVG } from './chart.js';
-import { chartWithLagna } from './engine/extras.js';
+import { loshuSVG, dashaBarSVG } from './chart.js';
 import { vimshottari } from './engine/dasha.js';
 import { allPlacements, julianDay } from './engine/ephemeris.js';
 
 const form = document.getElementById('home-form');
 const out = document.getElementById('home-out');
+const figs = document.getElementById('home-figs');
+
+const NCOLOUR = {1:'var(--n1)',2:'var(--n2)',3:'var(--n3)',4:'var(--n4)',5:'var(--n5)',6:'var(--n6)',7:'var(--n7)',8:'var(--n8)',9:'var(--n9)'};
+const GRAHA = {1:'Sun',2:'Moon',3:'Jupiter',4:'Rāhu',5:'Mercury',6:'Venus',7:'Ketu',8:'Saturn',9:'Mars'};
 
 function render() {
-  const name = document.getElementById('home-name').value;
+  const name = document.getElementById('home-name').value.trim();
   const date = document.getElementById('home-date').value;
   if (!name || !date) { out.innerHTML = ''; return; }
+
   const p = buildProfile({ name, date, gender: 'unspecified', masterNumbers: false });
   const [yy, mm, dd] = date.split('-').map(Number);
-  const chart = chartWithLagna(date, 12, 26.1445, 91.7362);
-  const counts = {};
-  for (const c of p.grid) counts[c.digit] = c.count;
-  const moon = allPlacements(julianDay(new Date(Date.UTC(yy, mm - 1, dd, 12)))).find((g) => g.key === 'Moon');
-  const chartDasha = vimshottari(moon.longitude, new Date(Date.UTC(yy, mm - 1, dd, 12)));
-  const NCOLOUR = {1:'var(--n1)',2:'var(--n2)',3:'var(--n3)',4:'var(--n4)',5:'var(--n5)',6:'var(--n6)',7:'var(--n7)',8:'var(--n8)',9:'var(--n9)'};
-  const GRAHA = {1:'Sun',2:'Moon',3:'Jupiter',4:'Rāhu',5:'Mercury',6:'Venus',7:'Ketu',8:'Saturn',9:'Mars'};
-  out.innerHTML = `
-    <div class="dash">
-      ${[['Mūlāṅka', p.mulank], ['Bhāgyāṅka', p.bhagyank], ['Nāmāṅka', p.namank]].map(([label, fact]) => {
-        const n = ((fact.value - 1) % 9) + 1;
-        return `<div>
-          <div class="top"><span class="lbl">${label}</span><span class="graha" style="color:${NCOLOUR[n]}">${GRAHA[n]}</span></div>
-          <div class="huge" style="color:${NCOLOUR[n]}">${fact.value}</div>
-          <div class="sub">${fact.compound && fact.compound !== fact.value ? 'compound ' + fact.compound : '&nbsp;'}</div>
-        </div>`;
-      }).join('')}
-    </div>
-  `;
-  const figs = document.getElementById('home-figs');
-  if (figs) figs.innerHTML = `
-    <figure>${kundaliSVG(chart.asc.sign, chart.grahas, 320)}<figcaption>Fig. 2 — birth chart · lagna ${chart.asc.signName}</figcaption></figure>
-    <figure>${loshuSVG(counts, 300)}<figcaption>Fig. 3 — the Lo Shu square</figcaption></figure>
-    <figure>${dashaBarSVG(chartDasha.periods, 320)}<figcaption>Fig. 4 — Vimśottarī · ${chartDasha.current ? chartDasha.current.lord + ' running' : ''}</figcaption></figure>
-  `;
+
+  // the three numbers
+  out.innerHTML = `<div class="res">${
+    [['Mūlāṅka', p.mulank], ['Bhāgyāṅka', p.bhagyank], ['Nāmāṅka', p.namank]].map(([label, fact]) => {
+      const n = ((fact.value - 1) % 9) + 1;
+      const compound = fact.compound && fact.compound !== fact.value ? 'compound ' + fact.compound : '&nbsp;';
+      return `<div>
+        <div class="k"><span>${label}</span><span style="color:${NCOLOUR[n]}">${GRAHA[n]}</span></div>
+        <div class="v" style="color:${NCOLOUR[n]}">${fact.value}</div>
+        <div class="n">${compound}</div>
+      </div>`;
+    }).join('')
+  }</div>`;
+
+  // the two figures
+  if (figs) {
+    const counts = {};
+    for (const c of p.grid) counts[c.digit] = c.count;
+    const moon = allPlacements(julianDay(new Date(Date.UTC(yy, mm - 1, dd, 12)))).find((g) => g.key === 'Moon');
+    const d = vimshottari(moon.longitude, new Date(Date.UTC(yy, mm - 1, dd, 12)));
+    figs.innerHTML = `
+      <figure>${loshuSVG(counts, 260)}<figcaption>Fig. 2 — the Lo Shu square</figcaption></figure>
+      <figure>${dashaBarSVG(d.periods, 320)}<figcaption>Fig. 3 — Vimśottarī · ${d.current ? d.current.lord + ' running' : ''}</figcaption></figure>`;
+  }
 }
 
 function safeRender() {
   try { render(); }
   catch (err) {
-    const box = document.getElementById('home-out');
-    if (box) box.innerHTML = '<p class="small" style="color:#8B2F0B">Chart error: ' + (err && err.message ? err.message : err) + '</p>';
+    if (out) out.innerHTML = '<p class="small" style="color:#C1440E">Could not compute: ' + (err && err.message ? err.message : err) + '</p>';
     console.error(err);
   }
 }
+
 form.addEventListener('submit', (e) => { e.preventDefault(); safeRender(); });
 safeRender();

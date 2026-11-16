@@ -34,9 +34,9 @@ export function kundaliSVG(ascSign, grahas, size = 340) {
   </svg>`;
 }
 
-export function loshuSVG(counts, size = 300) {
+export function loshuSVG(counts, size = 260) {
   const order = [4, 9, 2, 3, 5, 7, 8, 1, 6];
-  const cell = 96, gap = 4;
+  const cell = 78, gap = 4;
   const cells = order.map((d, i) => {
     const x = (i % 3) * (cell + gap), y = Math.floor(i / 3) * (cell + gap);
     const n = counts[d] || 0;
@@ -66,6 +66,6 @@ export function dashaBarSVG(periods, size = 340) {
     x += pw;
     return seg;
   }).join('');
-  return `<svg viewBox="0 0 ${w} ${h}" width="${size}" height="${h / w * size}" role="img"
-    aria-label="Vimsottari dasha timeline">${segs}</svg>`;
+  return `<svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" preserveAspectRatio="none" role="img"
+    aria-label="Vimsottari dasha timeline" style="max-width:100%">${segs}</svg>`;
 }
