@@ -6,7 +6,7 @@
 <meta name="description" content="Mūlāṅka, bhāgyāṅka, nāmāṅka, the Lo Shu square, the Vimśottarī daśā — computed in your browser, every rule dated to the book it came from.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css?v=2">
+<link rel="stylesheet" href="./assets/style.css?v=3">
 <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -27,14 +27,14 @@
   <a href="./aa.html">AA System</a><a href="./engine.html">Tables</a><a href="./method.html">Method</a><a href="./library.html">Library</a>
 </div></header>
 
-<main class="wrap">
+<main>
 
   <!-- hero -->
   <section class="hero">
-    <div class="hero-cols">
-      <div>
-        <p class="kick">Numerology · three traditions, kept apart</p>
-        <h1>Your numbers,<br><em>and their sources.</em></h1>
+    <div class="sheet" style="row-gap:2rem">
+      <div class="c7 rail-l" data-rail="Numerology">
+        <p class="kick">Three traditions, kept apart</p>
+        <h1 class="mega" style="margin-top:.6rem">Your numbers,<br><em>and their sources.</em></h1>
         <p class="sub">Mūlāṅka, bhāgyāṅka, nāmāṅka, the Lo Shu square and the daśā — computed in your browser, each rule dated to the book it came from.</p>
         <div style="display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.3rem">
           <a class="btn btn-a btn-stack" href="./workspace.html"><span>Open the workspace →</span><span class="s">Mūlāṅka · Bhāgyāṅka · Nāmāṅka · Daśā</span></a>
@@ -43,7 +43,7 @@
         <p class="small" style="margin-top:1rem">Two inputs only · computed in your browser · every rule sourced</p>
       </div>
 
-      <div>
+      <div class="c4" style="grid-column-start:9">
         <div class="console">
           <div class="bar"><span>Reading console</span><span>Fig. 1</span></div>
           <div class="in">
@@ -62,20 +62,25 @@
   <hr class="rule">
 
   <!-- the two figures: Lo Shu and dasha -->
-  <section style="padding-block:2.2rem 1rem">
-    <p class="kick">The two figures the numbers make</p>
-    <h2 class="sec">A square, and a century.</h2>
-    <p class="lede">The Lo Shu square places every non-zero digit of the date — plus the bhāgyāṅka, plus the mūlāṅka when the birth day is ten or more. The daśā divides one hundred and twenty years among nine lords, from the Moon's position at birth.</p>
-    <div class="figs" id="home-figs"></div>
+  <section class="sheet" style="padding-block:2.4rem 1rem;row-gap:1.2rem">
+    <div class="c1"><div class="fig-num">01</div></div>
+    <div class="c6">
+      <p class="kick">The two figures the numbers make</p>
+      <h2 class="sec">A square, and a century.</h2>
+      <p class="lede">The Lo Shu square places every non-zero digit of the date — plus the bhāgyāṅka, plus the mūlāṅka when the birth day is ten or more. The daśā divides one hundred and twenty years among nine lords, from the Moon's position at birth.</p>
+    </div>
+    <div class="c12">
+      <div class="figs" id="home-figs"></div>
+    </div>
   </section>
 
   <hr class="rule">
 
   <!-- nine numbers -->
-  <section style="padding-block:2.2rem 1rem">
-    <p class="kick">The nine</p>
-    <h2 class="sec">Nine digits, nine grahas.</h2>
-    <div class="nines">
+  <section class="sheet" style="padding-block:2.4rem 1rem;row-gap:1rem">
+    <div class="c1"><div class="fig-num">02</div></div>
+    <div class="c6"><p class="kick">The nine</p><h2 class="sec">Nine digits, nine grahas.</h2></div>
+    <div class="c12"><div class="digits">
       <div><div class="d" style="color:var(--n1)">1</div><div class="g">Sun</div></div>
       <div><div class="d" style="color:var(--n2)">2</div><div class="g">Moon</div></div>
       <div><div class="d" style="color:var(--n3)">3</div><div class="g">Jupiter</div></div>
@@ -85,16 +90,16 @@
       <div><div class="d" style="color:var(--n7)">7</div><div class="g">Ketu</div></div>
       <div><div class="d" style="color:var(--n8)">8</div><div class="g">Saturn</div></div>
       <div><div class="d" style="color:var(--n9)">9</div><div class="g">Mars</div></div>
-    </div>
+    </div></div>
   </section>
 
   <hr class="rule">
 
   <!-- tools -->
-  <section style="padding-block:2.2rem 1rem">
-    <p class="kick">What it computes</p>
-    <h2 class="sec">Seven instruments, one engine.</h2>
-    <div class="tools">
+  <section class="sheet" style="padding-block:2.4rem 1rem;row-gap:1rem">
+    <div class="c1"><div class="fig-num">03</div></div>
+    <div class="c6"><p class="kick">What it computes</p><h2 class="sec">Seven instruments, one engine.</h2></div>
+    <div class="c12"><div class="tools">
       <a href="./workspace.html"><span class="n">01</span><span class="t">The reading<span class="d">Mūlāṅka, bhāgyāṅka, nāmāṅka, the grid, the daśā — from a name and a date.</span></span><span class="a">→</span></a>
       <a href="./tools.html"><span class="n">02</span><span class="t">Compatibility<span class="d">Two people, three numbers each, scored through the friendship table.</span></span><span class="a">→</span></a>
       <a href="./tools.html"><span class="n">03</span><span class="t">Name correction<span class="d">Spellings that keep the sound and land the name number on a friendly digit.</span></span><span class="a">→</span></a>
@@ -102,20 +107,26 @@
       <a href="./transits.html"><span class="n">05</span><span class="t">Daśā &amp; sky<span class="d">The running period, and where the grahas stand against your Moon.</span></span><span class="a">→</span></a>
       <a href="./aa.html"><span class="n">06</span><span class="t">The AA System<span class="d">A second engine: reduce-to-13, 117 bindings, 15 macro-charts.</span></span><span class="a">→</span></a>
       <a href="./engine.html"><span class="n">07</span><span class="t">Every table<span class="d">The constants the engine holds, with the source behind each.</span></span><span class="a">→</span></a>
-    </div>
+    </div></div>
   </section>
 
   <hr class="rule">
 
   <!-- faq -->
-  <section style="padding-block:2.2rem 2rem">
-    <p class="kick">Questions</p>
-    <h2 class="sec">Answered plainly.</h2>
-    <div class="faq">
+  <section class="field">
+    <div class="sheet" style="padding-inline:0;row-gap:.6rem">
+      <div class="c12">
+        <p class="kick">Questions</p>
+        <h2 class="sec">Answered plainly.</h2>
+      </div>
+      <div class="c10" style="grid-column-start:2">
+    <div class="faq" style="border-top-color:rgba(255,243,228,.5)">
       <details><summary>What is a mūlāṅka, exactly?</summary><p>The day of your birth reduced to one digit: born on the 29th, 2 + 9 = 11, then 1 + 1 = 2. It is ordinary digital-root arithmetic, and every tradition here agrees on it.</p></details>
       <details><summary>Why is the Lo Shu square called Chinese?</summary><p>Because it is. The square that sums to fifteen on every line appears in Chinese sources from the fourth century BCE and enters Indian practice late. Calling it Vedic would be a claim the texts do not support.</p></details>
       <details><summary>Where does the digit-to-planet pairing come from?</summary><p>From the modern Indian literature — Johari's 1990 book states it, including the substitution of Rāhu for Uranus and Ketu for Neptune. No classical Sanskrit verse for it was found, and the page that uses it says so.</p></details>
       <details><summary>Does it predict events?</summary><p>No. It computes and reads: the numbers, the square, the daśā with dates. It does not print a forecast, because no source in the library supports one.</p></details>
+    </div>
+      </div>
     </div>
   </section>
 </main>
