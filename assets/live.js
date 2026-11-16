@@ -64,7 +64,8 @@ function build() {
 
   // the today strip on the home page
   const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
-  set('t-tithi', TITHI[tithiIdx] || '—');
+  set('hero-date', now.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }));
+  set('t-tithi', TITHI[tithiIdx] || '—'); set('s-tithi', TITHI[tithiIdx] || '—'); set('s-nak', NAK[moon.nakshatra - 1] || '—'); set('s-num', universal); set('s-dasa', dasa);
   set('t-nak', NAK[moon.nakshatra - 1] || '—');
   if (t) { set('t-rise', t.rise); }
   const rahuParts = { 0: '16:30–18:00', 1: '07:30–09:00', 2: '15:00–16:30', 3: '12:00–13:30', 4: '13:30–15:00', 5: '10:30–12:00', 6: '09:00–10:30' };

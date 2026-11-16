@@ -19,7 +19,7 @@ function render() {
   const [yy, mm, dd] = date.split('-').map(Number);
 
   // the three numbers
-  out.innerHTML = `<div class="res">${
+  out.innerHTML = `<div class="num-hero" style="margin-top:1rem">${
     [['Mūlāṅka', p.mulank], ['Bhāgyāṅka', p.bhagyank], ['Nāmāṅka', p.namank]].map(([label, fact]) => {
       const n = ((fact.value - 1) % 9) + 1;
       const compound = fact.compound && fact.compound !== fact.value ? 'compound ' + fact.compound : '&nbsp;';
@@ -38,8 +38,12 @@ function render() {
     const moon = allPlacements(julianDay(new Date(Date.UTC(yy, mm - 1, dd, 12)))).find((g) => g.key === 'Moon');
     const d = vimshottari(moon.longitude, new Date(Date.UTC(yy, mm - 1, dd, 12)));
     figs.innerHTML = `
-      <figure>${loshuSVG(counts, 260)}<figcaption>Fig. 2 — the Lo Shu square</figcaption></figure>
-      <figure>${dashaBarSVG(d.periods, 320)}<figcaption>Fig. 3 — Vimśottarī · ${d.current ? d.current.lord + ' running' : ''}</figcaption></figure>`;
+      <div class="panel"><div class="panel-head">Lo Shu square<span class="mini-grade">placement</span></div>
+        <div class="panel-body">${loshuSVG(counts, 300)}
+        <p class="lead-p" style="margin-top:.7rem">Every non-zero digit of the date, plus the bhāgyāṅka, plus the mūlāṅka when the birth day is ten or more.</p></div></div>
+      <div class="panel"><div class="panel-head">Vimśottarī daśā<span class="mini-grade">${d.current ? d.current.lord + ' running' : ''}</span></div>
+        <div class="panel-body">${dashaBarSVG(d.periods, 320)}
+        <p class="lead-p" style="margin-top:.7rem">One hundred and twenty years among nine lords, from the Moon's position at birth.</p></div></div>`;
   }
 }
 
