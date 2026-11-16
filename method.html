@@ -1,58 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Method — Aṅkita</title>
-<meta name="description" content="Three traditions kept apart: Chaldean arithmetic, Indian graha-numerology and the Lo Shu square. Every figure printed with the book it came from.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css?v=5">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Method · Aṅkita</title>
+<meta name="description" content="How each number is made, and which book each rule comes from.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css?v=9">
 <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
-<div class="livebar"><div class="inner">Loading today…</div></div>
-<header class="site-header"><div class="inner">
-<a class="brand" href="./index.html"><span class="brand-mark">अं</span><span><span class="brand-word">Aṅkita.</span><span class="brand-sub">Number, read from its sources</span></span></a>
-<nav class="nav"><a href="./workspace.html">Workspace</a><a href="./aa.html">AA System</a><a href="./engine.html">Engine</a><a href="./method.html" aria-current="page">Method</a><a href="./library.html">Library</a></nav>
-<div class="header-cta"><span class="pill-tag">Provenance</span></div></div></header>
-<main class="band pad">
-<div class="mt-8"><p class="kicker"><span class="n">Method</span></p>
-<h1 class="display" style="margin-top:1rem;font-size:clamp(2rem,3.4vw,3rem)">How each number is made</h1>
-<p class="lede">Three traditions, kept apart. Each rule below names its source and its status: documented, attributed, or an inference of this platform.</p></div>
 
-<div class="mt-12">
-  <div class="index-row"><span class="num">01</span><div><h3>Mūlāṅka</h3>
-    <p>The birth day reduced to one digit. Born on the 29th: 2 + 9 = 11 → 2. The reduction is ordinary digital-root arithmetic.</p>
-    <span class="tag">Documented · Cheiro, 1926</span></div></div>
-  <div class="index-row"><span class="num">02</span><div><h3>Bhāgyāṅka</h3>
-    <p>Every digit of the full date summed and reduced: 29-08-1995 → 2+9+0+8+1+9+9+5 = 43 → 7. The Indian name for the same operation the West calls the life path.</p>
-    <span class="tag">Documented · Ojha, Aṅk-Vidyā</span></div></div>
-  <div class="index-row"><span class="num">03</span><div><h3>Nāmāṅka</h3>
-    <p>Chaldean letter values, each word reduced and the words summed — Cheiro’s own order of operations. John Smith: 9 + 8 = 17 → 8, the compound 17 being printed separately.</p>
-    <span class="tag">Documented · Cheiro, ch. XIII</span></div></div>
-  <div class="index-row"><span class="num">04</span><div><h3>Digit to graha</h3>
-    <p>Nine digits for nine planets. 4 is Rāhu and 7 is Ketu in the Indian form; Cheiro assigned Uranus and Neptune. The substitution is stated by Johari in his own words.</p>
-    <span class="tag">Documented · Johari, 1990</span></div></div>
-  <div class="index-row"><span class="num">05</span><div><h3>Lo Shu square</h3>
-    <p>Every non-zero digit of the date, plus the bhāgyāṅka, plus the mūlāṅka when the birth day is 10 or more. The name number is never placed, and the Kua number is not placed.</p>
-    <span class="tag">Chinese · labelled as such</span></div></div>
-  <div class="index-row"><span class="num">06</span><div><h3>Kua</h3>
-    <p>Both century branches: for births from 2000, men reduce 9 − Y and women 6 + Y. Kua 5 defaults to 2 for men and 8 for women.</p>
-    <span class="tag">Chinese · compass school</span></div></div>
-  <div class="index-row"><span class="num">07</span><div><h3>Vimśottarī daśā</h3>
-    <p>Computed from the Moon’s sidereal longitude: the nakṣatra gives the lord, the fraction traversed gives the balance, and the nine lords total 120 years.</p>
-    <span class="tag">Classical · from the Moon</span></div></div>
-  <div class="index-row"><span class="num">08</span><div><h3>The 45-year cycle</h3>
-    <p>One year for 1, two for 2, to nine — summing to 45. It is arithmetic, not a classical daśā, and it is labelled a modern cycle wherever it appears.</p>
-    <span class="tag">Modern · labelled</span></div></div>
-</div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./index.html">
+      <svg class="g" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="11" fill="#141414"/>
+        <path d="M28 14.5a7.6 7.6 0 1 0 0 11" stroke="#E8500F" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+        <circle cx="28.6" cy="20" r="2.5" fill="#FFF116"/>
+      </svg>
+      <b>Aṅkita</b><span class="tpl-chip">Method</span>
+    </a>
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./workspace.html">Workspace</a>
+      <a href="./tools.html">Tools</a>
+      <a href="./transits.html">Daśā &amp; sky</a>
+      <a href="./aa.html">AA System</a>
+      <a href="./engine.html">Tables</a>
+      <a href="./method.html" aria-current="page">Method</a>
+      <a href="./library.html">Library</a>
+    </nav>
+    <div class="tools">
+      <a class="hbtn hbtn-primary" href="./workspace.html">Open workspace</a>
+    </div>
+  </div>
+</header>
 
-<div class="mt-12"><p class="kicker"><span class="n">II</span><span>What is not claimed</span></p>
-<h2 class="sec">Where the tradition runs out, the platform says so.</h2>
-<p class="lede">The digit-to-planet pairing has no classical Sanskrit citation that we could find in the texts examined. The reading layer — nature, strengths, watch-outs, careers — is a summary of the modern literature, marked <em>attributed</em>, not verse. The platform does not print predictions of events.</p></div>
-</main><footer class="site-footer"><div class="pad small">© 2026 Apsides Labs · every rule on this page is dated</div></footer>
-<script src="./assets/nav.js" defer></script>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta"><span>Aṅkita</span><i></i><span>the method</span><i></i><span>today</span></div>
+    <h1>The method<span class="dot">.</span></h1>
+    <p class="sub">Eight rules, each with its date and its status: documented, attributed, or an inference of this platform.</p>
+  </div>
+</section>
+
+<main>
+  <section class="sec wrap">
+    <div class="sec-num">01</div>
+    <div class="sec-head2"><h2>Eight rules, each dated</h2><p>What the engine does, and where each operation comes from.</p></div>
+    <div class="entries">
+      <a class="entry" href="./library.html"><div><div class="entry-title">Mūlāṅka</div><div class="entry-dek">The birth day reduced to one digit. Born on the 29th: 2 + 9 = 11 → 2. Ordinary digital-root arithmetic.</div></div><div class="entry-right">Documented</div></a>
+      <a class="entry" href="./library.html"><div><div class="entry-title">Bhāgyāṅka</div><div class="entry-dek">Every digit of the full date summed and reduced: 29-08-1995 → 43 → 7.</div></div><div class="entry-right">Documented</div></a>
+      <a class="entry" href="./library.html"><div><div class="entry-title">Nāmāṅka</div><div class="entry-dek">Chaldean letter values, each word reduced and the words summed. John Smith: 9 + 8 = 17 → 8.</div></div><div class="entry-right">Documented</div></a>
+      <a class="entry" href="./library.html"><div><div class="entry-title">Digit to graha</div><div class="entry-dek">Nine digits for nine planets. 4 is Rāhu and 7 is Ketu in the Indian form.</div></div><div class="entry-right">Documented</div></a>
+      <a class="entry" href="./library.html"><div><div class="entry-title">Lo Shu square</div><div class="entry-dek">Every non-zero digit of the date, plus the bhāgyāṅka, plus the mūlāṅka when the birth day is ten or more.</div></div><div class="entry-right">Chinese</div></a>
+      <a class="entry" href="./library.html"><div><div class="entry-title">Kua</div><div class="entry-dek">Both century branches: for births from 2000, men reduce 9 − Y, women 6 + Y.</div></div><div class="entry-right">Chinese</div></a>
+      <a class="entry" href="./library.html"><div><div class="entry-title">Vimśottarī daśā</div><div class="entry-dek">From the Moon's sidereal longitude: the nakṣatra gives the lord, the fraction the balance.</div></div><div class="entry-right">Classical</div></a>
+      <a class="entry" href="./library.html"><div><div class="entry-title">The 45-year cycle</div><div class="entry-dek">One year for 1, two for 2, to nine — summing to 45. Not a classical daśā.</div></div><div class="entry-right">Modern</div></a>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <div class="sec-num">02</div>
+    <div class="sec-head2"><h2>Where the tradition runs out</h2><p>The platform says so rather than dressing a 1926 London table in Vedic robes.</p></div>
+    <div class="panel"><div class="panel-body">
+      <p class="lead-p">The digit-to-planet pairing has no classical Sanskrit citation that we could find in the texts examined. The reading layer — nature, strengths, watch-outs, careers — is a summary of the modern literature, marked <em>attributed</em>, not verse. The platform does not print predictions of events.</p>
+    </div></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fbrand"><b>Aṅkita</b><p>Numerology with the receipts. Computed in your browser; nothing is uploaded.</p></div>
+    <div class="facts">
+      <div><small>Sources</small><b>11 dated</b></div>
+      <div><small>Rules</small><b>38</b></div>
+      <div><small>Tables</small><b>9</b></div>
+      <div><small>Tests</small><b>56</b></div>
+    </div>
+  </div>
+</footer>
+
 <script type="module" src="./assets/live.js"></script>
+
 </body></html>

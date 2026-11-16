@@ -1,41 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Library — Aṅkita</title>
-<meta name="description" content="Three traditions kept apart: Chaldean arithmetic, Indian graha-numerology and the Lo Shu square. Every figure printed with the book it came from.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css?v=5">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · Aṅkita</title>
+<meta name="description" content="The books behind the rules, and which of them are still in copyright.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css?v=9">
 <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
-<div class="livebar"><div class="inner">Loading today…</div></div>
-<header class="site-header"><div class="inner">
-<a class="brand" href="./index.html"><span class="brand-mark">अं</span><span><span class="brand-word">Aṅkita.</span><span class="brand-sub">Number, read from its sources</span></span></a>
-<nav class="nav"><a href="./workspace.html">Workspace</a><a href="./aa.html">AA System</a><a href="./engine.html">Engine</a><a href="./method.html">Method</a><a href="./library.html" aria-current="page">Library</a></nav>
-<div class="header-cta"><span class="pill-tag">11 sources</span></div></div></header>
-<main class="band pad">
-<div class="mt-8"><p class="kicker"><span class="n">Library</span></p>
-<h1 class="display" style="margin-top:1rem;font-size:clamp(2rem,3.4vw,3rem)">The books behind the rules</h1>
-<p class="lede">Every figure in the engine traces to one of these. Where a source is in copyright, the platform quotes a rule rather than reproducing text.</p></div>
 
-<table class="mt-8"><thead><tr><th>Work</th><th>Author</th><th>Edition</th><th>Status</th></tr></thead><tbody>
-<tr><td><em>Cheiro’s Book of Numbers</em></td><td>Cheiro</td><td class="mono small">1926</td><td class="small">Public domain. Letter values, compounds 10–52, the John Smith example.</td></tr>
-<tr><td><em>Numerology: With Tantra, Ayurveda and Astrology</em></td><td>Harish Johari</td><td class="mono small">Destiny Books, 1990</td><td class="small">In copyright. The Rāhu 4 / Ketu 7 substitution and the nine-planet reading.</td></tr>
-<tr><td><em>Aṅk-Vidyā</em></td><td>Bhagwatī Prasād Ojha</td><td class="mono small">Motilal Banarsidass, reprints 1966–1982</td><td class="small">In copyright. Hindi practice; contains no Lo Shu and no Kua.</td></tr>
-<tr><td><em>Bṛhajjātaka</em></td><td>Varāhamihira</td><td class="mono small">1399 CE manuscript</td><td class="small">Public domain. Used for the delivery-room rules on the method page.</td></tr>
-<tr><td><em>Bṛhat Saṃhitā</em></td><td>Varāhamihira</td><td class="mono small">1279 CE manuscript</td><td class="small">Public domain. The pre-sunrise branch, SS III.47.</td></tr>
-<tr><td><em>Chandahśāstra</em></td><td>Piṅgala</td><td class="mono small">c. 300 BCE</td><td class="small">Public domain. Bhūtasaṅkhyā and the syllable codes.</td></tr>
-<tr><td><em>The Axiom Arcana</em></td><td>The Study Cipher</td><td class="mono small">2026</td><td class="small">Authored system. The AA System engine, transcribed and labelled as authored.</td></tr>
-</tbody></table>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./index.html">
+      <svg class="g" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="11" fill="#141414"/>
+        <path d="M28 14.5a7.6 7.6 0 1 0 0 11" stroke="#E8500F" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+        <circle cx="28.6" cy="20" r="2.5" fill="#FFF116"/>
+      </svg>
+      <b>Aṅkita</b><span class="tpl-chip">Library</span>
+    </a>
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./workspace.html">Workspace</a>
+      <a href="./tools.html">Tools</a>
+      <a href="./transits.html">Daśā &amp; sky</a>
+      <a href="./aa.html">AA System</a>
+      <a href="./engine.html">Tables</a>
+      <a href="./method.html">Method</a>
+      <a href="./library.html" aria-current="page">Library</a>
+    </nav>
+    <div class="tools">
+      <a class="hbtn hbtn-primary" href="./workspace.html">Open workspace</a>
+    </div>
+  </div>
+</header>
 
-<div class="mt-12"><p class="kicker"><span class="n">II</span><span>How to check us</span></p>
-<h2 class="sec">Every rule is on the engine page.</h2>
-<p class="lede">If a rule is not printed on the <a href="./engine.html">engine page</a>, the platform does not use it. The test suite checks the arithmetic against the worked examples printed in these books.</p></div>
-</main><footer class="site-footer"><div class="pad small">© 2026 Apsides Labs · every rule on this page is dated</div></footer>
-<script src="./assets/nav.js" defer></script>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta"><span>Aṅkita</span><i></i><span>eleven sources</span><i></i><span>today</span></div>
+    <h1>The library<span class="dot">.</span></h1>
+    <p class="sub">Eleven dated sources, and an honest note on which of them are still in copyright.</p>
+  </div>
+</section>
+
+<main>
+  <section class="sec wrap">
+    <div class="sec-num">01</div>
+    <div class="sec-head2"><h2>The books behind the rules</h2><p>Every figure in the engine traces to one of these.</p></div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Work</th><th>Author</th><th>Edition</th><th>Status</th></tr></thead>
+        <tbody>
+        <tr><td><b>Cheiro’s Book of Numbers</b></td><td>Cheiro</td><td class="mono">1926</td><td class="small">Public domain. Letter values, compounds 10–52, the John Smith example.</td></tr>
+        <tr><td><b>Numerology: With Tantra, Ayurveda and Astrology</b></td><td>Harish Johari</td><td class="mono">Destiny Books, 1990</td><td class="small">In copyright. The Rāhu 4 / Ketu 7 substitution.</td></tr>
+        <tr><td><b>Aṅk-Vidyā</b></td><td>Bhagwatī Prasād Ojha</td><td class="mono">Motilal Banarsidass, 1966–1982</td><td class="small">In copyright. Hindi practice; no Lo Shu, no Kua.</td></tr>
+        <tr><td><b>Bṛhajjātaka</b></td><td>Varāhamihira</td><td class="mono">1399 CE manuscript</td><td class="small">Public domain.</td></tr>
+        <tr><td><b>Bṛhat Saṃhitā</b></td><td>Varāhamihira</td><td class="mono">1279 CE manuscript</td><td class="small">Public domain.</td></tr>
+        <tr><td><b>Chandahśāstra</b></td><td>Piṅgala</td><td class="mono">c. 300 BCE</td><td class="small">Public domain. Bhūtasaṅkhyā and the syllable codes.</td></tr>
+        <tr><td><b>The Axiom Arcana</b></td><td>The Study Cipher</td><td class="mono">2026</td><td class="small">Authored system. The AA engine, transcribed and labelled as authored.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fbrand"><b>Aṅkita</b><p>Numerology with the receipts. Computed in your browser; nothing is uploaded.</p></div>
+    <div class="facts">
+      <div><small>Sources</small><b>11 dated</b></div>
+      <div><small>Rules</small><b>38</b></div>
+      <div><small>Tables</small><b>9</b></div>
+      <div><small>Tests</small><b>56</b></div>
+    </div>
+  </div>
+</footer>
+
 <script type="module" src="./assets/live.js"></script>
+
 </body></html>

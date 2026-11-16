@@ -1,64 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The AA System — Aṅkita</title>
-<meta name="description" content="The Axiom Arcana: reduce-to-13, the Axiomatic Letter Code, 27 stations, the 91-year cycle, the A-Chart, the 117 bindings and the 15 macro-charts.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css?v=5">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AA System · Aṅkita</title>
+<meta name="description" content="Reduce-to-13, the A-Chart, 117 bindings and 15 macro-charts — a second engine with its own arithmetic.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css?v=9">
+<link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
-<div class="livebar"><div class="inner">Loading today…</div></div>
+
 <header class="site-header">
-  <div class="inner">
-    <a class="brand" href="./index.html"><span class="brand-mark">अं</span>
-      <span><span class="brand-word">Aṅkita.</span><span class="brand-sub">Number, read from its sources</span></span></a>
-    <nav class="nav" aria-label="Primary">
+  <div class="wrap">
+    <a class="brand" href="./index.html">
+      <svg class="g" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="11" fill="#141414"/>
+        <path d="M28 14.5a7.6 7.6 0 1 0 0 11" stroke="#E8500F" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+        <circle cx="28.6" cy="20" r="2.5" fill="#FFF116"/>
+      </svg>
+      <b>Aṅkita</b><span class="tpl-chip">AA System</span>
+    </a>
+    <nav class="nav">
+      <a href="./index.html">Home</a>
       <a href="./workspace.html">Workspace</a>
+      <a href="./tools.html">Tools</a>
+      <a href="./transits.html">Daśā &amp; sky</a>
       <a href="./aa.html" aria-current="page">AA System</a>
-      <a href="./engine.html">Engine</a>
+      <a href="./engine.html">Tables</a>
       <a href="./method.html">Method</a>
       <a href="./library.html">Library</a>
     </nav>
-    <div class="header-cta"><span class="pill-tag">System II</span></div>
+    <div class="tools">
+      <a class="hbtn hbtn-primary" href="./workspace.html">Open workspace</a>
+    </div>
   </div>
 </header>
 
-<main>
-<section class="hero"><div class="band pad" style="padding-block:2.2rem">
-  <div>
-    <span class="badge">System II · Axiom Arcana</span>
-    <h1 style="margin-top:1rem">A second engine, with <em>its own</em> mathematics.</h1>
-    <p class="sub">Aṅkita’s first engine reads the classical and Chaldean tradition and needs two inputs. This one is different in kind, and it needs <strong>four</strong>: name, date, time and place, because twelve of its bindings read the time and place seeds. It is a numerology that borrows the <em>shape</em> of astrology and nothing else: reduce-to-13 instead of reduce-to-9, thirteen realms instead of twelve signs, a symmetric letter code instead of Chaldean values, a 91-year cycle instead of a daśā, and 27 stations reached by its own arithmetic rather than by an ephemeris.</p>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta"><span>Aṅkita</span><i></i><span>the Axiom Arcana</span><i></i><span>today</span></div>
+    <h1>The AA System<span class="dot">.</span></h1>
+    <p class="sub">A second engine with its own mathematics: reduce-to-13, thirteen realms, a symmetric letter code and a 91-year cycle.</p>
   </div>
+</section>
 
-  <div class="card mt-8"><form id="aa-form">
-    <div class="form-grid" style="grid-template-columns:repeat(auto-fit,minmax(10rem,1fr))">
-      <label class="field"><span>Name at birth</span><input type="text" id="aa-name" value="Binay Das" autocomplete="off"></label>
-      <label class="field"><span>Date</span><input type="date" id="aa-date" value="2009-03-03"></label>
-      <label class="field"><span>Time</span><input type="time" id="aa-time" value="23:51"></label>
-      <label class="field"><span>Place</span><select id="aa-place"></select></label>
-      <div><button class="btn btn-lg" type="submit">Compute →</button></div>
-    </div>
-  </form></div>
-</div></section>
-
-  <section id="aa-out" class="band pad mt-8" aria-live="polite"></section>
+<main>
+  <section class="sec wrap">
+    <div class="sec-num">01</div>
+    <div class="sec-head2"><h2>The four inputs</h2><p>The AA System needs name, date, time and place — twelve of its bindings read the time and place seeds.</p></div>
+    <div class="panel"><div class="panel-head">AA console<span class="mini-grade">four inputs</span></div>
+      <div class="panel-body">
+        <form id="aa-form" class="form">
+          <label class="fld"><span>Name at birth</span><input type="text" id="aa-name" value="Binay Das" autocomplete="off"></label>
+          <label class="fld"><span>Date</span><input type="date" id="aa-date" value="2009-03-03"></label>
+          <label class="fld"><span>Time</span><input type="time" id="aa-time" value="23:51"></label>
+          <label class="fld"><span>Place</span><select id="aa-place"></select></label>
+          <div class="go"><button class="hbtn hbtn-primary" type="submit" style="width:100%;justify-content:center">Compute →</button></div>
+        </form>
+      </div></div>
+    <div id="aa-out" style="margin-top:1rem"></div>
+  </section>
 </main>
 
-<footer class="site-footer"><div class="pad small">© 2026 Apsides Labs · the Axiom Arcana is an authored system, labelled as such</div></footer>
-<style>
-  .panel-title { font-family: var(--mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-muted); }
-  .cell { border: 1px solid var(--line); padding: .6rem .7rem; background: var(--surface); }
-  .cell .v { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; color: var(--copper); line-height: 1; }
-  .cell .n { font-size: .8rem; color: var(--ink); }
-  .cell .p { font-family: var(--mono); font-size: 8.5px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: .12em; }
-</style>
-<script type="module" src="./assets/aa.js"></script>
-<script src="./assets/nav.js" defer></script>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fbrand"><b>Aṅkita</b><p>Numerology with the receipts. Computed in your browser; nothing is uploaded.</p></div>
+    <div class="facts">
+      <div><small>Sources</small><b>11 dated</b></div>
+      <div><small>Rules</small><b>38</b></div>
+      <div><small>Tables</small><b>9</b></div>
+      <div><small>Tests</small><b>56</b></div>
+    </div>
+  </div>
+</footer>
+
 <script type="module" src="./assets/live.js"></script>
-</body>
-</html>
+<script type="module" src="./assets/aa.js"></script>
+</body></html>

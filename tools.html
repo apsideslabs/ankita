@@ -1,87 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tools — Aṅkita</title>
-<meta name="description" content="Compatibility, the ascendant, name correction and the twelve-month guide — all computed in the browser.">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools · Aṅkita</title>
+<meta name="description" content="Compatibility, name correction and the year ahead — computed in your browser.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css?v=5">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css?v=9">
+<link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
-<div class="livebar"><div class="inner">Loading today…</div></div>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="./index.html"><span class="brand-mark">अं</span><span><span class="brand-word">Aṅkita.</span><span class="brand-sub">Number, read from its sources</span></span></a>
-  <nav class="nav"><a href="./workspace.html">Workspace</a><a href="./aa.html">AA System</a><a href="./engine.html">Engine</a><a href="./tools.html" aria-current="page">Tools</a><a href="./method.html">Method</a><a href="./library.html">Library</a></nav>
-  <div class="header-cta"><span class="pill-tag">Four tools</span></div>
-</div></header>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./index.html">
+      <svg class="g" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="11" fill="#141414"/>
+        <path d="M28 14.5a7.6 7.6 0 1 0 0 11" stroke="#E8500F" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+        <circle cx="28.6" cy="20" r="2.5" fill="#FFF116"/>
+      </svg>
+      <b>Aṅkita</b><span class="tpl-chip">Tools</span>
+    </a>
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./workspace.html">Workspace</a>
+      <a href="./tools.html" aria-current="page">Tools</a>
+      <a href="./transits.html">Daśā &amp; sky</a>
+      <a href="./aa.html">AA System</a>
+      <a href="./engine.html">Tables</a>
+      <a href="./method.html">Method</a>
+      <a href="./library.html">Library</a>
+    </nav>
+    <div class="tools">
+      <a class="hbtn hbtn-primary" href="./workspace.html">Open workspace</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta"><span>Aṅkita</span><i></i><span>three working tools</span><i></i><span>today</span></div>
+    <h1>Four tools<span class="dot">.</span></h1>
+    <p class="sub">Compatibility, name correction and the twelve months ahead, each computed from the same engine.</p>
+  </div>
+</section>
 
 <main>
-<section class="hero grad-warm"><div class="band pad" style="padding-block:2.2rem">
-  <span class="badge">Tools</span>
-  <h1>What the numbers can answer</h1>
-  <p class="sub">Compatibility between two people, the ascendant and houses, name correction, and the twelve months ahead. Every figure computed in the browser from the same engine.</p>
-</div></section>
+  <section class="sec wrap">
+    <div class="sec-num">01</div>
+    <div class="sec-head2"><h2>Compatibility</h2><p>Two people, three numbers each, scored through the natural-friendship table.</p></div>
+    <div class="panel"><div class="panel-body">
+      <div class="form">
+        <label class="fld"><span>First name</span><input type="text" id="m-name1" value="John Smith"></label>
+        <label class="fld"><span>First date</span><input type="date" id="m-date1" value="1995-08-29"></label>
+        <label class="fld"><span>Second name</span><input type="text" id="m-name2" value="Jane Doe"></label>
+        <label class="fld"><span>Second date</span><input type="date" id="m-date2" value="1993-02-14"></label>
+        <div class="go"><button class="hbtn hbtn-primary" id="m-go" style="width:100%;justify-content:center">Compare →</button></div>
+      </div>
+    </div></div>
+    <div id="m-out" style="margin-top:1rem"></div>
+  </section>
 
-<section class="band pad mt-8">
-  <p class="eyebrow">01 · compatibility</p>
-  <h2 class="big">Two people, three numbers each.</h2>
-  <div class="card mt-6">
-    <div class="form-grid">
-      <label class="field"><span>First name</span><input type="text" id="m-name1" value="John Smith"></label>
-      <label class="field"><span>First date</span><input type="date" id="m-date1" value="1995-08-29"></label>
-      <label class="field"><span>Second name</span><input type="text" id="m-name2" value="Jane Doe"></label>
-      <label class="field"><span>Second date</span><input type="date" id="m-date2" value="1993-02-14"></label>
-      <div><button class="btn btn-lg" id="m-go">Compare →</button></div>
-    </div>
-  </div>
-  <div id="m-out" class="mt-6"></div>
-</section>
+  <section class="sec wrap">
+    <div class="sec-num">02</div>
+    <div class="sec-head2"><h2>Name correction</h2><p>Spellings that keep the sound and land the name number on a friendly digit.</p></div>
+    <div class="panel"><div class="panel-body">
+      <div class="form">
+        <label class="fld"><span>Name</span><input type="text" id="n-name" value="Binay Das"></label>
+        <label class="fld"><span>Date of birth</span><input type="date" id="n-date" value="2009-03-03"></label>
+        <div class="go"><button class="hbtn hbtn-primary" id="n-go" style="width:100%;justify-content:center">Find spellings →</button></div>
+      </div>
+    </div></div>
+    <div id="n-out" style="margin-top:1rem"></div>
+  </section>
 
-<section class="band pad mt-12">
-  <p class="eyebrow">02 · the ascendant</p>
-  <h2 class="big">Lagna, and the houses it opens.</h2>
-  <div class="card mt-6">
-    <div class="form-grid">
-      <label class="field"><span>Name</span><input type="text" id="l-name" value="John Smith"></label>
-      <label class="field"><span>Date</span><input type="date" id="l-date" value="1995-08-29"></label>
-      <label class="field"><span>Time (local)</span><input type="time" id="l-time" value="11:45"></label>
-      <label class="field"><span>Place</span><select id="l-place"></select></label>
-      <div><button class="btn btn-lg" id="l-go">Cast →</button></div>
-    </div>
-  </div>
-  <div id="l-out" class="mt-6"></div>
-</section>
-
-<section class="band pad mt-12">
-  <p class="eyebrow">03 · name correction</p>
-  <h2 class="big">Spellings that keep the sound.</h2>
-  <div class="card mt-6">
-    <div class="form-grid">
-      <label class="field"><span>Name</span><input type="text" id="n-name" value="Binay Das"></label>
-      <label class="field"><span>Date of birth</span><input type="date" id="n-date" value="2009-03-03"></label>
-      <div><button class="btn btn-lg" id="n-go">Find spellings →</button></div>
-    </div>
-  </div>
-  <div id="n-out" class="mt-6"></div>
-</section>
-
-<section class="band pad mt-12" style="padding-bottom:4rem">
-  <p class="eyebrow">04 · the year ahead</p>
-  <h2 class="big">Twelve months, twelve numbers.</h2>
-  <div class="card mt-6">
-    <div class="form-grid">
-      <label class="field"><span>Date of birth</span><input type="date" id="y-date" value="1995-08-29"></label>
-      <label class="field"><span>Year</span><input type="number" id="y-year" value="2026" min="2000" max="2100"></label>
-      <div><button class="btn btn-lg" id="y-go">Build the year →</button></div>
-    </div>
-  </div>
-  <div id="y-out" class="mt-6"></div>
-</section>
+  <section class="sec wrap">
+    <div class="sec-num">03</div>
+    <div class="sec-head2"><h2>The year ahead</h2><p>The personal year and all twelve months with their number.</p></div>
+    <div class="panel"><div class="panel-body">
+      <div class="form">
+        <label class="fld"><span>Date of birth</span><input type="date" id="y-date" value="1995-08-29"></label>
+        <label class="fld"><span>Year</span><input type="number" id="y-year" value="2026" min="2000" max="2100"></label>
+        <div class="go"><button class="hbtn hbtn-primary" id="y-go" style="width:100%;justify-content:center">Build the year →</button></div>
+      </div>
+    </div></div>
+    <div id="y-out" style="margin-top:1rem"></div>
+  </section>
 </main>
 
-<footer class="site-footer"><div class="pad small">© 2026 Apsides Labs · computed in your browser</div></footer>
-<script type="module" src="./assets/tools.js"></script>
-<script src="./assets/nav.js" defer></script>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fbrand"><b>Aṅkita</b><p>Numerology with the receipts. Computed in your browser; nothing is uploaded.</p></div>
+    <div class="facts">
+      <div><small>Sources</small><b>11 dated</b></div>
+      <div><small>Rules</small><b>38</b></div>
+      <div><small>Tables</small><b>9</b></div>
+      <div><small>Tests</small><b>56</b></div>
+    </div>
+  </div>
+</footer>
+
 <script type="module" src="./assets/live.js"></script>
+<script type="module" src="./assets/tools.js"></script>
 </body></html>
