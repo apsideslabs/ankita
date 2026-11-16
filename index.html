@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/style.css?v=9">
+<link rel="stylesheet" href="./assets/style.css?v=10">
 <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -102,6 +102,29 @@
     </div>
   </section>
 
+  <!-- quick tools -->
+  <div class="band pad" style="padding-block:.4rem">
+    <div class="quick">
+      <a href="./workspace.html">◈ Full reading</a>
+      <a href="./tools.html">⊕ Compatibility</a>
+      <a href="./workspace.html#timing">◷ Daśā</a>
+      <a href="./workspace.html#grahas">✦ Grahas</a>
+      <a href="./transits.html">☾ Transits</a>
+      <a href="./aa.html">⌘ AA System</a>
+    </div>
+  </div>
+
+  <!-- today strip -->
+  <section class="today">
+    <div class="inner">
+      <div class="cell"><div class="k">Tithi</div><div class="v" id="t-tithi">—</div></div>
+      <div class="cell"><div class="k">Nakṣatra</div><div class="v" id="t-nak">—</div></div>
+      <div class="cell"><div class="k">Sunrise</div><div class="v" id="t-rise">—</div></div>
+      <div class="cell"><div class="k">Rāhu kāla</div><div class="v" id="t-rahu">—</div></div>
+      <a class="more" href="./transits.html">The sky today →</a>
+    </div>
+  </section>
+
   <!-- the reading: rail and three figures -->
   <section class="band pad" style="padding-block:1rem 2.4rem">
     <div class="reading-block">
@@ -111,6 +134,71 @@
         <p>Three core numbers, the birth chart with its houses, the Lo Shu square with its missing digits, and the daśā with dates — each figure with the arithmetic behind it.</p>
       </div>
       <div class="figs3" id="home-figs"></div>
+    </div>
+  </section>
+
+  <!-- tools, in their manner -->
+  <section class="band pad" style="padding-block:2.4rem 1rem">
+    <p class="eyebrow">§ 02 · what it computes</p>
+    <h2 class="big" style="margin-bottom:1.2rem">Nine instruments, one engine.</h2>
+    <div class="tools3">
+      <a class="tool" href="./workspace.html" style="background:linear-gradient(160deg,#FBF0DA,#F7E4C2)"><span class="arw">→</span>
+        <div class="ic">◈</div><h3>The reading</h3><p>Mūlāṅka, bhāgyāṅka, nāmāṅka, the grid and the daśā — from a name and a date.</p></a>
+      <a class="tool" href="./tools.html" style="background:linear-gradient(160deg,#FBF3D8,#F6E7B4)"><span class="arw">→</span>
+        <div class="ic">⊕</div><h3>Compatibility</h3><p>Two people, three numbers each, scored through the friendship table.</p></a>
+      <a class="tool" href="./tools.html" style="background:linear-gradient(160deg,#F6E7EC,#EFD3DE)"><span class="arw">→</span>
+        <div class="ic">⌖</div><h3>Lagna &amp; houses</h3><p>The ascendant from time and place, with nine grahas in whole-sign houses.</p></a>
+      <a class="tool" href="./workspace.html#timing" style="background:linear-gradient(160deg,#E8EDF3,#D5DFEC)"><span class="arw">→</span>
+        <div class="ic">◷</div><h3>Vimśottarī daśā</h3><p>One hundred and twenty years, with the antardaśā running today.</p></a>
+      <a class="tool" href="./transits.html" style="background:linear-gradient(160deg,#E3EAF2,#D0DDEC)"><span class="arw">→</span>
+        <div class="ic">☾</div><h3>Transits</h3><p>Where the nine grahas stand now, counted from your natal Moon.</p></a>
+      <a class="tool" href="./aa.html" style="background:linear-gradient(160deg,#E7E5F0,#D5D2E6)"><span class="arw">→</span>
+        <div class="ic">⌘</div><h3>The AA System</h3><p>Reduce-to-13, the A-Chart, 117 bindings and 15 macro-charts.</p></a>
+      <a class="tool" href="./workspace.html#grid" style="background:linear-gradient(160deg,#E1EFE7,#CBE2D6)"><span class="arw">→</span>
+        <div class="ic">▦</div><h3>The Lo Shu square</h3><p>Placement, planes, missing and amplified digits.</p></a>
+      <a class="tool" href="./engine.html" style="background:linear-gradient(160deg,#EDEBE6,#DFDCD4)"><span class="arw">→</span>
+        <div class="ic">▤</div><h3>Every table</h3><p>The constants the engine holds, with the source behind each.</p></a>
+      <a class="tool" href="./method.html" style="background:linear-gradient(160deg,#F7E6E2,#F0D3CC)"><span class="arw">→</span>
+        <div class="ic">✎</div><h3>The method</h3><p>Eight rules, each dated and marked documented or inference.</p></a>
+    </div>
+  </section>
+
+  <!-- split: dates and guides -->
+  <section class="band pad" style="padding-block:1.4rem 2rem">
+    <div class="split2">
+      <div>
+        <p class="eyebrow">§ 03 · the calendar</p>
+        <h2 class="big" style="font-size:clamp(1.3rem,2vw,1.6rem)">Days the tradition marks.</h2>
+        <div class="datepills">
+          <span>◯ Pūrṇimā</span><span>● Amāvasyā</span><span>◑ Ekādaśī</span>
+          <span>☾ Pradoṣa</span><span>☀ Saṅkrānti</span><span>✶ Pañcaka</span>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">§ 04 · reading</p>
+        <h2 class="big" style="font-size:clamp(1.3rem,2vw,1.6rem)">What to read first.</h2>
+        <div class="guides">
+          <a class="guide" href="./method.html"><span class="gn">01</span><span><span class="gt">How a number is made, and from which book</span><span class="gm">8 rules · 6 min read</span></span></a>
+          <a class="guide" href="./library.html"><span class="gn">02</span><span><span class="gt">The eleven sources, and which are still in copyright</span><span class="gm">Library · 5 min read</span></span></a>
+          <a class="guide" href="./aa.html"><span class="gn">03</span><span><span class="gt">The AA System: a second engine with its own arithmetic</span><span class="gm">117 bindings · 9 min read</span></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band pad" style="padding-block:1.6rem 3rem">
+    <p class="eyebrow">§ 05 · questions</p>
+    <h2 class="big" style="margin-bottom:.6rem">Asked, and answered plainly.</h2>
+    <div class="faq">
+      <details><summary>What is a mūlāṅka, exactly?</summary>
+        <p>The day of your birth reduced to one digit: born on the 29th, 2 + 9 = 11, then 1 + 1 = 2. It is ordinary digital-root arithmetic, and every tradition on this platform agrees on it — which is why it is the safest number to quote.</p></details>
+      <details><summary>Why do you call the Lo Shu square Chinese?</summary>
+        <p>Because it is. The square that sums to fifteen on every line appears in Chinese sources from the fourth century BCE and enters Indian numerological practice late. Calling it Vedic would be a claim the texts do not support, so the platform labels it where it is used.</p></details>
+      <details><summary>Where does the digit-to-planet pairing come from?</summary>
+        <p>From the modern Indian literature — Johari's 1990 book states it in his own words, including the substitution of Rāhu for Uranus and Ketu for Neptune. No classical Sanskrit verse for it has been found in the texts examined, and the page that uses it says so.</p></details>
+      <details><summary>Does the platform predict events?</summary>
+        <p>No. It computes and reads: the numbers, the chart, the daśā with dates, the transits. It does not print a forecast of what will happen, because no source in the library supports one.</p></details>
     </div>
   </section>
 

@@ -560,3 +560,61 @@ body { overflow-x: hidden; }
 .sun-hero { overflow: visible; }
 .sun-clip { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
 .sun-clip .sun { position: absolute; }
+
+/* ==========================================================================
+   PanchangBodh's blocks, in the Apsides house manner.
+   ========================================================================== */
+
+/* quick tool chips under the hero */
+.quick { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; padding-block: .9rem; }
+.quick a { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .85rem;
+  background: #FFFDF8; border: 1px solid var(--rule-2); border-radius: 999px;
+  font-size: .82rem; font-weight: 600; color: var(--ink-2);
+  box-shadow: 0 1px 0 #fff inset, 0 1px 2px rgba(60,44,24,.08); }
+.quick a:hover { border-color: var(--saffron); color: var(--vermilion); text-decoration: none; }
+
+/* today strip: four figures on a tinted plate */
+.today { background: var(--saffron-wash); border-block: 1px solid var(--rule-2); }
+.today .inner { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem 2rem; padding-block: 1.1rem;
+  padding-inline: clamp(1.1rem,4vw,4rem); max-width: 1500px; margin-inline: auto; align-items: center; }
+@media (min-width: 820px) { .today .inner { grid-template-columns: repeat(4,1fr) auto; } }
+.today .cell .k { font-family: var(--mono); font-size: 7.5px; letter-spacing: .24em; text-transform: uppercase; color: #8A5A20; }
+.today .cell .v { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: #3A1F08; margin-top: .15rem; }
+.today .more { font-family: var(--mono); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--vermilion); }
+
+/* tool tiles, in their manner but with a serif and a rule */
+.tools3 { display: grid; grid-template-columns: 1fr; gap: .8rem; }
+@media (min-width: 640px) { .tools3 { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 960px) { .tools3 { grid-template-columns: repeat(3,1fr); } }
+.tool { display: block; padding: 1.1rem 1.15rem 1.2rem; border: 1px solid rgba(0,0,0,.08); position: relative;
+  transition: transform .16s var(--ease), box-shadow .16s var(--ease); text-decoration: none; }
+.tool:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(60,44,24,.6); text-decoration: none; }
+.tool .ic { font-size: 1.35rem; line-height: 1; }
+.tool h3 { font-size: 1.02rem; margin-top: .55rem; color: var(--ink); }
+.tool p { font-size: .78rem; color: var(--ink-2); margin: .22rem 0 0; line-height: 1.5; }
+.tool .arw { position: absolute; right: .9rem; top: .9rem; font-family: var(--mono); font-size: 10px; color: var(--ink-4); }
+
+/* two-column split: dates and guides */
+.split2 { display: grid; gap: 2rem; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .split2 { grid-template-columns: 0.85fr 1.15fr; gap: 3rem; } }
+.datepills { display: grid; grid-template-columns: repeat(2,1fr); gap: .5rem; margin-top: .9rem; }
+.datepills span { display: flex; align-items: center; gap: .45rem; padding: .5rem .6rem; background: #FFFDF8;
+  border: 1px solid var(--rule); font-size: .82rem; color: var(--ink-2); }
+.guides { display: grid; gap: .6rem; margin-top: .9rem; }
+.guide { display: grid; grid-template-columns: 2.6rem 1fr; gap: .9rem; padding: .8rem 0;
+  border-bottom: 1px solid var(--rule); text-decoration: none; }
+.guide:hover .gt { color: var(--vermilion); }
+.guide .gn { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--saffron); line-height: 1; }
+.guide .gt { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); }
+.guide .gm { font-family: var(--mono); font-size: 7.5px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-4); margin-top: .2rem; }
+
+/* FAQ */
+.faq { border-top: 2px solid var(--ink); margin-top: 1rem; }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem;
+  padding: .95rem 0; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; font-family: var(--mono); color: var(--saffron); font-size: 1rem; }
+.faq details[open] summary::after { content: '−'; }
+.faq p { margin: 0 0 1rem; font-size: .9rem; line-height: 1.7; color: var(--ink-2); max-width: 68ch; }

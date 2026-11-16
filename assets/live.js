@@ -61,6 +61,14 @@ function build() {
   `;
   const bar = document.querySelector('.livebar .inner');
   if (bar) bar.innerHTML = html;
+
+  // the today strip on the home page
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  set('t-tithi', TITHI[tithiIdx] || '—');
+  set('t-nak', NAK[moon.nakshatra - 1] || '—');
+  if (t) { set('t-rise', t.rise); }
+  const rahuParts = { 0: '16:30–18:00', 1: '07:30–09:00', 2: '15:00–16:30', 3: '12:00–13:30', 4: '13:30–15:00', 5: '10:30–12:00', 6: '09:00–10:30' };
+  set('t-rahu', rahuParts[now.getDay()] || '—');
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
